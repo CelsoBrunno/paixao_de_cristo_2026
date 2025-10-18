@@ -1,0 +1,333 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre o Projeto - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Conheça a história de 46 anos da Paixão de Cristo de Maracanaú, desde a gincana escolar em 1987 até se tornar o maior espetáculo a céu aberto da região.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Sobre o Projeto</h1>
+                <p class="page-subtitle lead">
+                    Uma jornada de 46 anos levando arte, cultura e fé para milhares de pessoas
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Nossa História Section -->
+<section class="nossa-historia-section py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="historia-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Nossa História</span>
+                    </h2>
+                    <p class="historia-text lead mb-4">
+                        Tudo começou em 1987, quando um grupo de estudantes da Escola Estadual 
+                        Adauto Bezerra, em Maracanaú, organizou uma gincana escolar com o tema 
+                        "Paixão de Cristo". O que era para ser apenas uma atividade educacional 
+                        se transformou em algo muito maior.
+                    </p>
+                    <p class="historia-text mb-4">
+                        Com o passar dos anos, o projeto cresceu exponencialmente, ganhando 
+                        reconhecimento municipal, estadual e nacional. A dedicação dos 
+                        organizadores e o apoio da comunidade fizeram com que a Paixão de Cristo 
+                        de Maracanaú se tornasse uma das maiores manifestações culturais da região.
+                    </p>
+                    <p class="historia-text mb-4">
+                        Hoje, o evento atrai mais de 30.000 pessoas anualmente, consolidando-se 
+                        como o maior espetáculo a céu aberto da região e uma referência em 
+                        cultura popular no Nordeste brasileiro.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="historia-image">
+                    <img src="{{ url_for('static', filename='images/primeira-apresentacao.png') }}" 
+                         alt="Primeira apresentação da Paixão de Cristo em 1987" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reconhecimento Público Section -->
+<section class="reconhecimento-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Reconhecimento Público</span>
+                </h2>
+                <p class="section-description lead">
+                    O projeto recebeu reconhecimento oficial através de lei municipal, 
+                    demonstrando sua importância para a cultura de Maracanaú.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="reconhecimento-content">
+                    <div class="law-highlight p-4 bg-white rounded shadow">
+                        <div class="law-icon mb-3">
+                            <i class="fas fa-gavel fa-3x text-gold"></i>
+                        </div>
+                        <h3 class="law-title h4 mb-3">Lei Municipal nº 2.710/2018</h3>
+                        <p class="law-description mb-3">
+                            A Câmara Municipal de Maracanaú aprovou lei que reconhece 
+                            oficialmente a Paixão de Cristo como evento de interesse 
+                            cultural e turístico do município.
+                        </p>
+                        <div class="law-benefits">
+                            <h5 class="benefits-title mb-3">Benefícios da Lei:</h5>
+                            <ul class="benefits-list list-unstyled">
+                                <li class="benefit-item mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Reconhecimento como patrimônio cultural
+                                </li>
+                                <li class="benefit-item mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Apoio institucional da prefeitura
+                                </li>
+                                <li class="benefit-item mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Incentivo ao turismo local
+                                </li>
+                                <li class="benefit-item">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Valorização da identidade cultural
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="reconhecimento-image">
+                    <img src="{{ url_for('static', filename='images/lei-municipal.png') }}" 
+                         alt="Lei Municipal reconhecendo a Paixão de Cristo" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Crescimento do Público Section -->
+<section class="crescimento-section py-5 parchment-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Crescimento do Público</span>
+                </h2>
+                <p class="section-description lead">
+                    O crescimento constante do público demonstra a relevância 
+                    e o impacto do projeto na comunidade.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="crescimento-chart bg-white p-4 rounded shadow">
+                    <div class="chart-header text-center mb-4">
+                        <h4 class="chart-title">Evolução do Público (Últimas Edições)</h4>
+                    </div>
+                    
+                    <div class="chart-bars">
+                        <div class="bar-item mb-3">
+                            <div class="bar-label d-flex justify-content-between mb-1">
+                                <span>2022</span>
+                                <span class="fw-bold">15.000</span>
+                            </div>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar bg-brown" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bar-item mb-3">
+                            <div class="bar-label d-flex justify-content-between mb-1">
+                                <span>2023</span>
+                                <span class="fw-bold">18.000</span>
+                            </div>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar bg-brown" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bar-item mb-3">
+                            <div class="bar-label d-flex justify-content-between mb-1">
+                                <span>2024</span>
+                                <span class="fw-bold">22.000</span>
+                            </div>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar bg-brown" style="width: 73%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bar-item mb-3">
+                            <div class="bar-label d-flex justify-content-between mb-1">
+                                <span>2025</span>
+                                <span class="fw-bold">26.000</span>
+                            </div>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar bg-brown" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bar-item mb-4">
+                            <div class="bar-label d-flex justify-content-between mb-1">
+                                <span>2026</span>
+                                <span class="fw-bold">30.000</span>
+                            </div>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar bg-warning" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-footer text-center">
+                        <p class="chart-note text-muted mb-0">
+                            <i class="fas fa-chart-line me-2"></i>
+                            Crescimento de 100% em 4 anos
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="stat-card text-center p-4 bg-white rounded shadow">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-users fa-3x text-gold"></i>
+                    </div>
+                    <h3 class="stat-number display-5 fw-bold text-gold mb-2">30.000</h3>
+                    <h4 class="stat-label h5 mb-0">Público Atual</h4>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="stat-card text-center p-4 bg-white rounded shadow">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-percentage fa-3x text-success"></i>
+                    </div>
+                    <h3 class="stat-number display-5 fw-bold text-success mb-2">100%</h3>
+                    <h4 class="stat-label h5 mb-0">Crescimento</h4>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="stat-card text-center p-4 bg-white rounded shadow">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-calendar-alt fa-3x text-warning"></i>
+                    </div>
+                    <h3 class="stat-number display-5 fw-bold text-warning mb-2">46</h3>
+                    <h4 class="stat-label h5 mb-0">Anos de Tradição</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Faça Parte Desta História
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Seja um patrocinador deste projeto que há 46 anos transforma vidas 
+                    através da arte e da cultura.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja um Patrocinador
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.law-highlight {
+    border-left: 5px solid #007bff;
+}
+
+.benefit-item {
+    padding: 0.5rem 0;
+}
+
+.chart-bars .progress {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.stat-card {
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.medida-card {
+    transition: transform 0.3s ease;
+    border-left: 3px solid #007bff;
+}
+
+.medida-card:hover {
+    transform: translateY(-3px);
+}
+
+.acessibilidade-destaque {
+    border-left: 5px solid #ffc107;
+}
+
+.info-item {
+    padding: 0.25rem 0;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}

@@ -1,0 +1,431 @@
+{% extends "base.html" %}
+
+{% block title %}Contato - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Entre em contato com a equipe da Paixão de Cristo de Maracanaú. Informações sobre patrocínio, parcerias e dúvidas sobre o evento.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Contato</h1>
+                <p class="page-subtitle lead">
+                    Entre em contato conosco e faça parte desta história
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contato Overview -->
+<section class="contato-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Fale Conosco</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        Estamos sempre disponíveis para esclarecer dúvidas, 
+                        receber propostas de patrocínio e parcerias, ou simplesmente 
+                        conversar sobre o projeto.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Nossa equipe está preparada para atender empresas interessadas 
+                        em patrocínio, artistas que desejam participar, e membros 
+                        da comunidade que querem se envolver com o projeto.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Entre em contato através dos canais abaixo ou utilize 
+                        o formulário para enviar sua mensagem.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/coordenacao.jpg') }}" 
+                         alt="Equipe da Paixão de Cristo de Maracanaú" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Informações de Contato -->
+<section class="info-contato-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Informações de Contato</span>
+                </h2>
+                <p class="section-description lead">
+                    Nossa equipe está pronta para atender você
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="info-icon mb-3">
+                        <i class="fas fa-user fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="info-titulo h5 mb-2">Proponente e Coordenador-Geral</h4>
+                    <p class="info-nome fw-bold mb-2">Celso Brunno Rocha Custódio</p>
+                    <p class="info-descricao text-muted">
+                        Responsável pela direção geral do projeto, 
+                        captação de recursos e coordenação geral do evento.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="info-icon mb-3">
+                        <i class="fas fa-phone fa-3x text-success"></i>
+                    </div>
+                    <h4 class="info-titulo h5 mb-2">Telefone</h4>
+                    <p class="info-contato fw-bold mb-2">
+                        <a href="tel:+5585996038572" class="text-decoration-none">
+                            (85) 99603-8572
+                        </a>
+                    </p>
+                    <p class="info-descricao text-muted">
+                        Disponível de segunda a sexta, 
+                        das 8h às 18h.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="info-icon mb-3">
+                        <i class="fas fa-envelope fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="info-titulo h5 mb-2">E-mail</h4>
+                    <p class="info-contato fw-bold mb-2">
+                        <a href="mailto:teatroalmirdutra@gmail.com" 
+                           class="text-decoration-none">
+                           teatroalmirdutra@gmail.com
+                        </a>
+                    </p>
+                    <p class="info-descricao text-muted">
+                        Resposta em até 24 horas úteis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formulário de Contato -->
+<section class="formulario-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="formulario-container p-5 bg-white rounded shadow">
+                    <div class="formulario-header text-center mb-4">
+                        <h2 class="formulario-titulo h3 mb-2">
+                            <span class="title-accent">Envie sua Mensagem</span>
+                        </h2>
+                        <p class="formulario-subtitulo text-muted">
+                            Preencha o formulário abaixo e entraremos em contato
+                        </p>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('main.contato') }}" class="formulario">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nome" class="form-label">
+                                    <i class="fas fa-user me-2"></i>Nome Completo *
+                                </label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="nome" 
+                                       name="nome" 
+                                       required
+                                       placeholder="Digite seu nome completo">
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope me-2"></i>E-mail *
+                                </label>
+                                <input type="email" 
+                                       class="form-control" 
+                                       id="email" 
+                                       name="email" 
+                                       required
+                                       placeholder="Digite seu e-mail">
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="telefone" class="form-label">
+                                    <i class="fas fa-phone me-2"></i>Telefone
+                                </label>
+                                <input type="tel" 
+                                       class="form-control" 
+                                       id="telefone" 
+                                       name="telefone"
+                                       placeholder="(85) 99603-8572">
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="empresa" class="form-label">
+                                    <i class="fas fa-building me-2"></i>Empresa
+                                </label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="empresa" 
+                                       name="empresa"
+                                       placeholder="Nome da empresa (opcional)">
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="assunto" class="form-label">
+                                    <i class="fas fa-tag me-2"></i>Assunto *
+                                </label>
+                                <select class="form-select" id="assunto" name="assunto" required>
+                                    <option value="">Selecione o assunto</option>
+                                    <option value="patrocinio">Interesse em Patrocínio</option>
+                                    <option value="parceria">Proposta de Parceria</option>
+                                    <option value="participacao">Participação no Evento</option>
+                                    <option value="formacao">Cursos de Formação Artística</option>
+                                    <option value="feira">Participação na Feira Livre</option>
+                                    <option value="midia">Cobertura Midiática</option>
+                                    <option value="duvidas">Dúvidas Gerais</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="mensagem" class="form-label">
+                                    <i class="fas fa-comment me-2"></i>Mensagem *
+                                </label>
+                                <textarea class="form-control" 
+                                          id="mensagem" 
+                                          name="mensagem" 
+                                          rows="5" 
+                                          required
+                                          placeholder="Descreva sua mensagem, proposta ou dúvida..."></textarea>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" 
+                                           type="checkbox" 
+                                           id="aceito" 
+                                           name="aceito" 
+                                           required>
+                                    <label class="form-check-label" for="aceito">
+                                        Aceito receber informações sobre o projeto e eventos relacionados *
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-brown btn-lg px-5">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Enviar Mensagem
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Áreas de Atuação -->
+<section class="areas-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Áreas de Atuação</span>
+                </h2>
+                <p class="section-description lead">
+                    Principais áreas para contato e parcerias
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="area-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="area-icon mb-3">
+                        <i class="fas fa-handshake fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="area-titulo h5 mb-2">Patrocínio</h4>
+                    <p class="area-descricao text-muted">
+                        Para empresas interessadas em patrocinar 
+                        o evento via Lei de Incentivo à Cultura.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="area-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="area-icon mb-3">
+                        <i class="fas fa-users fa-3x text-success"></i>
+                    </div>
+                    <h4 class="area-titulo h5 mb-2">Participação</h4>
+                    <p class="area-descricao text-muted">
+                        Para artistas e grupos que desejam 
+                        participar do espetáculo ou festival.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="area-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="area-icon mb-3">
+                        <i class="fas fa-graduation-cap fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="area-titulo h5 mb-2">Formação</h4>
+                    <p class="area-descricao text-muted">
+                        Para interessados nos cursos de 
+                        formação artística oferecidos.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="area-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="area-icon mb-3">
+                        <i class="fas fa-store fa-3x text-info"></i>
+                    </div>
+                    <h4 class="area-titulo h5 mb-2">Feira Livre</h4>
+                    <p class="area-descricao text-muted">
+                        Para produtores e artesãos que 
+                        desejam participar da feira.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Pronto para Fazer Parte Desta História?
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Entre em contato conosco e descubra como você pode 
+                    contribuir para o maior evento cultural de Maracanaú.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja um Patrocinador
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.info-card {
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.formulario-container {
+    border-left: 5px solid #007bff;
+}
+
+.area-card {
+    transition: transform 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Máscara para telefone
+    const telefoneInput = document.getElementById('telefone');
+    telefoneInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 11) {
+            value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else if (value.length >= 7) {
+            value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+        } else if (value.length >= 3) {
+            value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+        }
+        e.target.value = value;
+    });
+    
+    // Validação do formulário
+    const form = document.querySelector('.formulario');
+    form.addEventListener('submit', function(e) {
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const assunto = document.getElementById('assunto').value;
+        const mensagem = document.getElementById('mensagem').value.trim();
+        const aceito = document.getElementById('aceito').checked;
+        
+        if (!nome || !email || !assunto || !mensagem || !aceito) {
+            e.preventDefault();
+            alert('Por favor, preencha todos os campos obrigatórios e aceite os termos.');
+            return false;
+        }
+        
+        // Validação básica de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            e.preventDefault();
+            alert('Por favor, insira um e-mail válido.');
+            return false;
+        }
+    });
+});
+</script>
+{% endblock %}
+

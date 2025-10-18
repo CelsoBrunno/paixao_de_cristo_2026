@@ -1,0 +1,490 @@
+{% extends "base.html" %}
+
+{% block title %}Evento 2026 - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Paixão de Cristo de Maracanaú 2026 - 2 e 3 de abril. O maior evento cultural da região com espetáculo cênico, festival de música, formação artística e feira livre.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Evento 2026</h1>
+                <p class="page-subtitle lead">
+                    Prepare-se para a maior edição de todos os tempos
+                </p>
+                <div class="event-date-badge mt-4">
+                    <span class="badge bg-warning text-dark fs-4 px-4 py-3">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        2 e 3 de Abril de 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Evento Overview -->
+<section class="evento-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">O Maior Evento Cultural da Região</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        O evento de 2026 promete ser o mais grandioso de todos os tempos, 
+                        com estrutura ampliada, novas atrações e uma programação especial 
+                        que celebrará os 46 anos de tradição da Paixão de Cristo de Maracanaú.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Durante dois dias, o público terá acesso a uma programação diversificada 
+                        que inclui o espetáculo cênico principal, festival de música com artistas 
+                        locais e regionais, cursos de formação artística e uma feira livre 
+                        com produtores e artesãos da região.
+                    </p>
+                    <div class="evento-highlights">
+                        <div class="highlight-item d-flex align-items-center mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Local</h5>
+                                <p class="mb-0 text-muted">Centro de Maracanaú - CE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item d-flex align-items-center mb-3">
+                            <i class="fas fa-clock fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Horário</h5>
+                                <p class="mb-0 text-muted">A partir das 16h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item d-flex align-items-center">
+                            <i class="fas fa-ticket-alt fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Entrada</h5>
+                                <p class="mb-0 text-muted">Gratuita para todos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/vista-aerea-3d.png') }}" 
+                         alt="Vista geral do evento Paixão de Cristo de Maracanaú 2026" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Planta 3D Section -->
+<section class="planta-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Estrutura do Evento</span>
+                </h2>
+                <p class="section-description lead">
+                    Conheça a planta 3D do evento com todas as áreas e atrações disponíveis
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="planta-container bg-white p-4 rounded shadow">
+                    <img src="{{ url_for('static', filename='images/9.png') }}" 
+                         alt="Planta 3D do evento Paixão de Cristo de Maracanaú 2026" 
+                         class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Principais Atrações -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h3 class="section-title text-center mb-5">
+                    <span class="title-accent">Principais Atrações</span>
+                </h3>
+            </div>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <!-- Card Feira Livre -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card atracao-card h-100">
+                    <div class="card-image-container">
+                        <img src="{{ url_for('static', filename='images/patrocinio-1.png') }}" 
+                             alt="Feira Livre - Paixão de Cristo 2026" 
+                             class="card-img-top">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <i class="fas fa-store me-2 text-warning"></i>
+                            Feira Livre
+                        </h5>
+                        <p class="card-text flex-grow-1">
+                            Uma feira livre tradicional com artesanato local, comidas típicas e produtos regionais, 
+                            proporcionando uma experiência autêntica da cultura cearense durante o evento.
+                        </p>
+                        <div class="card-features">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Artesanato local</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Comidas típicas</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Produtos regionais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Festival de Música -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card atracao-card h-100">
+                    <div class="card-image-container">
+                        <img src="{{ url_for('static', filename='images/patrocinio-2.png') }}" 
+                             alt="Festival de Música - Paixão de Cristo 2026" 
+                             class="card-img-top">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <i class="fas fa-music me-2 text-gold"></i>
+                            Festival de Música
+                        </h5>
+                        <p class="card-text flex-grow-1">
+                            Apresentações musicais com artistas locais e regionais, celebrando a música sacra e 
+                            popular, criando um ambiente de celebração e reflexão espiritual.
+                        </p>
+                        <div class="card-features">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Música sacra</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Artistas locais</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Apresentações especiais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Ativação de Empresas -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card atracao-card h-100">
+                    <div class="card-image-container">
+                        <img src="{{ url_for('static', filename='images/patrocinio-3.png') }}" 
+                             alt="Ativação de Empresas - Paixão de Cristo 2026" 
+                             class="card-img-top">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <i class="fas fa-handshake me-2 text-info"></i>
+                            Ativação de Empresas
+                        </h5>
+                        <p class="card-text flex-grow-1">
+                            Espaço dedicado para empresas patrocinadoras demonstrarem seus produtos e serviços, 
+                            criando oportunidades de networking e fortalecendo a parceria com o evento.
+                        </p>
+                        <div class="card-features">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Networking</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Demonstrações</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Parcerias</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Legenda da Planta -->
+        <div class="row mt-4">
+            <div class="col-lg-10 mx-auto">
+                <div class="legenda-container">
+                    <h4 class="legenda-title mb-3">Legenda das Áreas:</h4>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="legenda-item d-flex align-items-center">
+                                <div class="legenda-color bg-brown me-2" style="width: 20px; height: 20px; border-radius: 3px;"></div>
+                                <span>Palco Principal</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="legenda-item d-flex align-items-center">
+                                <div class="legenda-color bg-success me-2" style="width: 20px; height: 20px; border-radius: 3px;"></div>
+                                <span>Festival de Música</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="legenda-item d-flex align-items-center">
+                                <div class="legenda-color bg-warning me-2" style="width: 20px; height: 20px; border-radius: 3px;"></div>
+                                <span>Feira Livre</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="legenda-item d-flex align-items-center">
+                                <div class="legenda-color bg-info me-2" style="width: 20px; height: 20px; border-radius: 3px;"></div>
+                                <span>Formação Artística</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Programação Section -->
+<section class="programacao-section py-5 parchment-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Programação Completa</span>
+                </h2>
+                <p class="section-description lead">
+                    Uma programação diversificada para todos os públicos
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Dia 1 -->
+            <div class="col-lg-6">
+                <div class="programacao-card p-4 bg-white rounded shadow h-100">
+                    <div class="card-header mb-4">
+                        <h3 class="card-title text-gold mb-2">
+                            <i class="fas fa-calendar-day me-2"></i>
+                            2 de Abril
+                        </h3>
+                        <p class="card-subtitle text-muted mb-0">Sexta-feira</p>
+                    </div>
+                    
+                    <div class="programacao-itens">
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-brown">16:00</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Abertura Oficial</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Cerimônia de abertura com autoridades e apresentação da programação
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-success">16:30</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Festival de Música</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Apresentações de artistas locais e regionais
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-info">17:00</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Formação Artística</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Cursos de iniciação teatral para crianças e jovens
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-warning">18:00</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Feira Livre</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Produtores e artesãos locais expondo seus trabalhos
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start">
+                            <div class="horario me-3">
+                                <span class="badge bg-danger">19:30</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Espetáculo Cênico</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Apresentação da Paixão de Cristo - Primeira parte
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dia 2 -->
+            <div class="col-lg-6">
+                <div class="programacao-card p-4 bg-white rounded shadow h-100">
+                    <div class="card-header mb-4">
+                        <h3 class="card-title text-gold mb-2">
+                            <i class="fas fa-calendar-day me-2"></i>
+                            3 de Abril
+                        </h3>
+                        <p class="card-subtitle text-muted mb-0">Sábado</p>
+                    </div>
+                    
+                    <div class="programacao-itens">
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-brown">16:00</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Continuidade das Atividades</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Festival de música, formação artística e feira livre
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-success">17:00</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Festival de Música</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Novas apresentações de artistas convidados
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-info">18:00</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Formação Artística</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Workshops avançados e apresentações dos alunos
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start mb-3">
+                            <div class="horario me-3">
+                                <span class="badge bg-warning">18:30</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Feira Livre</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Continuação da exposição e comercialização
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="programacao-item d-flex align-items-start">
+                            <div class="horario me-3">
+                                <span class="badge bg-danger">19:30</span>
+                            </div>
+                            <div class="atividade">
+                                <h5 class="atividade-titulo mb-1">Espetáculo Cênico</h5>
+                                <p class="atividade-descricao mb-0 text-muted">
+                                    Apresentação final da Paixão de Cristo - Segunda parte
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Não Perca Esta Experiência Única
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Participe do maior evento cultural de Maracanaú e seja patrocinador 
+                    desta iniciativa que transforma vidas através da arte.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg me-3 mb-2">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja Patrocinador
+                </a>
+                <a href="{{ url_for('main.contato') }}" 
+                   class="btn btn-outline-light btn-lg mb-2">
+                    <i class="fas fa-phone me-2"></i>
+                    Contato
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.event-date-badge .badge {
+    font-size: 1.2rem !important;
+    padding: 0.8rem 2rem !important;
+}
+
+.programacao-card {
+    border-left: 5px solid #007bff;
+}
+
+.programacao-item {
+    padding: 0.5rem 0;
+}
+
+.atividade-titulo {
+    color: #333;
+    font-weight: 600;
+}
+
+.legenda-container {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}

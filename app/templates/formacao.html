@@ -1,0 +1,571 @@
+{% extends "base.html" %}
+
+{% block title %}Formação Artística - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Formação Artística da Paixão de Cristo de Maracanaú oferece cursos de iniciação teatral para crianças e jovens, desenvolvendo talentos locais.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Formação Artística</h1>
+                <p class="page-subtitle lead">
+                    Desenvolvendo talentos e formando novos artistas
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formação Overview -->
+<section class="formacao-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Educação através da Arte</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        A Formação Artística é um dos pilares fundamentais do projeto, 
+                        oferecendo oficinas de iniciação teatral com 2 turmas de 20 vagas cada, 
+                        totalizando 40 beneficiários da comunidade de Maracanaú.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Cada oficina tem duração de 40 horas distribuídas em 5 semanas, 
+                        utilizando metodologia prática que desenvolve habilidades artísticas, 
+                        confiança, trabalho em equipe e valores importantes para a vida pessoal e profissional.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Muitos dos participantes das oficinas acabam se tornando 
+                        atores do espetáculo principal, criando um ciclo virtuoso de 
+                        desenvolvimento cultural na comunidade.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/formacao-artistica.png') }}" 
+                         alt="Crianças participando dos cursos de formação artística" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cursos Disponíveis -->
+<section class="cursos-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Cursos e Oficinas</span>
+                </h2>
+                <p class="section-description lead">
+                    Uma variedade de cursos para diferentes faixas etárias e níveis
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="curso-card p-4 bg-white rounded shadow h-100">
+                    <div class="curso-icon mb-3 text-center">
+                        <i class="fas fa-child fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="curso-titulo h5 text-center mb-3">Teatro Infantil</h4>
+                    <p class="curso-idade text-center text-muted mb-3">6 a 12 anos</p>
+                    <p class="curso-descricao mb-4">
+                        Introdução ao teatro através de jogos e brincadeiras, 
+                        desenvolvendo criatividade e expressão corporal.
+                    </p>
+                    <div class="curso-horario">
+                        <p class="mb-1"><strong>Duração:</strong> 40 horas</p>
+                        <p class="mb-1"><strong>Período:</strong> 5 semanas</p>
+                        <p class="mb-0"><strong>Vagas:</strong> 20 participantes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="curso-card p-4 bg-white rounded shadow h-100">
+                    <div class="curso-icon mb-3 text-center">
+                        <i class="fas fa-user-graduate fa-3x text-success"></i>
+                    </div>
+                    <h4 class="curso-titulo h5 text-center mb-3">Teatro Juvenil</h4>
+                    <p class="curso-idade text-center text-muted mb-3">13 a 17 anos</p>
+                    <p class="curso-descricao mb-4">
+                        Desenvolvimento de técnicas teatrais, interpretação 
+                        e construção de personagens.
+                    </p>
+                    <div class="curso-horario">
+                        <p class="mb-1"><strong>Duração:</strong> 40 horas</p>
+                        <p class="mb-1"><strong>Período:</strong> 5 semanas</p>
+                        <p class="mb-0"><strong>Vagas:</strong> 20 participantes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="curso-card p-4 bg-white rounded shadow h-100">
+                    <div class="curso-icon mb-3 text-center">
+                        <i class="fas fa-users fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="curso-titulo h5 text-center mb-3">Teatro Adulto</h4>
+                    <p class="curso-idade text-center text-muted mb-3">18+ anos</p>
+                    <p class="curso-descricao mb-4">
+                        Técnicas avançadas de atuação, preparação para 
+                        o espetáculo principal e desenvolvimento profissional.
+                    </p>
+                    <div class="curso-horario">
+                        <p class="mb-1"><strong>Duração:</strong> 40 horas</p>
+                        <p class="mb-1"><strong>Período:</strong> 5 semanas</p>
+                        <p class="mb-0"><strong>Vagas:</strong> 20 participantes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Detalhes das Oficinas -->
+<section class="detalhes-oficinas-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Detalhes das Oficinas</span>
+                </h2>
+                <p class="section-description lead">
+                    Informações específicas sobre as oficinas de iniciação teatral
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="detalhe-oficina-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="detalhe-titulo h5 mb-4 text-gold">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Estrutura das Oficinas
+                    </h3>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Número de turmas:</span>
+                            <span class="detalhe-valor fw-bold">2 turmas</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Vagas por turma:</span>
+                            <span class="detalhe-valor fw-bold">20 vagas</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Total de beneficiários:</span>
+                            <span class="detalhe-valor fw-bold">40 pessoas</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Carga horária:</span>
+                            <span class="detalhe-valor fw-bold">40 horas</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Duração:</span>
+                            <span class="detalhe-valor fw-bold">5 semanas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="detalhe-oficina-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="detalhe-titulo h5 mb-4 text-success">
+                        <i class="fas fa-graduation-cap me-2"></i>
+                        Metodologia Pedagógica
+                    </h3>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Abordagem:</span>
+                            <span class="detalhe-valor fw-bold">Prática</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Módulos de conteúdo:</span>
+                            <span class="detalhe-valor fw-bold">Específicos</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Seleção:</span>
+                            <span class="detalhe-valor fw-bold">Edital público</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Acesso:</span>
+                            <span class="detalhe-valor fw-bold">100% gratuito</span>
+                        </div>
+                    </div>
+                    <div class="detalhe-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="detalhe-label">Certificação:</span>
+                            <span class="detalhe-valor fw-bold">Incluída</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-lg-8 mx-auto">
+                <div class="beneficios-oficinas p-4 bg-brown text-white rounded">
+                    <h4 class="beneficios-titulo h5 mb-3 text-center">
+                        <i class="fas fa-star me-2"></i>
+                        Benefícios das Oficinas
+                    </h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="beneficios-lista list-unstyled">
+                                <li class="beneficio-item mb-2">
+                                    <i class="fas fa-check me-2"></i>
+                                    Desenvolvimento de habilidades artísticas
+                                </li>
+                                <li class="beneficio-item mb-2">
+                                    <i class="fas fa-check me-2"></i>
+                                    Fortalecimento da autoestima
+                                </li>
+                                <li class="beneficio-item">
+                                    <i class="fas fa-check me-2"></i>
+                                    Trabalho em equipe e colaboração
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="beneficios-lista list-unstyled">
+                                <li class="beneficio-item mb-2">
+                                    <i class="fas fa-check me-2"></i>
+                                    Preparação para o espetáculo principal
+                                </li>
+                                <li class="beneficio-item mb-2">
+                                    <i class="fas fa-check me-2"></i>
+                                    Descoberta de talentos locais
+                                </li>
+                                <li class="beneficio-item">
+                                    <i class="fas fa-check me-2"></i>
+                                    Formação de novos artistas
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Metodologia -->
+<section class="metodologia-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Metodologia Pedagógica</span>
+                </h2>
+                <p class="section-description lead">
+                    Uma abordagem educativa baseada na experiência prática
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="metodologia-item d-flex align-items-start p-4 bg-white rounded shadow">
+                    <div class="metodologia-icon me-3">
+                        <i class="fas fa-play-circle fa-2x text-gold"></i>
+                    </div>
+                    <div class="metodologia-content">
+                        <h4 class="metodologia-titulo h5 mb-2">Aprendizado Prático</h4>
+                        <p class="metodologia-descricao mb-0">
+                            Os participantes aprendem fazendo, através de exercícios 
+                            práticos e apresentações constantes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="metodologia-item d-flex align-items-start p-4 bg-white rounded shadow">
+                    <div class="metodologia-icon me-3">
+                        <i class="fas fa-handshake fa-2x text-success"></i>
+                    </div>
+                    <div class="metodologia-content">
+                        <h4 class="metodologia-titulo h5 mb-2">Trabalho em Equipe</h4>
+                        <p class="metodologia-descricao mb-0">
+                            Desenvolvimento de habilidades de colaboração e 
+                            trabalho em grupo através de exercícios coletivos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="metodologia-item d-flex align-items-start p-4 bg-white rounded shadow">
+                    <div class="metodologia-icon me-3">
+                        <i class="fas fa-heart fa-2x text-warning"></i>
+                    </div>
+                    <div class="metodologia-content">
+                        <h4 class="metodologia-titulo h5 mb-2">Desenvolvimento Pessoal</h4>
+                        <p class="metodologia-descricao mb-0">
+                            Trabalho com autoestima, confiança e expressão 
+                            pessoal de cada participante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="metodologia-item d-flex align-items-start p-4 bg-white rounded shadow">
+                    <div class="metodologia-icon me-3">
+                        <i class="fas fa-star fa-2x text-info"></i>
+                    </div>
+                    <div class="metodologia-content">
+                        <h4 class="metodologia-titulo h5 mb-2">Descoberta de Talentos</h4>
+                        <p class="metodologia-descricao mb-0">
+                            Identificação e desenvolvimento de talentos 
+                            individuais de cada participante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Professores -->
+<section class="professores-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Corpo Docente</span>
+                </h2>
+                <p class="section-description lead">
+                    Professores qualificados com experiência em teatro e educação
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="professor-card p-4 bg-white rounded shadow">
+                    <div class="professor-foto text-center mb-3">
+                        <img src="{{ url_for('static', filename='images/celso-custodio-1.jpg') }}" 
+                             alt="Foto do professor" 
+                             class="img-fluid rounded" 
+                             width="120" height="120">
+                    </div>
+                    <div class="professor-info text-center">
+                        <h4 class="professor-nome h5 mb-2">Celso Custódio</h4>
+                        <p class="professor-cargo text-muted mb-2">Professor e Coordenador Geral</p>
+                        <p class="professor-experiencia mb-0">
+                            Fundador da Paixão de Cristo de Maracanaú, foi o primeiro ator a interpretar Jesus Cristo na primeira apresentação em 1987  e hoje é o Coordenador Geral do projeto, com vasta experiência 
+                            em teatro e coordenação artística.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="professor-card p-4 bg-white rounded shadow">
+                    <div class="professor-foto text-center mb-3">
+                        <img src="{{ url_for('static', filename='images/tercio-barros.jpg') }}" 
+                             alt="Foto do professor" 
+                             class="img-fluid rounded" 
+                             width="120" height="120">
+                    </div>
+                    <div class="professor-info text-center">
+                        <h4 class="professor-nome h5 mb-2">Tércio Barros</h4>
+                        <p class="professor-cargo text-muted mb-2">Diretor Artístico</p>
+                        <p class="professor-experiencia mb-0">
+                            Participa da Paixão de Cristo desde seus 8 anos de idade, 
+                            cresceu dentro do projeto como ator mirim e evoluiu através 
+                            até se tornar o Diretor Artístico atual, trazendo 
+                            sua experiência, paixão pela arte e conhecimento de cada detalhe do espetáculo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impacto Social -->
+<section class="impacto-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="impacto-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Transformando Vidas</span>
+                    </h2>
+                    <p class="impacto-text mb-4">
+                        A Formação Artística vai além do ensino de técnicas teatrais, 
+                        contribuindo para o desenvolvimento integral dos participantes 
+                        e fortalecendo os laços comunitários.
+                    </p>
+                    
+                    <div class="impacto-estatisticas">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="stat-item text-center p-3 bg-brown text-white rounded">
+                                    <h3 class="stat-number mb-1">200+</h3>
+                                    <p class="stat-label mb-0">Crianças Atendidas</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-item text-center p-3 bg-success text-white rounded">
+                                    <h3 class="stat-number mb-1">150+</h3>
+                                    <p class="stat-label mb-0">Jovens Formados</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-item text-center p-3 bg-danger text-white rounded">
+                                    <h3 class="stat-number mb-1">80%</h3>
+                                    <p class="stat-label mb-0">Melhoria na Autoestima</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-item text-center p-3 bg-secondary text-white rounded">
+                                    <h3 class="stat-number mb-1">60+</h3>
+                                    <p class="stat-label mb-0">Atores do Espetáculo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="impacto-image">
+                    <img src="{{ url_for('static', filename='images/publico-1.jpg') }}" 
+                         alt="Participantes da formação artística se apresentando" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Invista na Formação de Talentos
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Apoie a Formação Artística e contribua para o desenvolvimento 
+                    cultural e social de crianças e jovens de Maracanaú.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja um Patrocinador
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.curso-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid #007bff;
+}
+
+.curso-card:hover {
+    transform: translateY(-5px);
+}
+
+.professor-card {
+    transition: transform 0.3s ease;
+}
+
+.professor-card:hover {
+    transform: translateY(-5px);
+}
+
+.detalhe-oficina-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid #007bff;
+}
+
+.detalhe-oficina-card:hover {
+    transform: translateY(-5px);
+}
+
+.detalhe-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.detalhe-item:last-child {
+    border-bottom: none;
+}
+
+.detalhe-label {
+    color: #6c757d;
+}
+
+.detalhe-valor {
+    color: #007bff;
+}
+
+.beneficios-oficinas {
+    border-left: 5px solid #ffc107;
+}
+
+.beneficio-item {
+    padding: 0.25rem 0;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}
+

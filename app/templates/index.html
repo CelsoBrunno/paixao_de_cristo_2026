@@ -1,0 +1,432 @@
+{% extends "base.html" %}
+
+{% block title %}Paixão de Cristo de Maracanaú - O Maior Espetáculo a Céu Aberto da Região{% endblock %}
+
+{% block meta_description %}Paixão de Cristo de Maracanaú - 46 anos de tradição, público de 30.000 pessoas. O maior espetáculo a céu aberto da região acontece nos dias 2 e 3 de abril de 2026.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: url('{{ url_for('static', filename='images/jesus-fumaca.jpg') }}');">
+    <div class="hero-overlay">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8">
+                    <div class="hero-content text-white">
+                        <div class="hero-logo mb-4">
+                            <img src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}" 
+                                 alt="Paixão de Cristo - Maracanaú" 
+                                 class="hero-brand-logo">
+                        </div>
+                        <h2 class="hero-subtitle display-6 mb-4">
+                            O Maior Espetáculo a Céu Aberto da Região
+                        </h2>
+                        <p class="hero-description lead mb-5">
+                            Uma tradição de 46 anos que emociona milhares de pessoas com arte, 
+                            cultura e fé. Descubra a história e os detalhes deste espetáculo 
+                            único que acontece nos dias 2 e 3 de abril de 2026.
+                        </p>
+                        
+                        <div class="hero-buttons">
+                            <a href="{{ url_for('main.evento') }}" 
+                               class="btn btn-warning btn-lg me-3 mb-3">
+                                <i class="fas fa-calendar me-2"></i>
+                                Conheça o Evento
+                            </a>
+                            <a href="{{ url_for('main.sobre') }}" 
+                               class="btn btn-outline-light btn-lg mb-3">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Saiba Mais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Destaques Section -->
+<section class="highlights-section py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="highlight-card text-center p-4 h-100">
+                    <div class="highlight-icon mb-3">
+                        <i class="fas fa-calendar-alt fa-3x text-gold"></i>
+                    </div>
+                    <h3 class="highlight-number display-4 fw-bold text-gold mb-2">46</h3>
+                    <h4 class="highlight-title h5 mb-3">Anos de Tradição</h4>
+                    <p class="highlight-description">
+                        Desde 1987, quando começou como uma gincana escolar, 
+                        o projeto cresceu e se tornou uma das maiores manifestações 
+                        culturais da região.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="highlight-card text-center p-4 h-100">
+                    <div class="highlight-icon mb-3">
+                        <i class="fas fa-users fa-3x text-gold"></i>
+                    </div>
+                    <h3 class="highlight-number display-4 fw-bold text-gold mb-2">30.000</h3>
+                    <h4 class="highlight-title h5 mb-3">Público Anual</h4>
+                    <p class="highlight-description">
+                        Milhares de pessoas se reúnem todos os anos para assistir 
+                        ao espetáculo, participando de uma experiência única de 
+                        arte e espiritualidade.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="highlight-card text-center p-4 h-100">
+                    <div class="highlight-icon mb-3">
+                        <i class="fas fa-certificate fa-3x text-gold"></i>
+                    </div>
+                    <h3 class="highlight-title h5 mb-3">Lei de Incentivo</h3>
+                    <p class="highlight-description">
+                        Projeto aprovado na Lei de Incentivo à Cultura, 
+                        oferecendo benefícios fiscais para empresas patrocinadoras 
+                        através da isenção no Imposto de Renda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Evento 2026 Preview -->
+<section class="evento-2026-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="evento-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Evento 2026</span>
+                    </h2>
+                    <h3 class="evento-date display-5 fw-bold text-gold mb-4">
+                        2 e 3 de Abril de 2026
+                    </h3>
+                    <p class="evento-description lead mb-4">
+                        Prepare-se para uma experiência ainda mais grandiosa! 
+                        O evento de 2026 promete ser o maior de todos os tempos, 
+                        com novas atrações, estrutura ampliada e programação especial.
+                    </p>
+                    
+                    <div class="evento-features">
+                        <div class="feature-item d-flex align-items-center mb-3">
+                            <i class="fas fa-theater-masks fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Espetáculo Cênico</h5>
+                                <p class="mb-0 text-muted">Apresentação principal da Paixão de Cristo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item d-flex align-items-center mb-3">
+                            <i class="fas fa-music fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Festival de Música</h5>
+                                <p class="mb-0 text-muted">Artistas locais e regionais</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item d-flex align-items-center mb-3">
+                            <i class="fas fa-graduation-cap fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Formação Artística</h5>
+                                <p class="mb-0 text-muted">Cursos de iniciação teatral</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item d-flex align-items-center">
+                            <i class="fas fa-store fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Feira Livre</h5>
+                                <p class="mb-0 text-muted">Produtores e artesãos locais</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="evento-buttons mt-4">
+                        <a href="{{ url_for('main.evento') }}" 
+                           class="btn btn-brown btn-lg me-3">
+                            <i class="fas fa-calendar me-2"></i>
+                            Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="evento-image">
+                    <img src="{{ url_for('static', filename='images/vista-aerea.png') }}" 
+                         alt="Vista aérea do evento Paixão de Cristo de Maracanaú 2026" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Cronograma de Execução -->
+<section class="cronograma-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Cronograma de Execução</span>
+                </h2>
+                <p class="section-description lead">
+                    O projeto será executado ao longo de 26 semanas (6 meses) divididas em três fases principais
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="cronograma-card p-4 bg-white rounded shadow h-100">
+                    <div class="cronograma-icon mb-3 text-center">
+                        <i class="fas fa-cogs fa-3x text-gold"></i>
+                    </div>
+                    <h3 class="cronograma-titulo h5 text-center mb-3">Pré-Produção</h3>
+                    <div class="cronograma-detalhes text-center mb-3">
+                        <p class="cronograma-duracao fw-bold text-gold mb-1">16 semanas</p>
+                        <p class="cronograma-periodo text-muted mb-0">Janeiro - Abril 2026</p>
+                    </div>
+                    <ul class="cronograma-atividades list-unstyled">
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Seleção de elenco e equipe técnica
+                        </li>
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Desenvolvimento de cenários e figurinos
+                        </li>
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Ensaios e preparação das oficinas
+                        </li>
+                        <li class="atividade-item">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Montagem da estrutura técnica
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="cronograma-card p-4 bg-white rounded shadow h-100">
+                    <div class="cronograma-icon mb-3 text-center">
+                        <i class="fas fa-play-circle fa-3x text-success"></i>
+                    </div>
+                    <h3 class="cronograma-titulo h5 text-center mb-3">Execução</h3>
+                    <div class="cronograma-detalhes text-center mb-3">
+                        <p class="cronograma-duracao fw-bold text-success mb-1">2 semanas</p>
+                        <p class="cronograma-periodo text-muted mb-0">Abril 2026</p>
+                    </div>
+                    <ul class="cronograma-atividades list-unstyled">
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Apresentações do espetáculo principal
+                        </li>
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Realização das oficinas de formação
+                        </li>
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Funcionamento da feira de artesanato
+                        </li>
+                        <li class="atividade-item">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Apresentações do palco livre
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="cronograma-card p-4 bg-white rounded shadow h-100">
+                    <div class="cronograma-icon mb-3 text-center">
+                        <i class="fas fa-flag-checkered fa-3x text-warning"></i>
+                    </div>
+                    <h3 class="cronograma-titulo h5 text-center mb-3">Pós-Produção</h3>
+                    <div class="cronograma-detalhes text-center mb-3">
+                        <p class="cronograma-duracao fw-bold text-warning mb-1">8 semanas</p>
+                        <p class="cronograma-periodo text-muted mb-0">Maio - Junho 2026</p>
+                    </div>
+                    <ul class="cronograma-atividades list-unstyled">
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Desmontagem e limpeza do local
+                        </li>
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Prestação de contas e relatórios
+                        </li>
+                        <li class="atividade-item mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Avaliação dos resultados alcançados
+                        </li>
+                        <li class="atividade-item">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Planejamento para próximas edições
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Participe Desta Tradição
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Venha fazer parte do maior evento cultural de Maracanaú. 
+                    Uma experiência única de arte, cultura e fé que emociona milhares de pessoas.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.evento') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-calendar me-2"></i>
+                    Saiba Mais Sobre o Evento
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.hero-section {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%), 
+                url('{{ url_for("static", filename="images/jesus-fumaca.jpg") }}');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.highlight-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.evento-features .feature-item {
+    padding: 1rem;
+    background: rgba(0,123,255,0.05);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.orcamento-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid #007bff;
+}
+
+.orcamento-card:hover {
+    transform: translateY(-5px);
+}
+
+.orcamento-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.orcamento-item:last-child {
+    border-bottom: none;
+}
+
+.orcamento-label {
+    color: #6c757d;
+}
+
+.orcamento-valor {
+    color: #007bff;
+}
+
+.beneficios-patrocínio {
+    border-left: 5px solid #ffc107;
+}
+
+.beneficio-item {
+    padding: 0.25rem 0;
+}
+
+.cronograma-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid #007bff;
+}
+
+.cronograma-card:hover {
+    transform: translateY(-5px);
+}
+
+.atividade-item {
+    padding: 0.25rem 0;
+}
+
+.cronograma-resumo {
+    border-left: 5px solid #ffc107;
+}
+
+.resumo-item {
+    padding: 0.25rem 0;
+}
+
+.resumo-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.resumo-valor {
+    color: #fff;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}

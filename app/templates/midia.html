@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+{% block title %}Na Mídia - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Veja a cobertura midiática da Paixão de Cristo de Maracanaú em jornais, TVs e portais de notícia. O evento que ganha destaque na imprensa regional e nacional.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Na Mídia</h1>
+                <p class="page-subtitle lead">
+                    A cobertura midiática do maior evento cultural de Maracanaú
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mídia Overview -->
+<section class="midia-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Reconhecimento da Imprensa</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        A Paixão de Cristo de Maracanaú tem recebido ampla cobertura 
+                        da mídia regional e nacional, consolidando-se como um dos 
+                        principais eventos culturais do Nordeste.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Jornais, emissoras de TV, rádios e portais de notícia 
+                        destacam regularmente a importância do projeto para a 
+                        cultura local e o impacto social gerado na comunidade.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Esta visibilidade midiática não apenas valoriza o trabalho 
+                        realizado, mas também atrai novos patrocinadores e 
+                        fortalece a credibilidade do projeto.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/cobertura-midia.jpg') }}" 
+                         alt="Cobertura midiática da Paixão de Cristo de Maracanaú" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Veículos de Mídia -->
+<section class="veiculos-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Veículos Parceiros</span>
+                </h2>
+                <p class="section-description lead">
+                    Principais veículos de comunicação que cobrem o evento
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="veiculo-card text-center p-4 bg-white rounded shadow">
+                    <div class="veiculo-logo mb-3">
+                        <img src="{{ url_for('static', filename='images/acessibilidade-1.jpg') }}" 
+                             alt="Logo TV Verdes Mares" 
+                             class="img-fluid" 
+                             style="max-height: 60px;">
+                    </div>
+                    <h5 class="veiculo-nome mb-0">TV Verdes Mares</h5>
+                    <p class="veiculo-tipo text-muted small">Televisão</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="veiculo-card text-center p-4 bg-white rounded shadow">
+                    <div class="veiculo-logo mb-3">
+                        <img src="{{ url_for('static', filename='images/acessibilidade-2.jpg') }}" 
+                             alt="Logo Diário do Nordeste" 
+                             class="img-fluid" 
+                             style="max-height: 60px;">
+                    </div>
+                    <h5 class="veiculo-nome mb-0">Diário do Nordeste</h5>
+                    <p class="veiculo-tipo text-muted small">Jornal</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="veiculo-card text-center p-4 bg-white rounded shadow">
+                    <div class="veiculo-logo mb-3">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" 
+                             alt="Logo Rádio FM" 
+                             class="img-fluid" 
+                             style="max-height: 60px;">
+                    </div>
+                    <h5 class="veiculo-nome mb-0">Rádio FM 93</h5>
+                    <p class="veiculo-tipo text-muted small">Rádio</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="veiculo-card text-center p-4 bg-white rounded shadow">
+                    <div class="veiculo-logo mb-3">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" 
+                             alt="Logo G1 Ceará" 
+                             class="img-fluid" 
+                             style="max-height: 60px;">
+                    </div>
+                    <h5 class="veiculo-nome mb-0">G1 Ceará</h5>
+                    <p class="veiculo-tipo text-muted small">Portal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Galeria de Matérias -->
+<section class="galeria-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Matérias em Destaque</span>
+                </h2>
+                <p class="section-description lead">
+                    Algumas das principais coberturas midiáticas do evento
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="materia-card p-4 bg-white rounded shadow h-100">
+                    <div class="materia-imagem mb-3">
+                        <img src="{{ url_for('static', filename='images/espetaculo-cenico-1.jpg') }}" 
+                             alt="Matéria sobre a Paixão de Cristo" 
+                             class="img-fluid rounded">
+                    </div>
+                    <div class="materia-conteudo">
+                        <h4 class="materia-titulo h6 mb-2">
+                            "Paixão de Cristo de Maracanaú atrai 30 mil pessoas"
+                        </h4>
+                        <p class="materia-veiculo text-muted small mb-2">Diário do Nordeste</p>
+                        <p class="materia-resumo mb-3">
+                            Reportagem completa sobre o sucesso da última edição 
+                            do evento, destacando o crescimento do público.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-external-link-alt me-1"></i>
+                            Ler Matéria
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="materia-card p-4 bg-white rounded shadow h-100">
+                    <div class="materia-imagem mb-3">
+                        <img src="{{ url_for('static', filename='images/espetaculo-cenico-2.jpg') }}" 
+                             alt="Entrevista sobre o projeto" 
+                             class="img-fluid rounded">
+                    </div>
+                    <div class="materia-conteudo">
+                        <h4 class="materia-titulo h6 mb-2">
+                            "Projeto cultural transforma vidas em Maracanaú"
+                        </h4>
+                        <p class="materia-veiculo text-muted small mb-2">TV Verdes Mares</p>
+                        <p class="materia-resumo mb-3">
+                            Entrevista com o diretor do projeto sobre o impacto 
+                            social e cultural gerado na comunidade.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-play me-1"></i>
+                            Assistir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="materia-card p-4 bg-white rounded shadow h-100">
+                    <div class="materia-imagem mb-3">
+                        <img src="{{ url_for('static', filename='images/espetaculo-cenico-3.jpg') }}" 
+                             alt="Cobertura do evento" 
+                             class="img-fluid rounded">
+                    </div>
+                    <div class="materia-conteudo">
+                        <h4 class="materia-titulo h6 mb-2">
+                            "Evento 2026 promete ser ainda maior"
+                        </h4>
+                        <p class="materia-veiculo text-muted small mb-2">G1 Ceará</p>
+                        <p class="materia-resumo mb-3">
+                            Matéria sobre as expectativas para a próxima edição 
+                            e as novidades que estão sendo preparadas.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-external-link-alt me-1"></i>
+                            Ler Matéria
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cobertura por Categoria -->
+<section class="cobertura-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Cobertura por Categoria</span>
+                </h2>
+                <p class="section-description lead">
+                    Diferentes tipos de cobertura midiática
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="categoria-cobertura text-center p-4 bg-white rounded shadow">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-newspaper fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-2">Jornais</h4>
+                    <p class="categoria-numero display-6 fw-bold text-gold mb-2">25+</p>
+                    <p class="categoria-descricao text-muted">Matérias publicadas</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="categoria-cobertura text-center p-4 bg-white rounded shadow">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-tv fa-3x text-success"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-2">Televisão</h4>
+                    <p class="categoria-numero display-6 fw-bold text-success mb-2">15+</p>
+                    <p class="categoria-descricao text-muted">Reportagens exibidas</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="categoria-cobertura text-center p-4 bg-white rounded shadow">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-broadcast-tower fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-2">Rádio</h4>
+                    <p class="categoria-numero display-6 fw-bold text-warning mb-2">20+</p>
+                    <p class="categoria-descricao text-muted">Entrevistas realizadas</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="categoria-cobertura text-center p-4 bg-white rounded shadow">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-globe fa-3x text-info"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-2">Portais</h4>
+                    <p class="categoria-numero display-6 fw-bold text-info mb-2">30+</p>
+                    <p class="categoria-descricao text-muted">Matérias online</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impacto da Mídia -->
+<section class="impacto-midia-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="impacto-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Impacto da Cobertura Midiática</span>
+                    </h2>
+                    <p class="impacto-text mb-4">
+                        A cobertura midiática tem sido fundamental para o crescimento 
+                        e reconhecimento do projeto, gerando diversos benefícios 
+                        para a comunidade e os patrocinadores.
+                    </p>
+                    
+                    <div class="impacto-itens">
+                        <div class="impacto-item d-flex align-items-start mb-3">
+                            <i class="fas fa-eye fa-2x text-gold me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Visibilidade</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Aumento significativo na visibilidade do evento
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="impacto-item d-flex align-items-start mb-3">
+                            <i class="fas fa-handshake fa-2x text-success me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Novos Patrocinadores</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Atração de empresas interessadas em patrocínio
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="impacto-item d-flex align-items-start mb-3">
+                            <i class="fas fa-users fa-2x text-warning me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Público Ampliado</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Crescimento constante no número de visitantes
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="impacto-item d-flex align-items-start">
+                            <i class="fas fa-star fa-2x text-info me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Credibilidade</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Fortalecimento da credibilidade do projeto
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="impacto-image">
+                    <img src="{{ url_for('static', filename='images/publico-1.jpg') }}" 
+                         alt="Impacto da cobertura midiática" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Seja Notícia Conosco
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Associe sua marca a um projeto que recebe ampla cobertura 
+                    midiática e ganha visibilidade regional.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja um Patrocinador
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.veiculo-card {
+    transition: transform 0.3s ease;
+}
+
+.veiculo-card:hover {
+    transform: translateY(-5px);
+}
+
+.materia-card {
+    border-left: 5px solid #007bff;
+    transition: transform 0.3s ease;
+}
+
+.materia-card:hover {
+    transform: translateY(-5px);
+}
+
+.categoria-cobertura {
+    transition: transform 0.3s ease;
+}
+
+.categoria-cobertura:hover {
+    transform: translateY(-5px);
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}
+

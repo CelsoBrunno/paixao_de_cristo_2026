@@ -1,0 +1,495 @@
+{% extends "base.html" %}
+
+{% block title %}O Espetáculo Cênico - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}O Espetáculo Cênico da Paixão de Cristo de Maracanaú é a atração principal do evento, apresentando a paixão, morte e ressurreição de Jesus Cristo através da arte teatral.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">O Espetáculo Cênico</h1>
+                <p class="page-subtitle lead">
+                    A atração principal que emociona milhares de pessoas
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Espetáculo Overview -->
+<section class="espetaculo-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Uma Jornada de Fé e Arte</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        O espetáculo cênico da Paixão de Cristo é o coração do evento, 
+                        apresentando de forma emocionante e artística a paixão, morte 
+                        e ressurreição de Jesus Cristo em uma produção de 120 minutos.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Com elenco formado por mais de 100 atores e extras locais e regionais, 
+                        o espetáculo é apresentado em um palco ao ar livre de 40x15 metros, 
+                        combinando teatro, música e dança para criar uma experiência 
+                        única que toca profundamente o público presente.
+                    </p>
+                    <p class="overview-text mb-4">
+                        A produção conta com cenografia multinível elaborada, figurinos autênticos 
+                        e uma direção artística profissional, garantindo uma qualidade 
+                        técnica que rivaliza com grandes produções nacionais.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/espetaculo-cenico-1.jpg') }}" 
+                         alt="Cena do espetáculo cênico da Paixão de Cristo" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Detalhes do Espetáculo -->
+<section class="detalhes-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Detalhes da Produção</span>
+                </h2>
+                <p class="section-description lead">
+                    Uma produção profissional com todos os elementos do teatro
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="detalhe-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="card-icon mb-3">
+                        <i class="fas fa-users fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="card-title h5 mb-3">Elenco</h4>
+                    <p class="card-text">
+                        Mais de 100 atores e extras locais e regionais, incluindo profissionais 
+                        e voluntários da comunidade, selecionados através de edital público.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="detalhe-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="card-icon mb-3">
+                        <i class="fas fa-palette fa-3x text-success"></i>
+                    </div>
+                    <h4 class="card-title h5 mb-3">Cenografia</h4>
+                    <p class="card-text">
+                        Cenários elaborados que recriam Jerusalém e os locais 
+                        históricos da paixão de Cristo.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="detalhe-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="card-icon mb-3">
+                        <i class="fas fa-tshirt fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="card-title h5 mb-3">Figurinos</h4>
+                    <p class="card-text">
+                        Figurinos autênticos da época, confeccionados especialmente 
+                        para o espetáculo.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="detalhe-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="card-icon mb-3">
+                        <i class="fas fa-music fa-3x text-info"></i>
+                    </div>
+                    <h4 class="card-title h5 mb-3">Trilha Sonora</h4>
+                    <p class="card-text">
+                        Trilha sonora original composta especialmente para 
+                        o espetáculo, executada ao vivo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Especificações Técnicas -->
+<section class="especificacoes-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Especificações Técnicas</span>
+                </h2>
+                <p class="section-description lead">
+                    Uma produção profissional com equipamentos de última geração
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="especificacao-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-gold">
+                        <i class="fas fa-theater-masks me-2"></i>
+                        Estrutura do Palco
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Dimensões:</span>
+                            <span class="especificacao-valor fw-bold">40m x 15m</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Tipo:</span>
+                            <span class="especificacao-valor fw-bold">Palco ao ar livre</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Cenografia:</span>
+                            <span class="especificacao-valor fw-bold">Multinível</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Duração:</span>
+                            <span class="especificacao-valor fw-bold">120 minutos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-success">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        Sistema de Iluminação
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">PAR LED:</span>
+                            <span class="especificacao-valor fw-bold">Profissional</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Moving Lights:</span>
+                            <span class="especificacao-valor fw-bold">Incluído</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Refletores:</span>
+                            <span class="especificacao-valor fw-bold">Profissionais</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Máquinas de Fumaça:</span>
+                            <span class="especificacao-valor fw-bold">Incluídas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-warning">
+                        <i class="fas fa-volume-up me-2"></i>
+                        Sistema de Som
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Sistema:</span>
+                            <span class="especificacao-valor fw-bold">Line Array</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Microfones sem fio:</span>
+                            <span class="especificacao-valor fw-bold">12 unidades</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Microfones de sobrecarga:</span>
+                            <span class="especificacao-valor fw-bold">4 unidades</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Qualidade:</span>
+                            <span class="especificacao-valor fw-bold">Profissional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-info">
+                        <i class="fas fa-users me-2"></i>
+                        Recursos Humanos
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Atores e Extras:</span>
+                            <span class="especificacao-valor fw-bold">100+ pessoas</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Seleção:</span>
+                            <span class="especificacao-valor fw-bold">Edital público</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Origem:</span>
+                            <span class="especificacao-valor fw-bold">Local e regional</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Acesso:</span>
+                            <span class="especificacao-valor fw-bold">100% gratuito</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cenas Principais -->
+<section class="cenas-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Cenas Principais</span>
+                </h2>
+                <p class="section-description lead">
+                    Os momentos mais marcantes da paixão de Cristo
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="cena-card p-4 bg-white rounded shadow h-100">
+                    <div class="cena-header mb-3">
+                        <h4 class="cena-titulo text-gold mb-2">Última Ceia</h4>
+                        <p class="cena-subtitulo text-muted mb-0">O momento da despedida</p>
+                    </div>
+                    <p class="cena-descricao mb-3">
+                        A cena da última ceia é apresentada com grande emoção, 
+                        mostrando Jesus compartilhando o pão e o vinho com seus 
+                        discípulos, estabelecendo a nova aliança.
+                    </p>
+                    <div class="cena-imagem">
+                        <img src="{{ url_for('static', filename='images/santa-ceia-1.jpg') }}" 
+                             alt="Cena da Última Ceia no espetáculo" 
+                             class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="cena-card p-4 bg-white rounded shadow h-100">
+                    <div class="cena-header mb-3">
+                        <h4 class="cena-titulo text-gold mb-2">Paixão e Crucificação</h4>
+                        <p class="cena-subtitulo text-muted mb-0">O sacrifício supremo</p>
+                    </div>
+                    <p class="cena-descricao mb-3">
+                        A sequência da paixão, incluindo a traição de Judas, 
+                        o julgamento de Pilatos e a crucificação, é apresentada 
+                        com intensidade dramática e respeito religioso.
+                    </p>
+                    <div class="cena-imagem">
+                        <img src="{{ url_for('static', filename='images/fundo-jesus-cruz.png') }}" 
+                             alt="Cena da Crucificação no espetáculo" 
+                             class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impacto Social -->
+<section class="impacto-section py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="impacto-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Impacto Social e Cultural</span>
+                    </h2>
+                    <p class="impacto-text mb-4">
+                        O espetáculo cênico não é apenas uma apresentação artística, 
+                        mas também uma ferramenta de transformação social e cultural.
+                    </p>
+                    
+                    <div class="impacto-itens">
+                        <div class="impacto-item d-flex align-items-start mb-3">
+                            <i class="fas fa-heart fa-2x text-gold me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Valores Cristãos</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Transmite valores de amor, perdão e compaixão
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="impacto-item d-flex align-items-start mb-3">
+                            <i class="fas fa-users fa-2x text-success me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Inclusão Social</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Envolve pessoas de diferentes classes sociais
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="impacto-item d-flex align-items-start mb-3">
+                            <i class="fas fa-graduation-cap fa-2x text-warning me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Formação Artística</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Desenvolve talentos locais e forma novos artistas
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="impacto-item d-flex align-items-start">
+                            <i class="fas fa-city fa-2x text-info me-3 mt-1"></i>
+                            <div>
+                                <h5 class="impacto-titulo mb-1">Turismo Cultural</h5>
+                                <p class="impacto-descricao mb-0">
+                                    Atrai visitantes e movimenta a economia local
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="impacto-image">
+                    <img src="{{ url_for('static', filename='images/publico-1.jpg') }}" 
+                         alt="Público emocionado durante o espetáculo" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Seja Parte Desta História
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Apoie o espetáculo cênico da Paixão de Cristo e contribua 
+                    para manter viva esta tradição que transforma vidas.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja um Patrocinador
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.detalhe-card {
+    transition: transform 0.3s ease;
+}
+
+.detalhe-card:hover {
+    transform: translateY(-5px);
+}
+
+.especificacao-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid #007bff;
+}
+
+.especificacao-card:hover {
+    transform: translateY(-5px);
+}
+
+.especificacao-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.especificacao-item:last-child {
+    border-bottom: none;
+}
+
+.especificacao-label {
+    color: #6c757d;
+}
+
+.especificacao-valor {
+    color: #007bff;
+}
+
+.cena-card {
+    border-left: 5px solid #007bff;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}
+

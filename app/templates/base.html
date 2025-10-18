@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Paixão de Cristo de Maracanaú - O Maior Espetáculo a Céu Aberto da Região. Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 255599).{% endblock %}">
+    <title>{% block title %}Paixão de Cristo de Maracanaú{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--gradient-primary);">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                    <img src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}" 
+                         alt="Paixão de Cristo - Maracanaú" 
+                         class="brand-logo">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.index') }}">
+                                <i class="fas fa-home me-1"></i>
+                                Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.sobre') }}">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Sobre
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="atividadesDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-theater-masks me-1"></i>
+                                Atividades
+                                <i class="fas fa-chevron-down ms-1"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="atividadesDropdown">
+                                <li><a class="dropdown-item" href="{{ url_for('main.espetaculo') }}">
+                                    <i class="fas fa-play-circle me-2"></i>
+                                    O Espetáculo Cênico
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('main.festival') }}">
+                                    <i class="fas fa-music me-2"></i>
+                                    Festival de Música
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('main.formacao') }}">
+                                    <i class="fas fa-graduation-cap me-2"></i>
+                                    Formação Artística
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('main.feira') }}">
+                                    <i class="fas fa-store me-2"></i>
+                                    Feira Livre
+                                </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.evento') }}">
+                                <i class="fas fa-calendar-alt me-1"></i>
+                                Evento 2026
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.midia') }}">
+                                <i class="fas fa-newspaper me-1"></i>
+                                Na Mídia
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.patrocinadores') }}">
+                                <i class="fas fa-handshake me-1"></i>
+                                Seja Patrocinador
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.contato') }}">
+                                <i class="fas fa-envelope me-1"></i>
+                                Contato
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="container mt-5 pt-5">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-title">Paixão de Cristo de Maracanaú</h5>
+                    <p class="footer-text">
+                        46 anos de tradição levando arte, cultura e fé para milhares de pessoas.
+                        O maior espetáculo a céu aberto da região.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link me-3" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link me-3" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link me-3" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h6 class="footer-subtitle">Links Rápidos</h6>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="{{ url_for('main.sobre') }}">Sobre o Projeto</a></li>
+                        <li><a href="{{ url_for('main.evento') }}">Evento 2026</a></li>
+                        <li><a href="{{ url_for('main.patrocinadores') }}">Seja Patrocinador</a></li>
+                        <li><a href="{{ url_for('main.contato') }}">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h6 class="footer-subtitle">Contato</h6>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-user me-2"></i>
+                            <strong>Diretor Geral:</strong> Celso Custódio
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+5585996038572">(85) 9.9603-8572</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:teatroalmirdutra@gmail.com">teatroalmirdutra@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <!-- Logomarcas oficiais Lei Rouanet -->
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3">
+                    <div class="pronac-info">
+                        <p class="mb-2">
+                            <strong>Projeto realizado com o apoio da Lei de Incentivo à Cultura</strong>
+                        </p>
+                        <p class="mb-0 pronac-number">
+                            <strong>PRONAC 255599</strong>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="government-logos d-flex justify-content-md-end justify-content-center align-items-center flex-wrap gap-3">
+                        <!-- Logomarca Ministério da Cultura -->
+                        <div class="logo-container">
+                            <img src="{{ url_for('static', filename='images/logo/logo-teatro.png') }}" 
+                                 alt="Ministério da Cultura" 
+                                 class="gov-logo"
+                                 width="100" height="75">
+                        </div>
+                        <div class="logo-container">
+                            <img src="{{ url_for('static', filename='images/logo/logo-prefeitura-maracanau-2021.png') }}" 
+                                 alt="Ministério da Cultura" 
+                                 class="gov-logo"
+                                 width="100" height="75">
+                        </div>
+                        <!-- Logomarca Lei de Incentivo à Cultura -->
+                        <div class="logo-container">
+                            <img src="{{ url_for('static', filename='images/logo/logo-lei-rouanet.png') }}" 
+                                 alt="Lei de Incentivo à Cultura" 
+                                 class="gov-logo"
+                                 width="100" height="75">
+                        </div>
+                        
+                        <!-- Logomarca Ministério da Cultura -->
+                        <div class="logo-container">
+                            <img src="{{ url_for('static', filename='images/logo/logo-minc.png') }}" 
+                                 alt="Ministério da Cultura" 
+                                 class="gov-logo"
+                                 width="100" height="75">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="copyright mb-0">
+                        &copy; 2024 Paixão de Cristo de Maracanaú. Todos os direitos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
+

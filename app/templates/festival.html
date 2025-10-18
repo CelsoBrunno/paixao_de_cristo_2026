@@ -1,0 +1,494 @@
+{% extends "base.html" %}
+
+{% block title %}Festival de Música - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Festival de Música da Paixão de Cristo de Maracanaú apresenta artistas locais e regionais, promovendo a cultura musical do Nordeste brasileiro.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Festival de Música</h1>
+                <p class="page-subtitle lead">
+                    Celebrando a riqueza musical do Nordeste
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Festival Overview -->
+<section class="festival-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Um Palco para o Talentos Locais</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        O Palco Livre - Bandas Locais é uma das atrações mais esperadas do evento, 
+                        oferecendo um espaço especial para artistas locais e regionais mostrarem seus 
+                        talentos através de 2 apresentações de 50 minutos cada.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Com foco na música nordestina, o palco livre apresenta diversos 
+                        gêneros musicais, desde o forró e baião até o gospel e música 
+                        popular brasileira, criando um ambiente de celebração e diversidade cultural.
+                    </p>
+                    <p class="overview-text mb-4">
+                        A seleção das bandas é realizada através de edital público, garantindo 
+                        transparência e oportunidade para todos os talentos da região.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/espetaculo-musical/musical-1.jpg') }}" 
+                         alt="Artistas se apresentando no Festival de Música" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Especificações do Palco Livre -->
+<section class="especificacoes-palco-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Especificações do Palco Livre</span>
+                </h2>
+                <p class="section-description lead">
+                    Detalhes técnicos e estruturais do Palco Livre - Bandas Locais
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="especificacao-palco-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-gold">
+                        <i class="fas fa-music me-2"></i>
+                        Apresentações
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Número de apresentações:</span>
+                            <span class="especificacao-valor fw-bold">2 apresentações</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Duração por apresentação:</span>
+                            <span class="especificacao-valor fw-bold">50 minutos</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Tempo total:</span>
+                            <span class="especificacao-valor fw-bold">100 minutos</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Seleção:</span>
+                            <span class="especificacao-valor fw-bold">Edital público</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-palco-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-success">
+                        <i class="fas fa-microphone me-2"></i>
+                        Estrutura Técnica
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Palco:</span>
+                            <span class="especificacao-valor fw-bold">Profissional</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Sistema de som:</span>
+                            <span class="especificacao-valor fw-bold">Profissional</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Iluminação:</span>
+                            <span class="especificacao-valor fw-bold">Profissional</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Backline básico:</span>
+                            <span class="especificacao-valor fw-bold">Incluído</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-palco-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-warning">
+                        <i class="fas fa-users me-2"></i>
+                        Participação
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Público-alvo:</span>
+                            <span class="especificacao-valor fw-bold">Bandas locais</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Seleção:</span>
+                            <span class="especificacao-valor fw-bold">Por edital</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Custo:</span>
+                            <span class="especificacao-valor fw-bold">Gratuito</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Suporte técnico:</span>
+                            <span class="especificacao-valor fw-bold">Completo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-palco-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-info">
+                        <i class="fas fa-star me-2"></i>
+                        Benefícios
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Exposição:</span>
+                            <span class="especificacao-valor fw-bold">30.000+ pessoas</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Estrutura:</span>
+                            <span class="especificacao-valor fw-bold">Profissional</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Cobertura:</span>
+                            <span class="especificacao-valor fw-bold">Mídia local</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Networking:</span>
+                            <span class="especificacao-valor fw-bold">Oportunidades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gêneros Musicais -->
+<section class="generos-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Diversidade Musical</span>
+                </h2>
+                <p class="section-description lead">
+                    Uma variedade de gêneros musicais para todos os gostos
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="genero-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="genero-icon mb-3">
+                        <i class="fas fa-cross fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="genero-titulo h5 mb-3">Música Católica</h4>
+                    <p class="genero-descricao">
+                        Música religiosa católica que inspira e fortalece 
+                        a fé cristã dos presentes.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="genero-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="genero-icon mb-3">
+                        <i class="fas fa-church fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="genero-titulo h5 mb-3">Gospel</h4>
+                    <p class="genero-descricao">
+                        Música cristã contemporânea que inspira e 
+                        fortalece a fé dos presentes.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="genero-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="genero-icon mb-3">
+                        <i class="fas fa-microphone fa-3x text-info"></i>
+                    </div>
+                    <h4 class="genero-titulo h5 mb-3">MPB</h4>
+                    <p class="genero-descricao">
+                        Música Popular Brasileira com artistas locais 
+                        interpretando clássicos nacionais.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Artistas Destacados -->
+<section class="artistas-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Artistas em Destaque</span>
+                </h2>
+                <p class="section-description lead">
+                    Conheça alguns dos talentos que se apresentam no festival
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="artista-card p-4 bg-white rounded shadow h-100">
+                    <div class="artista-foto mb-3 text-center">
+                        <img src="{{ url_for('static', filename='images/espetaculo-musical/musical-2.jpg') }}" 
+                             alt="Apresentação de Música Católica" 
+                             class="rounded-circle" 
+                             width="100" height="100">
+                    </div>
+                    <h4 class="artista-nome h5 text-center mb-2">Música Católica</h4>
+                    <p class="artista-genero text-center text-muted mb-3">Gênero Musical</p>
+                    <p class="artista-descricao text-center">
+                        Cantores e grupos católicos que apresentam músicas 
+                        religiosas inspiradoras e mensagens de fé cristã.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="artista-card p-4 bg-white rounded shadow h-100">
+                    <div class="artista-foto mb-3 text-center">
+                        <img src="{{ url_for('static', filename='images/espetaculo-musical/musical-3.jpg') }}" 
+                             alt="Apresentação de Música Gospel" 
+                             class="rounded-circle" 
+                             width="100" height="100">
+                    </div>
+                    <h4 class="artista-nome h5 text-center mb-2">Música Gospel</h4>
+                    <p class="artista-genero text-center text-muted mb-3">Gênero Musical</p>
+                    <p class="artista-descricao text-center">
+                        Cantores e grupos gospel que emocionam o público 
+                        com interpretações inspiradoras e mensagens de fé.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="artista-card p-4 bg-white rounded shadow h-100">
+                    <div class="artista-foto mb-3 text-center">
+                        <img src="{{ url_for('static', filename='images/espetaculo-musical/musical-4.jpg') }}" 
+                             alt="Apresentação de MPB" 
+                             class="rounded-circle" 
+                             width="100" height="100">
+                    </div>
+                    <h4 class="artista-nome h5 text-center mb-2">MPB</h4>
+                    <p class="artista-genero text-center text-muted mb-3">Gênero Musical</p>
+                    <p class="artista-descricao text-center">
+                        Cantores e instrumentistas que interpretam a música 
+                        popular brasileira com repertório clássico e contemporâneo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Estrutura do Palco -->
+<section class="palco-section py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="palco-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Estrutura Profissional</span>
+                    </h2>
+                    <p class="palco-text mb-4">
+                        O palco do Festival de Música conta com estrutura profissional 
+                        para garantir a melhor qualidade sonora e visual para artistas 
+                        e público.
+                    </p>
+                    
+                    <div class="palco-itens">
+                        <div class="palco-item d-flex align-items-center mb-3">
+                            <i class="fas fa-volume-up fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="palco-titulo mb-1">Sistema de Som</h5>
+                                <p class="palco-descricao mb-0">
+                                    Equipamento profissional de alta qualidade
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="palco-item d-flex align-items-center mb-3">
+                            <i class="fas fa-lightbulb fa-2x text-warning me-3"></i>
+                            <div>
+                                <h5 class="palco-titulo mb-1">Iluminação</h5>
+                                <p class="palco-descricao mb-0">
+                                    Sistema de iluminação cênica profissional
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="palco-item d-flex align-items-center mb-3">
+                            <i class="fas fa-tv fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="palco-titulo mb-1">Telão</h5>
+                                <p class="palco-descricao mb-0">
+                                    Telão para transmissão ao vivo das apresentações
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="palco-item d-flex align-items-center">
+                            <i class="fas fa-couch fa-2x text-success me-3"></i>
+                            <div>
+                                <h5 class="palco-titulo mb-1">Área do Público</h5>
+                                <p class="palco-descricao mb-0">
+                                    Espaço amplo e confortável para o público
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="palco-image">
+                    <img src="{{ url_for('static', filename='images/espetaculo-musical.jpg') }}" 
+                         alt="Estrutura do palco do Festival de Música" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Apoie o Festival de Música
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Contribua para manter viva a tradição musical do Nordeste 
+                    e descubra novos talentos da região.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja um Patrocinador
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.especificacao-palco-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid #007bff;
+}
+
+.especificacao-palco-card:hover {
+    transform: translateY(-5px);
+}
+
+.especificacao-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.especificacao-item:last-child {
+    border-bottom: none;
+}
+
+.especificacao-label {
+    color: #6c757d;
+}
+
+.especificacao-valor {
+    color: #007bff;
+}
+
+.genero-card {
+    transition: transform 0.3s ease;
+}
+
+.genero-card:hover {
+    transform: translateY(-5px);
+}
+
+.artista-card {
+    border-left: 5px solid #007bff;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}
+

@@ -1,0 +1,589 @@
+{% extends "base.html" %}
+
+{% block title %}Feira Livre - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Feira Livre da Paixão de Cristo de Maracanaú reúne produtores e artesãos locais, promovendo a economia criativa e o empreendedorismo regional.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Feira Livre</h1>
+                <p class="page-subtitle lead">
+                    Promovendo a economia criativa local
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feira Overview -->
+<section class="feira-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Um Espaço para Produtores Locais</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        A Feira de Artesanato e Gastronomia é um espaço dedicado aos produtores, 
+                        artesãos e empreendedores locais de Maracanaú e região, funcionando 
+                        durante 2 dias (18h às 22h) com 20 barracas piramidais de 3x3 metros.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Com mais de 30.000 pessoas circulando durante o evento, a feira 
+                        se torna um importante canal de geração de renda e fortalecimento 
+                        da economia criativa local, com seleção dos expositores através de edital público.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Além da comercialização, a feira promove o intercâmbio cultural 
+                        e o fortalecimento dos laços comunitários através da valorização 
+                        do trabalho artesanal e da produção regional.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/feira-livre/feira-livre-1.jpg') }}" 
+                         alt="Feira Livre com artesãos e produtores locais" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Especificações da Feira -->
+<section class="especificacoes-feira-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Especificações da Feira</span>
+                </h2>
+                <p class="section-description lead">
+                    Detalhes técnicos e estruturais da Feira de Artesanato e Gastronomia
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="especificacao-feira-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-gold">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Funcionamento
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Duração:</span>
+                            <span class="especificacao-valor fw-bold">2 dias</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Horário:</span>
+                            <span class="especificacao-valor fw-bold">18h às 22h</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Funcionamento:</span>
+                            <span class="especificacao-valor fw-bold">Noturno</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Acesso:</span>
+                            <span class="especificacao-valor fw-bold">100% gratuito</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-feira-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-success">
+                        <i class="fas fa-store me-2"></i>
+                        Estrutura das Barracas
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Número de barracas:</span>
+                            <span class="especificacao-valor fw-bold">20 unidades</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Tipo:</span>
+                            <span class="especificacao-valor fw-bold">Piramidais</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Dimensões:</span>
+                            <span class="especificacao-valor fw-bold">3m x 3m</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Seleção:</span>
+                            <span class="especificacao-valor fw-bold">Edital público</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-feira-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-warning">
+                        <i class="fas fa-tools me-2"></i>
+                        Equipamentos Inclusos
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Mesas:</span>
+                            <span class="especificacao-valor fw-bold">Incluídas</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Cadeiras:</span>
+                            <span class="especificacao-valor fw-bold">Incluídas</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Energia elétrica:</span>
+                            <span class="especificacao-valor fw-bold">Disponível</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Iluminação:</span>
+                            <span class="especificacao-valor fw-bold">Incluída</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="especificacao-feira-card p-4 bg-white rounded shadow h-100">
+                    <h3 class="especificacao-titulo h5 mb-4 text-info">
+                        <i class="fas fa-users me-2"></i>
+                        Participação
+                    </h3>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Público-alvo:</span>
+                            <span class="especificacao-valor fw-bold">Produtores locais</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Seleção:</span>
+                            <span class="especificacao-valor fw-bold">Por edital</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Custo:</span>
+                            <span class="especificacao-valor fw-bold">Gratuito</span>
+                        </div>
+                    </div>
+                    <div class="especificacao-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="especificacao-label">Suporte:</span>
+                            <span class="especificacao-valor fw-bold">Completo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categorias de Produtos -->
+<section class="categorias-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Diversidade de Produtos</span>
+                </h2>
+                <p class="section-description lead">
+                    Uma variedade de produtos artesanais e regionais
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="categoria-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-palette fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-3">Artesanato</h4>
+                    <p class="categoria-descricao">
+                        Peças únicas criadas por artesãos locais, 
+                        incluindo cerâmica, madeira e tecidos.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="categoria-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-apple-alt fa-3x text-success"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-3">Produtos Alimentícios</h4>
+                    <p class="categoria-descricao">
+                        Doces, bolos, biscoitos e produtos 
+                        típicos da região nordestina.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="categoria-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-tshirt fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-3">Confecções</h4>
+                    <p class="categoria-descricao">
+                        Roupas, acessórios e produtos têxteis 
+                        confeccionados por costureiras locais.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="categoria-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="categoria-icon mb-3">
+                        <i class="fas fa-home fa-3x text-info"></i>
+                    </div>
+                    <h4 class="categoria-titulo h5 mb-3">Decoração</h4>
+                    <p class="categoria-descricao">
+                        Objetos de decoração e utilidades 
+                        domésticas artesanais.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Expositores Destaque -->
+<section class="expositores-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Expositores em Destaque</span>
+                </h2>
+                <p class="section-description lead">
+                    Conheça alguns dos produtores que participam da feira
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="expositor-card p-4 bg-white rounded shadow h-100">
+                    <div class="expositor-foto mb-3 text-center">
+                        <img src="{{ url_for('static', filename='images/feira-livre/feira-livre-2.jpg') }}" 
+                             alt="Pórtico de entrada da feira" 
+                             class="img-fluid rounded" 
+                             width="100" height="100">
+                    </div>
+                    <h4 class="expositor-nome h5 text-center mb-2">Pórtico de Entrada</h4>
+                    <p class="expositor-categoria text-center text-muted mb-3">Acesso Universal</p>
+                    <p class="expositor-descricao text-center mb-3">
+                        Pórtico de entrada que simboliza que todos podem 
+                        participar da feira, promovendo inclusão e acessibilidade.
+                    </p>
+                    <div class="expositor-produtos text-center">
+                        <span class="badge bg-warning me-1">Entrada</span>
+                        <span class="badge bg-warning me-1">Inclusão</span>
+                        <span class="badge bg-warning">Acessibilidade</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="expositor-card p-4 bg-white rounded shadow h-100">
+                    <div class="expositor-foto mb-3 text-center">
+                        <img src="{{ url_for('static', filename='images/feira-livre/feira-livre-3.jpg') }}" 
+                             alt="Vendedor ambulante vendendo algodão doce" 
+                             class="img-fluid rounded" 
+                             width="100" height="100">
+                    </div>
+                    <h4 class="expositor-nome h5 text-center mb-2">Vendedor Ambulante</h4>
+                    <p class="expositor-categoria text-center text-muted mb-3">Algodão Doce</p>
+                    <p class="expositor-descricao text-center mb-3">
+                        Vendedor ambulante que oferece algodão doce fresco 
+                        para alegrar crianças e adultos durante o evento.
+                    </p>
+                    <div class="expositor-produtos text-center">
+                        <span class="badge bg-brown me-1">Algodão Doce</span>
+                        <span class="badge bg-brown me-1">Doces</span>
+                        <span class="badge bg-brown">Bebidas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="expositor-card p-4 bg-white rounded shadow h-100">
+                    <div class="expositor-foto mb-3 text-center">
+                        <img src="{{ url_for('static', filename='images/feira-livre/feira-livre-4.jpg') }}" 
+                             alt="Cadeiras para conforto dos visitantes" 
+                             class="img-fluid rounded" 
+                             width="100" height="100">
+                    </div>
+                    <h4 class="expositor-nome h5 text-center mb-2">Área de Descanso</h4>
+                    <p class="expositor-categoria text-center text-muted mb-3">Conforto e Acessibilidade</p>
+                    <p class="expositor-descricao text-center mb-3">
+                        Cadeiras e mesas estão disponíveis para que os visitantes possam 
+                        descansar e ter conforto durante a feira.
+                    </p>
+                    <div class="expositor-produtos text-center">
+                        <span class="badge bg-success me-1">Cadeiras</span>
+                        <span class="badge bg-success me-1">Conforto</span>
+                        <span class="badge bg-success">Acessibilidade</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Estrutura da Feira -->
+<section class="estrutura-section py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="estrutura-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Estrutura Completa</span>
+                    </h2>
+                    <p class="estrutura-text mb-4">
+                        A Feira Livre conta com uma estrutura completa para garantir 
+                        o conforto dos expositores e visitantes, incluindo espaços 
+                        cobertos, iluminação adequada e facilidades de acesso.
+                    </p>
+                    
+                    <div class="estrutura-itens">
+                        <div class="estrutura-item d-flex align-items-center mb-3">
+                            <i class="fas fa-umbrella fa-2x text-gold me-3"></i>
+                            <div>
+                                <h5 class="estrutura-titulo mb-1">Espaços Cobertos</h5>
+                                <p class="estrutura-descricao mb-0">
+                                    Tendas e toldos para proteção do sol e chuva
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="estrutura-item d-flex align-items-center mb-3">
+                            <i class="fas fa-lightbulb fa-2x text-warning me-3"></i>
+                            <div>
+                                <h5 class="estrutura-titulo mb-1">Iluminação</h5>
+                                <p class="estrutura-descricao mb-0">
+                                    Sistema de iluminação para funcionamento noturno
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="estrutura-item d-flex align-items-center mb-3">
+                            <i class="fas fa-wheelchair fa-2x text-info me-3"></i>
+                            <div>
+                                <h5 class="estrutura-titulo mb-1">Acessibilidade</h5>
+                                <p class="estrutura-descricao mb-0">
+                                    Espaços adaptados para pessoas com deficiência
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="estrutura-item d-flex align-items-center">
+                            <i class="fas fa-restroom fa-2x text-success me-3"></i>
+                            <div>
+                                <h5 class="estrutura-titulo mb-1">Facilidades</h5>
+                                <p class="estrutura-descricao mb-0">
+                                    Banheiros, água e pontos de energia disponíveis
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="estrutura-image">
+                    <img src="{{ url_for('static', filename='images/patrocinio-1.png') }}"   
+                         alt="Estrutura da Feira Livre" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impacto Econômico -->
+<section class="impacto-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Impacto Econômico</span>
+                </h2>
+                <p class="section-description lead">
+                    A Feira Livre gera renda e fortalece a economia local
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="impacto-card text-center p-4 bg-brown text-white rounded shadow">
+                    <div class="impacto-icon mb-3">
+                        <i class="fas fa-store fa-3x"></i>
+                    </div>
+                    <h3 class="impacto-number display-5 fw-bold mb-2">50+</h3>
+                    <h4 class="impacto-label h5 mb-0">Expositores</h4>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="impacto-card text-center p-4 bg-success text-white rounded shadow">
+                    <div class="impacto-icon mb-3">
+                        <i class="fas fa-dollar-sign fa-3x"></i>
+                    </div>
+                    <h3 class="impacto-number display-5 fw-bold mb-2">R$ 150k</h3>
+                    <h4 class="impacto-label h5 mb-0">Faturamento</h4>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="impacto-card text-center p-4 bg-danger text-white rounded shadow">
+                    <div class="impacto-icon mb-3">
+                        <i class="fas fa-users fa-3x"></i>
+                    </div>
+                    <h3 class="impacto-number display-5 fw-bold mb-2">30k</h3>
+                    <h4 class="impacto-label h5 mb-0">Visitantes</h4>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="impacto-card text-center p-4 bg-secondary text-white rounded shadow">
+                    <div class="impacto-icon mb-3">
+                        <i class="fas fa-handshake fa-3x"></i>
+                    </div>
+                    <h3 class="impacto-number display-5 fw-bold mb-2">80%</h3>
+                    <h4 class="impacto-label h5 mb-0">Satisfação</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Apoie a Economia Criativa Local
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Seja patrocinador da Feira Livre e contribua para o 
+                    fortalecimento dos produtores e artesãos de Maracanaú.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('main.patrocinadores') }}" 
+                   class="btn btn-warning btn-lg">
+                    <i class="fas fa-handshake me-2"></i>
+                    Seja um Patrocinador
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.especificacao-feira-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid #007bff;
+}
+
+.especificacao-feira-card:hover {
+    transform: translateY(-5px);
+}
+
+.especificacao-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.especificacao-item:last-child {
+    border-bottom: none;
+}
+
+.especificacao-label {
+    color: #6c757d;
+}
+
+.especificacao-valor {
+    color: #007bff;
+}
+
+.categoria-card {
+    transition: transform 0.3s ease;
+}
+
+.categoria-card:hover {
+    transform: translateY(-5px);
+}
+
+.expositor-card {
+    border-left: 5px solid #007bff;
+}
+
+.impacto-card {
+    transition: transform 0.3s ease;
+}
+
+.impacto-card:hover {
+    transform: translateY(-5px);
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}
+
