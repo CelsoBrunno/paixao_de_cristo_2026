@@ -10,9 +10,10 @@ Este website foi desenvolvido para apresentar o projeto cultural "Paixão de Cri
 
 - ✅ **Responsivo**: Adaptável para dispositivos móveis e desktop
 - ✅ **Acessível**: Conforme WCAG 2.1 (Nível AA)
-- ✅ **SEO Otimizado**: Meta tags e URLs amigáveis
+- ✅ **SEO Otimizado**: Meta tags, Open Graph, Schema.org, sitemap e RSS
+- ✅ **Blog e Galeria**: Conteúdo dinâmico com painel administrativo
 - ✅ **Conforme Lei Rouanet**: Logomarcas oficiais e informações obrigatórias
-- ✅ **Seguro**: Validação de dados e proteção contra XSS
+- ✅ **Seguro**: CSRF, rate limiting e validação de formulários
 - ✅ **Profissional**: Design moderno e interface intuitiva
 
 ## 🚀 Tecnologias Utilizadas
@@ -27,32 +28,32 @@ Este website foi desenvolvido para apresentar o projeto cultural "Paixão de Cri
 ## 📁 Estrutura do Projeto
 
 ```
-paixao_de_cristo_site/
+site/
 ├── app/
-│   ├── __init__.py              # Factory da aplicação Flask
-│   ├── routes.py                # Rotas e lógica de negócio
+│   ├── __init__.py              # Factory Flask + CSRF + blueprints
+│   ├── routes.py                # Rotas públicas
+│   ├── admin_routes.py          # Painel administrativo
+│   ├── blog_*.py                # Blog (MySQL)
+│   ├── db_config.py             # Configuração do banco
+│   ├── image_manager.py         # Galeria de imagens
+│   ├── pdf_generator.py         # PDF de patrocínio
 │   ├── static/
 │   │   ├── css/
-│   │   │   └── style.css        # Estilos customizados
 │   │   ├── js/
-│   │   │   └── main.js          # JavaScript principal
-│   │   └── images/              # Imagens do projeto
+│   │   ├── images/
+│   │   └── documents/
 │   └── templates/
-│       ├── base.html            # Template base
-│       ├── index.html           # Página inicial
-│       ├── sobre.html           # Sobre o projeto
-│       ├── evento.html          # Evento 2026
-│       ├── espetaculo.html      # Espetáculo cênico
-│       ├── festival.html        # Festival de música
-│       ├── formacao.html        # Formação artística
-│       ├── feira.html           # Feira livre
-│       ├── midia.html           # Na mídia
-│       ├── patrocinadores.html  # Seja patrocinador
-│       └── contato.html         # Contato
-├── run.py                       # Arquivo principal
-├── requirements.txt             # Dependências Python
-├── .gitignore                  # Arquivos ignorados pelo Git
-└── README.md                   # Este arquivo
+│       ├── base.html
+│       ├── index.html, blog.html, faq.html, galeria.html, ...
+│       ├── components/          # Navbar, breadcrumbs, etc.
+│       └── admin/               # Telas do painel
+├── deploy/
+│   └── pythonanywhere/          # WSGI, SQL e scripts de deploy
+├── docs/                        # Documentação do projeto
+├── run.py                       # Entrada local (dev)
+├── requirements.txt
+├── env.example
+└── README.md
 ```
 
 ## 🛠️ Instalação e Configuração

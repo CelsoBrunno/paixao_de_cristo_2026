@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+
+{% block title %}Galeria - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Galeria de imagens da Paixão de Cristo de Maracanaú. Veja fotos dos espetáculos, eventos e bastidores.{% endblock %}
+
+{% block meta_keywords %}galeria, fotos, imagens, paixão de cristo, maracanaú, espetáculo, eventos{% endblock %}
+
+{% block og_type %}article{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Cabeçalho da galeria -->
+            <div class="text-center mb-5">
+                <h1 class="section-title">
+                    <i class="fas fa-images me-3"></i>
+                    Galeria de Imagens
+                </h1>
+                <p class="section-subtitle">
+                    Momentos especiais da Paixão de Cristo de Maracanaú
+                </p>
+            </div>
+
+            <!-- Filtros da galeria -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-center gap-2">
+                            <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+                                <i class="fas fa-th me-2"></i>Todas
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="espetaculo">
+                                <i class="fas fa-theater-masks me-2"></i>Espetáculo Cênico
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="musical">
+                                <i class="fas fa-music me-2"></i>Espetáculo Musical
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="feira">
+                                <i class="fas fa-store me-2"></i>Feira Livre
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="midia">
+                                <i class="fas fa-newspaper me-2"></i>Na Mídia
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="patrocinio">
+                                <i class="fas fa-handshake me-2"></i>Patrocínio
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="formacao">
+                                <i class="fas fa-graduation-cap me-2"></i>Formação Artística
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="evento">
+                                <i class="fas fa-calendar-alt me-2"></i>Eventos
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="bastidores">
+                                <i class="fas fa-camera me-2"></i>Bastidores
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-filter="publico">
+                                <i class="fas fa-users me-2"></i>Público
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid da galeria -->
+            <div class="row" id="gallery-grid">
+                {% if images %}
+                    {% for filename, info in images.items() %}
+                    <div class="col-lg-4 col-md-6 mb-4 gallery-item" data-category="{{ info.category }}">
+                        <div class="gallery-card">
+                            <a href="{{ url_for('static', filename=get_image_url(filename)) }}" 
+                               data-lightbox="{{ info.category }}" 
+                               data-title="">
+                                <img src="{{ url_for('static', filename=get_image_url(filename)) }}" 
+                                     class="gallery-img" 
+                                     alt=""
+                                     loading="lazy">
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-images fa-3x text-muted mb-3"></i>
+                                <h5 class="text-muted">Galeria em construção</h5>
+                                <p class="text-muted">Em breve teremos imagens incríveis para você!</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Configuração do Lightbox
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'albumLabel': 'Imagem %1 de %2',
+        'fadeDuration': 300,
+        'imageFadeDuration': 300,
+        'disableScrolling': true,
+        'sanitizeTitle': true
+    });
+    
+    // Navegação por teclado na galeria
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.querySelector('.lb-overlay');
+        if (lightbox && lightbox.style.display !== 'none') {
+            // Navegação com setas
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                const prevBtn = document.querySelector('.lb-prev');
+                if (prevBtn) prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                const nextBtn = document.querySelector('.lb-next');
+                if (nextBtn) nextBtn.click();
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                const closeBtn = document.querySelector('.lb-close');
+                if (closeBtn) closeBtn.click();
+            }
+        }
+    });
+    
+    // Adicionar aria-labels para acessibilidade
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryLinks = document.querySelectorAll('.gallery-item a');
+        galleryLinks.forEach(link => {
+            const img = link.querySelector('img');
+            if (img && img.alt) {
+                link.setAttribute('aria-label', `Ver imagem: ${img.alt}`);
+            }
+        });
+    });
+
+    // Sistema de filtros da galeria
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+
+                // Atualizar botões ativos
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // Filtrar itens
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.classList.add('fade-in');
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('fade-in');
+                    }
+                });
+
+                // Analytics - track filter usage
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'gallery_filter', {
+                        'event_category': 'gallery',
+                        'event_label': filter
+                    });
+                }
+            });
+        });
+
+        // Contador de visualizações
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        let viewCount = 0;
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                viewCount++;
+                document.getElementById('total-views').textContent = viewCount;
+
+                // Analytics - track image view
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'image_view', {
+                        'event_category': 'gallery',
+                        'event_label': this.alt
+                    });
+                }
+            });
+        });
+
+        // Animações de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        galleryItems.forEach(item => {
+            observer.observe(item);
+        });
+    });
+</script>
+
+<style>
+    /* Usar o mesmo fundo da seção Nossa História */
+    body {
+        background: var(--parchment-bg) !important;
+        background-attachment: fixed !important;
+    }
+    
+    /* Remover qualquer imagem de fundo que possa estar sendo aplicada */
+    body::before {
+        display: none !important;
+    }
+    
+    body::after {
+        display: none !important;
+    }
+
+    .gallery-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .gallery-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .gallery-card:hover .gallery-img {
+        transform: scale(1.05);
+    }
+
+    .filter-btn {
+        transition: all 0.3s ease;
+    }
+
+    .filter-btn.active {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    .gallery-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+    }
+
+    .gallery-item.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .stat-item h3 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+
+    /* Modo escuro para galeria */
+    [data-theme="dark"] .gallery-card {
+        background: transparent;
+        border: none;
+    }
+
+    [data-theme="dark"] .gallery-img {
+        filter: brightness(0.9);
+    }
+
+    [data-theme="dark"] .gallery-card:hover .gallery-img {
+        filter: brightness(1);
+    }
+</style>
+{% endblock %}

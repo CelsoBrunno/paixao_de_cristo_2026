@@ -5,6 +5,9 @@
 Flask==2.3.3
 Werkzeug==2.3.7
 
+# Banco de Dados
+mysql-connector-python==8.1.0
+
 # Segurança e Validação
 WTForms==3.0.1
 Flask-WTF==1.1.1
@@ -18,39 +21,9 @@ python-dotenv==1.0.0
 # Desenvolvimento e Debug
 Flask-DebugToolbar==0.13.1
 
-# Banco de Dados (opcional para futuras expansões)
-# Flask-SQLAlchemy==3.0.5
-# Flask-Migrate==4.0.5
-
-# Cache (opcional)
-# Flask-Caching==2.0.2
-
-# Upload de arquivos (opcional)
-# Flask-Uploads==0.2.1
-
-# Internacionalização (opcional)
-# Flask-Babel==4.0.0
-
-# Documentação da API (opcional)
-# Flask-RESTful==0.3.10
-# Flask-APIdoc==0.6.0
+# Manipulação de Imagens
+Pillow==10.0.0
 
 # Produção
 gunicorn==21.2.0
 waitress==2.1.2
-
-# Testes (opcional)
-# pytest==7.4.2
-# pytest-flask==1.2.0
-# coverage==7.3.1
-
-# Linting e Formatação (desenvolvimento)
-# flake8==6.0.0
-# black==23.7.0
-# isort==5.12.0
-
-# Dependências do sistema (se necessário)
-# Pillow==10.0.0  # Para manipulação de imagens
-# requests==2.31.0  # Para APIs externas
-
-

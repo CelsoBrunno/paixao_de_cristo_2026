@@ -58,6 +58,77 @@ function initNavbarBehavior() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
     
+    // Forçar posicionamento do botão à esquerda sempre
+    function forceTogglerPosition() {
+        if (navbarToggler) {
+            navbarToggler.style.setProperty('position', 'relative', 'important');
+            navbarToggler.style.setProperty('margin-left', '0', 'important');
+            navbarToggler.style.setProperty('margin-right', 'auto', 'important');
+            navbarToggler.style.setProperty('left', '0', 'important');
+            navbarToggler.style.setProperty('right', 'auto', 'important');
+            navbarToggler.style.setProperty('order', '1', 'important');
+            navbarToggler.style.setProperty('float', 'none', 'important');
+            navbarToggler.style.setProperty('flex-shrink', '0', 'important');
+        }
+        
+        // Forçar container a usar flex-start
+        const container = navbar ? navbar.querySelector('.container') : null;
+        if (container) {
+            container.style.setProperty('justify-content', 'flex-start', 'important');
+        }
+    }
+    
+    // Aplicar posicionamento inicial
+    setTimeout(forceTogglerPosition, 0);
+    setTimeout(forceTogglerPosition, 100);
+    setTimeout(forceTogglerPosition, 300);
+    
+    // Observar mudanças no atributo aria-expanded
+    if (navbarToggler) {
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'aria-expanded') {
+                    setTimeout(forceTogglerPosition, 0);
+                    setTimeout(forceTogglerPosition, 50);
+                }
+            });
+        });
+        
+        observer.observe(navbarToggler, {
+            attributes: true,
+            attributeFilter: ['aria-expanded']
+        });
+    }
+    
+    // Forçar posicionamento quando o menu abre/fecha
+    if (navbarCollapse) {
+        navbarCollapse.addEventListener('show.bs.collapse', function() {
+            setTimeout(forceTogglerPosition, 0);
+            setTimeout(forceTogglerPosition, 50);
+        });
+        navbarCollapse.addEventListener('hide.bs.collapse', function() {
+            setTimeout(forceTogglerPosition, 0);
+            setTimeout(forceTogglerPosition, 50);
+        });
+        navbarCollapse.addEventListener('shown.bs.collapse', function() {
+            setTimeout(forceTogglerPosition, 0);
+            setTimeout(forceTogglerPosition, 50);
+        });
+        navbarCollapse.addEventListener('hidden.bs.collapse', function() {
+            setTimeout(forceTogglerPosition, 0);
+            setTimeout(forceTogglerPosition, 50);
+        });
+    }
+    
+    // Observar cliques no botão
+    if (navbarToggler) {
+        navbarToggler.addEventListener('click', function() {
+            setTimeout(forceTogglerPosition, 0);
+            setTimeout(forceTogglerPosition, 50);
+            setTimeout(forceTogglerPosition, 100);
+        });
+    }
+    
     // Mudar aparência da navbar no scroll
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
@@ -67,12 +138,23 @@ function initNavbarBehavior() {
         }
     });
     
-    // Fechar menu mobile ao clicar em um link
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    // Fechar menu mobile ao clicar em um link (exceto dropdowns)
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (navbarCollapse.classList.contains('show')) {
                 navbarToggler.click();
+            }
+        });
+    });
+    
+    // Melhorar comportamento do dropdown no mobile
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            // No mobile, permitir que o dropdown funcione normalmente
+            if (window.innerWidth <= 991) {
+                e.stopPropagation();
             }
         });
     });
@@ -354,7 +436,16 @@ function improveKeyboardNavigation() {
         card.setAttribute('role', 'button');
         
         card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
+            // Não interceptar se o foco estiver em um campo de formulário
+            const activeElement = document.activeElement;
+            const isFormField = activeElement && (
+                activeElement.tagName === 'INPUT' || 
+                activeElement.tagName === 'TEXTAREA' || 
+                activeElement.tagName === 'SELECT' ||
+                activeElement.isContentEditable
+            );
+            
+            if (!isFormField && (e.key === 'Enter' || e.key === ' ')) {
                 e.preventDefault();
                 const link = this.querySelector('a');
                 if (link) {
@@ -398,7 +489,7 @@ function addAriaLabels() {
             if (iconClass.includes('facebook')) label = 'Facebook';
             else if (iconClass.includes('instagram')) label = 'Instagram';
             else if (iconClass.includes('youtube')) label = 'YouTube';
-            else if (iconClass.includes('twitter')) label = 'Twitter';
+            else if (iconClass.includes('twitter') || iconClass.includes('x-twitter')) label = 'X';
             
             link.setAttribute('aria-label', label);
         }
@@ -428,24 +519,70 @@ function manageFocus() {
  */
 function initAnimations() {
     // Animação de fade-in quando elementos entram na viewport
-    const animatedElements = document.querySelectorAll('.fade-in-up');
+    const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in, .slide-up, .animate-on-scroll');
     
     if ('IntersectionObserver' in window) {
         const animationObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                    entry.target.classList.add('animate', 'animated');
                     animationObserver.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
         
         animatedElements.forEach(el => animationObserver.observe(el));
     } else {
         // Fallback: animar imediatamente
-        animatedElements.forEach(el => el.classList.add('animate'));
+        animatedElements.forEach(el => el.classList.add('animate', 'animated'));
+    }
+    
+    // Adicionar classes de animação automaticamente em elementos comuns
+    // EXCETO para elementos dentro do .main-content (para evitar que desapareçam)
+    const mainContent = document.querySelector('.main-content');
+    
+    const sections = document.querySelectorAll('section:not(.hero-section)');
+    sections.forEach((section, index) => {
+        // Não adicionar animação a seções dentro do main-content
+        if (!section.classList.contains('no-animate') && 
+            (!mainContent || !mainContent.contains(section))) {
+            section.classList.add('fade-in-up');
+        } else if (mainContent && mainContent.contains(section)) {
+            // Garantir que seções dentro do main-content estejam visíveis
+            section.style.opacity = '1';
+            section.style.zIndex = '1';
+        }
+    });
+    
+    const cards = document.querySelectorAll('.card, .highlight-card, .testimonial-card');
+    cards.forEach((card, index) => {
+        // Não adicionar animação a cards dentro do main-content
+        if (!card.classList.contains('no-animate') && 
+            (!mainContent || !mainContent.contains(card))) {
+            card.classList.add('fade-in-up');
+            // Adicionar delay progressivo
+            card.style.animationDelay = `${index * 0.1}s`;
+        } else if (mainContent && mainContent.contains(card)) {
+            // Garantir que cards dentro do main-content estejam visíveis
+            card.style.opacity = '1';
+            card.style.zIndex = '1';
+        }
+    });
+    
+    // Garantir que o conteúdo principal sempre esteja visível
+    if (mainContent) {
+        mainContent.style.opacity = '1';
+        mainContent.style.zIndex = '1';
+        // Remover classes de animação do conteúdo principal e seus filhos diretos
+        mainContent.classList.remove('fade-in-up', 'fade-in', 'slide-up', 'animate-on-scroll');
+        // Forçar visibilidade de todos os elementos dentro do main-content
+        const allChildren = mainContent.querySelectorAll('*');
+        allChildren.forEach(child => {
+            child.style.opacity = '1';
+        });
     }
 }
 

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Contatos Recebidos - Painel Administrativo{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="section-title">
+                    <i class="fas fa-envelope me-3"></i>
+                    Contatos Recebidos
+                </h1>
+                <div>
+                    <a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar ao Dashboard
+                    </a>
+                </div>
+            </div>
+
+            {% if contatos %}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list me-2"></i>
+                        Total: {{ contatos|length }} contato(s)
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Telefone</th>
+                                    <th>Empresa</th>
+                                    <th>Assunto</th>
+                                    <th>Tipo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for contato in contatos %}
+                                <tr>
+                                    <td>{{ contato.timestamp }}</td>
+                                    <td>{{ contato.data.get('nome', 'N/A') }}</td>
+                                    <td>
+                                        <a href="mailto:{{ contato.data.get('email', '') }}">
+                                            {{ contato.data.get('email', 'N/A') }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="tel:{{ contato.data.get('telefone', '') }}">
+                                            {{ contato.data.get('telefone', 'N/A') }}
+                                        </a>
+                                    </td>
+                                    <td>{{ contato.data.get('empresa', 'N/A') }}</td>
+                                    <td>
+                                        <span class="badge bg-info">
+                                            {{ contato.data.get('assunto', 'N/A')[:30] }}...
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {% if contato.data.get('cnpj') or contato.data.get('tipo_patrocinio') %}
+                                            <span class="badge bg-warning">Patrocínio</span>
+                                        {% else %}
+                                            <span class="badge bg-primary">Contato</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('admin.ver_contato', index=loop.index0) }}" 
+                                           class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-eye"></i> Ver
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                Nenhum contato recebido ainda.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<style>
+    .table th {
+        font-weight: 600;
+        color: var(--earth-brown);
+        border-bottom: 2px solid var(--metallic-gold);
+    }
+    
+    .table td {
+        vertical-align: middle;
+    }
+    
+    .badge {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+</style>
+{% endblock %}
+

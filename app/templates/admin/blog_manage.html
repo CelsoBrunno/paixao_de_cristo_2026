@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciar Notícias - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Cabeçalho -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="section-title">
+                        <i class="fas fa-cog me-3"></i>
+                        Gerenciar Notícias
+                    </h1>
+                    <p class="section-subtitle">Edite, exclua ou organize as notícias do blog</p>
+                </div>
+                <div>
+                    <a href="{{ url_for('blog_admin.dashboard') }}" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar
+                    </a>
+                    <a href="{{ url_for('blog_admin.upload_page') }}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Nova Notícia
+                    </a>
+                </div>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="row mb-4">
+                <div class="col-md-3 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h3 class="text-primary">{{ stats.total_news }}</h3>
+                            <p class="text-muted mb-0">Notícias</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h3 class="text-success">{{ stats.categories|length }}</h3>
+                            <p class="text-muted mb-0">Categorias</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h3 class="text-warning">{{ stats.total_views }}</h3>
+                            <p class="text-muted mb-0">Visualizações</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h3 class="text-info">{{ stats.total_likes }}</h3>
+                            <p class="text-muted mb-0">Curtidas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Filtros por botões -->
+                            <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                                <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+                                    <i class="fas fa-th me-2"></i>Todas
+                                </button>
+                                {% for key, value in categories.items() %}
+                                <button class="btn btn-outline-primary filter-btn" data-filter="{{ key }}">
+                                    <i class="fas fa-tag me-2"></i>{{ value }}
+                                </button>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Busca -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="searchInput" class="form-label">Buscar:</label>
+                                    <input type="text" class="form-control" id="searchInput" placeholder="Título da notícia...">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">&nbsp;</label>
+                                    <div>
+                                        <button class="btn btn-outline-secondary" onclick="clearFilters()">
+                                            <i class="fas fa-times me-2"></i>Limpar Filtros
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Notícias -->
+            <div class="row" id="news-grid">
+                {% if news %}
+                    {% for filename, info in news.items() %}
+                    <div class="col-lg-4 col-md-6 mb-4 news-item" 
+                         data-category="{{ info.category }}" 
+                         data-filename="{{ filename }}"
+                         data-title="{{ info.title }}">
+                        <div class="card h-100">
+                            <img src="{{ url_for('static', filename=get_image_url(filename)) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ info.title }}"
+                                 style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h6 class="card-title">{{ info.title }}</h6>
+                                <p class="card-text small text-muted">
+                                    <strong>Categoria:</strong> {{ categories.get(info.category, info.category) }}<br>
+                                    <strong>Autor:</strong> {{ info.author }}<br>
+                                    <strong>Data:</strong> {{ info.date }}<br>
+                                    <strong>Visualizações:</strong> {{ info.views }}
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editNews('{{ filename }}')">
+                                        <i class="fas fa-edit me-1"></i>Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="deleteNews('{{ filename }}')">
+                                        <i class="fas fa-trash me-1"></i>Excluir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-newspaper fa-3x text-muted mb-3"></i>
+                                <h5 class="text-muted">Nenhuma notícia encontrada</h5>
+                                <p class="text-muted">Adicione a primeira notícia ao blog!</p>
+                                <a href="{{ url_for('blog_admin.upload_page') }}" class="btn btn-primary">
+                                    <i class="fas fa-plus me-2"></i>Nova Notícia
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação de Exclusão -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir esta notícia?</p>
+                <p class="text-muted small">Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    let currentNews = null;
+    let currentFilter = 'all';
+    
+    // Filtros por botões
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remover classe active de todos os botões
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            // Adicionar classe active ao botão clicado
+            this.classList.add('active');
+            // Definir filtro atual
+            currentFilter = this.getAttribute('data-filter');
+            filterNews();
+        });
+    });
+    
+    // Busca
+    document.getElementById('searchInput').addEventListener('input', filterNews);
+    
+    function filterNews() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const items = document.querySelectorAll('.news-item');
+        
+        items.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            const itemTitle = item.getAttribute('data-title').toLowerCase();
+            
+            const categoryMatch = currentFilter === 'all' || itemCategory === currentFilter;
+            const searchMatch = !search || itemTitle.includes(search);
+            
+            if (categoryMatch && searchMatch) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    function clearFilters() {
+        // Resetar filtro para "Todas"
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-filter="all"]').classList.add('active');
+        currentFilter = 'all';
+        
+        // Limpar busca
+        document.getElementById('searchInput').value = '';
+        filterNews();
+    }
+    
+    // Editar notícia
+    function editNews(filename) {
+        window.location.href = `{{ url_for('blog_admin.edit_news', filename='') }}${filename}`;
+    }
+    
+    // Excluir notícia
+    function deleteNews(filename) {
+        currentNews = filename;
+        const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        modal.show();
+    }
+    
+    // Confirmar exclusão
+    document.getElementById('confirmDelete').addEventListener('click', function() {
+        if (currentNews) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = `{{ url_for('blog_admin.delete_news', filename='') }}${currentNews}`;
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
+</script>
+
+<style>
+    /* Usar o mesmo fundo da seção Nossa História */
+    body {
+        background: var(--parchment-bg) !important;
+        background-attachment: fixed !important;
+    }
+    
+    /* Remover qualquer imagem de fundo que possa estar sendo aplicada */
+    body::before {
+        display: none !important;
+    }
+    
+    body::after {
+        display: none !important;
+    }
+</style>
+{% endblock %}

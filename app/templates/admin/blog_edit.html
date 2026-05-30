@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Notícia - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Cabeçalho -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="section-title">
+                        <i class="fas fa-edit me-3"></i>
+                        Editar Notícia
+                    </h1>
+                    <p class="section-subtitle">Modifique as informações da notícia</p>
+                </div>
+                <div>
+                    <a href="{{ url_for('blog_admin.manage_news') }}" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar
+                    </a>
+                    <a href="{{ url_for('blog_admin.dashboard') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-home me-2"></i>Dashboard
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formulário de Edição -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-edit me-2"></i>
+                                Informações da Notícia
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST">
+                                <div class="row">
+                                    <div class="col-md-8 mb-3">
+                                        <label for="title" class="form-label">Título da Notícia *</label>
+                                        <input type="text" class="form-control" id="title" name="title" 
+                                               value="{{ news.title }}" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="category" class="form-label">Categoria *</label>
+                                        <select class="form-select" id="category" name="category" required>
+                                            {% for key, value in categories.items() %}
+                                            <option value="{{ key }}" {% if news.category == key %}selected{% endif %}>
+                                                {{ value }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="author" class="form-label">Autor *</label>
+                                        <input type="text" class="form-control" id="author" name="author" 
+                                               value="{{ news.author }}" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="date" class="form-label">Data da Notícia</label>
+                                        <input type="date" class="form-control" id="date" name="date" 
+                                               value="{{ news.date }}">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="content" class="form-label">Conteúdo da Notícia *</label>
+                                    <textarea class="form-control" id="content" name="content" rows="10" required>{{ news.content }}</textarea>
+                                    <div class="form-text">Descreva os detalhes da notícia</div>
+                                </div>
+
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="button" class="btn btn-outline-secondary me-md-2" onclick="resetForm()">
+                                        <i class="fas fa-undo me-2"></i>Resetar
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Informações da Notícia -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Informações Atuais
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><strong>Arquivo:</strong> {{ filename }}</p>
+                            <p class="mb-2"><strong>Categoria:</strong> {{ categories.get(news.category, news.category) }}</p>
+                            <p class="mb-2"><strong>Autor:</strong> {{ news.author }}</p>
+                            <p class="mb-2"><strong>Data:</strong> {{ news.date }}</p>
+                            <p class="mb-2"><strong>Visualizações:</strong> {{ news.views }}</p>
+                            <p class="mb-2"><strong>Curtidas:</strong> {{ news.likes }}</p>
+                            <p class="mb-0"><strong>Criado:</strong> {{ news.created[:10] }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Imagem Atual -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="fas fa-image me-2"></i>
+                                Imagem Atual
+                            </h6>
+                        </div>
+                        <div class="card-body text-center">
+                            <img src="{{ url_for('static', filename='images/blog/' + filename) }}" 
+                                 class="img-fluid rounded" 
+                                 alt="{{ news.title }}"
+                                 style="max-height: 200px;">
+                            <p class="text-muted small mt-2">{{ filename }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Dicas -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                Dicas de Edição
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Mantenha o título claro e atrativo
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Use parágrafos curtos para melhor leitura
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Verifique a ortografia antes de salvar
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Escolha a categoria mais apropriada
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function resetForm() {
+        if (confirm('Tem certeza que deseja resetar o formulário? Todas as alterações serão perdidas.')) {
+            document.getElementById('title').value = '{{ news.title }}';
+            document.getElementById('content').value = '{{ news.content }}';
+            document.getElementById('author').value = '{{ news.author }}';
+            document.getElementById('date').value = '{{ news.date }}';
+            document.getElementById('category').value = '{{ news.category }}';
+        }
+    }
+
+    // Auto-save draft (opcional)
+    let autoSaveTimeout;
+    document.getElementById('content').addEventListener('input', function() {
+        clearTimeout(autoSaveTimeout);
+        autoSaveTimeout = setTimeout(function() {
+            // Aqui poderia implementar auto-save
+            console.log('Conteúdo alterado - auto-save em desenvolvimento');
+        }, 2000);
+    });
+
+    // Contador de caracteres
+    document.getElementById('content').addEventListener('input', function() {
+        const content = this.value;
+        const wordCount = content.split(/\s+/).filter(word => word.length > 0).length;
+        const charCount = content.length;
+        
+        // Atualizar contador se existir
+        let counter = document.getElementById('char-counter');
+        if (!counter) {
+            counter = document.createElement('small');
+            counter.id = 'char-counter';
+            counter.className = 'text-muted';
+            this.parentNode.appendChild(counter);
+        }
+        
+        counter.textContent = `${charCount} caracteres, ${wordCount} palavras`;
+    });
+</script>
+
+<style>
+    /* Usar o mesmo fundo da seção Nossa História */
+    body {
+        background: var(--parchment-bg) !important;
+        background-attachment: fixed !important;
+    }
+    
+    /* Remover qualquer imagem de fundo que possa estar sendo aplicada */
+    body::before {
+        display: none !important;
+    }
+    
+    body::after {
+        display: none !important;
+    }
+</style>
+{% endblock %}

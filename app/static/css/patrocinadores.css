@@ -1,0 +1,424 @@
+/* ==========================================================================
+   Paixão de Cristo de Maracanaú - Estilos para Página de Patrocinadores
+   ========================================================================== */
+
+/* Estilos para Cotas Estruturadas */
+.cotas-estruturadas-section {
+    background: var(--bg-light);
+}
+
+.cota-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease, border 0.4s ease;
+    border-left: 4px solid var(--metallic-gold);
+}
+
+.cota-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+/* Efeito hover especial para o card MASTER */
+.cota-card.border-diamond:hover {
+    background: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 50%, #B3D9FF 100%) !important;
+    border: 2px solid rgba(179, 217, 255, 0.3) !important;
+    box-shadow:
+        0 0 25px rgba(179, 217, 255, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.3),
+        0 20px 25px -5px rgba(94, 73, 61, 0.15),
+        0 10px 10px -5px rgba(94, 73, 61, 0.1) !important;
+}
+
+/* Efeito hover especial para o card OURO */
+.cota-card.border-warning:hover {
+    background: linear-gradient(135deg, #FFF8DC 0%, #F5E6A3 50%, #D4AF37 100%) !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.3),
+        inset 0 0 15px rgba(255, 255, 255, 0.3),
+        0 20px 25px -5px rgba(94, 73, 61, 0.15),
+        0 10px 10px -5px rgba(94, 73, 61, 0.1) !important;
+}
+
+/* Efeito hover especial para o card PRATA */
+.cota-card.border-secondary:hover {
+    background: linear-gradient(135deg, #F8F8FF 0%, #E6E6FA 50%, #C0C0C0 100%) !important;
+    border: 2px solid rgba(192, 192, 192, 0.4) !important;
+    box-shadow:
+        0 0 25px rgba(192, 192, 192, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.3),
+        0 20px 25px -5px rgba(94, 73, 61, 0.15),
+        0 10px 10px -5px rgba(94, 73, 61, 0.1) !important;
+}
+
+/* Efeito hover especial para o card APOIO LOCAL */
+.cota-card.border-bronze:hover {
+    background: linear-gradient(135deg, #FFF8DC 0%, #F4E4BC 50%, #D2B48C 100%) !important;
+    border: 2px solid rgba(205, 127, 50, 0.3) !important;
+    box-shadow:
+        0 0 20px rgba(205, 127, 50, 0.3),
+        inset 0 0 15px rgba(255, 255, 255, 0.3),
+        0 20px 25px -5px rgba(94, 73, 61, 0.15),
+        0 10px 10px -5px rgba(94, 73, 61, 0.1) !important;
+}
+
+/* Transições para elementos de todas as cotas */
+.cota-card .cota-titulo,
+.cota-card .cota-valor,
+.cota-card .beneficios-titulo,
+.cota-card .beneficio-item i {
+    transition: color 0.4s ease, text-shadow 0.4s ease, font-weight 0.4s ease;
+}
+
+/* Textos do MASTER no hover */
+.cota-card.border-diamond:hover .cota-titulo {
+    color: #1a365d !important;
+}
+
+.cota-card.border-diamond:hover .cota-valor {
+    color: #2E5BBA !important;
+    text-shadow: 0 0 8px rgba(46, 91, 186, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.1) !important;
+    font-weight: 700 !important;
+}
+
+.cota-card.border-diamond:hover .beneficios-titulo {
+    color: #1a365d !important;
+}
+
+/* Ícones do MASTER no hover */
+.cota-card.border-diamond:hover .beneficio-item i.text-diamond {
+    color: #3B82F6 !important;
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.cota-header {
+    border-bottom: 2px solid var(--gray-light);
+    padding-bottom: 1rem;
+}
+
+.cota-titulo {
+    font-family: var(--font-primary);
+    color: var(--earth-brown);
+    font-weight: 600;
+}
+
+.cota-valor {
+    font-family: var(--font-sans);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cota-descricao {
+    color: var(--gray-medium);
+    font-style: italic;
+}
+
+.beneficios-titulo {
+    font-family: var(--font-secondary);
+    color: var(--earth-brown);
+    font-weight: 600;
+    border-bottom: 1px solid var(--gray-light);
+    padding-bottom: 0.5rem;
+}
+
+.beneficios-lista {
+    padding-left: 0;
+}
+
+.beneficio-item {
+    color: var(--text-dark);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.beneficio-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.beneficio-item strong {
+    color: var(--earth-brown);
+    font-weight: 600;
+}
+
+.cotas-resumo {
+    border-left: 5px solid var(--metallic-gold);
+    box-shadow: var(--box-shadow);
+}
+
+.resumo-titulo {
+    font-family: var(--font-primary);
+    color: var(--earth-brown);
+    font-weight: 600;
+}
+
+/* Bordas específicas por cota */
+.border-diamond.border-3 {
+    border-color: #E6F3FF !important;
+    border-width: 3px !important;
+    box-shadow: 0 0 20px rgba(230, 243, 255, 0.5), inset 0 0 20px rgba(230, 243, 255, 0.1);
+}
+
+.border-warning.border-2 {
+    border-color: var(--metallic-gold) !important;
+    border-width: 2px !important;
+}
+
+.border-secondary.border-2 {
+    border-color: #6c757d !important;
+    border-width: 2px !important;
+}
+
+.border-bronze.border-2 {
+    border-color: #CD7F32 !important;
+    border-width: 2px !important;
+}
+
+/* Cores específicas para cotas */
+.text-diamond {
+    color: #6a98cc !important;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bg-diamond {
+    background: linear-gradient(135deg, #E6F3FF 0%, #B3D9FF 50%, #80BFFF 100%) !important;
+    color: #1a1a1a !important;
+    box-shadow: 0 0 15px rgba(230, 243, 255, 0.6);
+}
+
+.text-bronze {
+    color: #CD7F32 !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg-bronze {
+    background: linear-gradient(135deg, #CD7F32 0%, #B8860B 50%, #8B4513 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(205, 127, 50, 0.4);
+}
+
+/* Responsividade para cotas */
+@media (max-width: 768px) {
+    .cota-card {
+        margin-bottom: 1rem;
+    }
+
+    .cota-valor {
+        font-size: 2rem;
+    }
+
+    .beneficio-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================================================
+   Estilos Adicionais para Página de Patrocinadores
+   ========================================================================== */
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+/* Cards de Benefícios */
+.beneficio-card {
+    transition: transform 0.3s ease;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-5px);
+}
+
+.ativacao-card {
+    transition: transform 0.3s ease;
+}
+
+.ativacao-card:hover {
+    transform: translateY(-5px);
+}
+
+.nivel-card {
+    transition: transform 0.3s ease;
+}
+
+.nivel-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Call to Action Section */
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+/* Estilos específicos para Lei Rouanet */
+.lei-card, .valores-card {
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--metallic-gold);
+}
+
+.lei-card:hover, .valores-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.valor-total {
+    font-family: var(--font-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.valor-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(94, 73, 61, 0.1);
+}
+
+.valor-item:last-child {
+    border-bottom: none;
+}
+
+.valor-label {
+    color: var(--gray-medium);
+    font-weight: 500;
+}
+
+.valor-valor {
+    color: var(--earth-brown);
+    font-family: var(--font-sans);
+}
+
+.pronac-info {
+    border-left: 5px solid var(--metallic-gold);
+    box-shadow: var(--box-shadow);
+}
+
+.pronac-item {
+    padding: 0.5rem 0;
+}
+
+.pronac-label {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+}
+
+.pronac-valor {
+    color: var(--earth-brown);
+    font-family: var(--font-sans);
+}
+
+.caracteristicas-lista {
+    padding-left: 0;
+}
+
+.caracteristica-item {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.caracteristica-item::before {
+    content: '✒';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--earth-brown);
+    font-size: 1em;
+    opacity: 0.7;
+}
+
+/* Estilos para Patrocinadores Antigos */
+.patrocinador-card {
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--metallic-gold);
+}
+
+.patrocinador-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.patrocinador-logo img {
+    transition: var(--transition);
+    filter: grayscale(20%);
+}
+
+.patrocinador-card:hover .patrocinador-logo img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.patrocinador-nome {
+    font-family: var(--font-primary);
+    color: var(--earth-brown);
+    font-weight: 600;
+}
+
+.patrocinador-categoria {
+    font-family: var(--font-secondary);
+    font-style: italic;
+    color: var(--gray-medium);
+}
+
+.patrocinador-descricao {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.patrocinador-beneficios .badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+}
+
+.patrocinadores-info {
+    border-left: 5px solid var(--metallic-gold);
+    box-shadow: var(--box-shadow);
+}
+
+.info-titulo {
+    font-family: var(--font-primary);
+    color: var(--earth-brown);
+    font-weight: 600;
+}
+
+.info-texto {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.cta-section .col-lg-4 {
+    display: flex;
+    flex-direction: column;     /* 1. Empilha os botões verticalmente */
+    justify-content: center;    /* 2. Centraliza o bloco de botões verticalmente na seção */
+    align-items: flex-end;      /* 3. Alinha os botões à direita (desktop) */
+    gap: 0.5rem;                /* 4. Adiciona um espaço entre os botões (substitui o mb-2) */
+}
+
+.cta-section .btn {
+    min-width: 220px;           /* Define a largura mínima base */
+    white-space: nowrap;
+}
+
+/* Em telas pequenas (mobile) */
+@media (max-width: 991.98px) {
+    .cta-section .col-lg-4 {
+        align-items: center;      /* Centraliza os botões no mobile */
+        margin-top: 2rem;
+    }
+
+    .cta-section .btn {
+        min-width: 250px;       /* Botões maiores no mobile */
+    }
+}

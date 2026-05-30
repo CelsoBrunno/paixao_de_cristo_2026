@@ -1,0 +1,499 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Benefícios Fiscais - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Calcule os benefícios fiscais do seu patrocínio na Paixão de Cristo de Maracanaú através da Lei Rouanet. Veja quanto você pode economizar em impostos.{% endblock %}
+
+{% block meta_keywords %}calculadora, benefícios fiscais, lei rouanet, patrocínio, incentivo fiscal, impostos, economia{% endblock %}
+
+{% block og_type %}article{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Cabeçalho da calculadora -->
+            <div class="text-center mb-5">
+                <h1 class="section-title">
+                    <i class="fas fa-calculator me-3"></i>
+                    Calculadora de Benefícios Fiscais
+                </h1>
+                <p class="section-subtitle">
+                    Calcule os benefícios do seu patrocínio através da Lei Rouanet
+                </p>
+            </div>
+
+            <!-- Informações sobre a Lei Rouanet -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Sobre a Lei Rouanet
+                            </h5>
+                            <p class="card-text">
+                                A Lei Federal de Incentivo à Cultura (Lei Rouanet) permite que pessoas físicas e jurídicas 
+                                deduzam do Imposto de Renda parte do valor investido em projetos culturais aprovados pelo Ministério da Cultura.
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6><i class="fas fa-user me-2"></i>Pessoa Física</h6>
+                                    <ul class="list-unstyled">
+                                        <li>• Dedução de até 6% do IR devido</li>
+                                        <li>• Limite anual de R$ 6.000,00</li>
+                                        <li>• Projeto aprovado: PRONAC 255599</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="fas fa-building me-2"></i>Pessoa Jurídica</h6>
+                                    <ul class="list-unstyled">
+                                        <li>• Dedução de até 4% do IR devido</li>
+                                        <li>• Limite anual de R$ 4.000.000,00</li>
+                                        <li>• Projeto aprovado: PRONAC 255599</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculadora -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-calculator me-2"></i>
+                                Calculadora de Benefícios
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="fiscal-calculator">
+                                <!-- Tipo de Pessoa -->
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <label class="form-label">Tipo de Pessoa</label>
+                                        <div class="btn-group w-100" role="group">
+                                            <input type="radio" class="btn-check" name="personType" id="physical" value="physical" checked>
+                                            <label class="btn btn-outline-primary" for="physical">
+                                                <i class="fas fa-user me-2"></i>Pessoa Física
+                                            </label>
+                                            <input type="radio" class="btn-check" name="personType" id="legal" value="legal">
+                                            <label class="btn btn-outline-primary" for="legal">
+                                                <i class="fas fa-building me-2"></i>Pessoa Jurídica
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Valor do Patrocínio -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="sponsorshipValue" class="form-label">Valor do Patrocínio (R$)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">R$</span>
+                                            <input type="number" class="form-control" id="sponsorshipValue" 
+                                                   placeholder="0,00" min="0" step="0.01" required>
+                                        </div>
+                                        <div class="form-text">Valor que você deseja investir no projeto</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="annualIncome" class="form-label">Renda Anual (R$)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">R$</span>
+                                            <input type="number" class="form-control" id="annualIncome" 
+                                                   placeholder="0,00" min="0" step="0.01" required>
+                                        </div>
+                                        <div class="form-text">Sua renda anual para cálculo do IR</div>
+                                    </div>
+                                </div>
+
+                                <!-- Alíquotas -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="irRate" class="form-label">Alíquota do IR (%)</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="irRate" 
+                                                   placeholder="0" min="0" max="100" step="0.1" required>
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                        <div class="form-text">Alíquota média do seu Imposto de Renda</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="deductionRate" class="form-label">Taxa de Dedução (%)</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="deductionRate" 
+                                                   placeholder="6" min="0" max="100" step="0.1" readonly>
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                        <div class="form-text">Taxa máxima permitida pela Lei Rouanet</div>
+                                    </div>
+                                </div>
+
+                                <!-- Botão de Cálculo -->
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                                            <i class="fas fa-calculator me-2"></i>
+                                            Calcular Benefícios
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-chart-pie me-2"></i>
+                                Resultados
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="results" class="d-none">
+                                <!-- Valor Dedutível -->
+                                <div class="result-item mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="result-label">Valor Dedutível:</span>
+                                        <span class="result-value" id="deductibleValue">R$ 0,00</span>
+                                    </div>
+                                    <div class="result-description">
+                                        Valor que pode ser deduzido do IR
+                                    </div>
+                                </div>
+
+                                <!-- Economia em Impostos -->
+                                <div class="result-item mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="result-label">Economia em IR:</span>
+                                        <span class="result-value text-success" id="taxSavings">R$ 0,00</span>
+                                    </div>
+                                    <div class="result-description">
+                                        Valor economizado em impostos
+                                    </div>
+                                </div>
+
+                                <!-- Custo Real -->
+                                <div class="result-item mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="result-label">Custo Real:</span>
+                                        <span class="result-value text-primary" id="realCost">R$ 0,00</span>
+                                    </div>
+                                    <div class="result-description">
+                                        Valor efetivo do investimento
+                                    </div>
+                                </div>
+
+                                <!-- Percentual de Economia -->
+                                <div class="result-item mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="result-label">Economia:</span>
+                                        <span class="result-value text-success" id="savingsPercentage">0%</span>
+                                    </div>
+                                    <div class="result-description">
+                                        Percentual de economia obtida
+                                    </div>
+                                </div>
+
+                                <!-- Resumo -->
+                                <div class="alert alert-success mt-3">
+                                    <h6 class="alert-heading">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        Resumo do Benefício
+                                    </h6>
+                                    <p class="mb-0" id="summaryText">
+                                        Investindo R$ 0,00, você economiza R$ 0,00 em impostos, 
+                                        reduzindo seu custo real para R$ 0,00.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="no-results" class="text-center text-muted">
+                                <i class="fas fa-calculator fa-3x mb-3"></i>
+                                <p>Preencha os dados acima para calcular seus benefícios fiscais.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações Adicionais -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h6 class="mb-0">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                Dicas Importantes
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Consulte um contador para cálculos precisos
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Mantenha todos os comprovantes
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Dedução válida no ano do investimento
+                                </li>
+                                <li class="mb-0">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Projeto aprovado pelo Ministério da Cultura
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplos Práticos -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Exemplos Práticos
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">Pessoa Física</h6>
+                                            <p class="card-text">
+                                                <strong>Patrocínio:</strong> R$ 1.000,00<br>
+                                                <strong>IR:</strong> 15%<br>
+                                                <strong>Economia:</strong> R$ 90,00<br>
+                                                <strong>Custo Real:</strong> R$ 910,00
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">Pessoa Jurídica</h6>
+                                            <p class="card-text">
+                                                <strong>Patrocínio:</strong> R$ 10.000,00<br>
+                                                <strong>IR:</strong> 25%<br>
+                                                <strong>Economia:</strong> R$ 1.000,00<br>
+                                                <strong>Custo Real:</strong> R$ 9.000,00
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title">Grande Empresa</h6>
+                                            <p class="card-text">
+                                                <strong>Patrocínio:</strong> R$ 100.000,00<br>
+                                                <strong>IR:</strong> 34%<br>
+                                                <strong>Economia:</strong> R$ 13.600,00<br>
+                                                <strong>Custo Real:</strong> R$ 86.400,00
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-handshake me-2"></i>
+                                Pronto para Patrocinar?
+                            </h5>
+                            <p class="card-text">
+                                Entre em contato conosco e descubra como seu patrocínio pode fazer a diferença 
+                                na realização da Paixão de Cristo de Maracanaú 2026.
+                            </p>
+                            <a href="{{ url_for('main.contato') }}" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-envelope me-2"></i>
+                                Entrar em Contato
+                            </a>
+                            <a href="{{ url_for('main.patrocinio') }}" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Mais Informações
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('fiscal-calculator');
+        const personTypeRadios = document.querySelectorAll('input[name="personType"]');
+        const deductionRateInput = document.getElementById('deductionRate');
+        const resultsDiv = document.getElementById('results');
+        const noResultsDiv = document.getElementById('no-results');
+
+        // Atualizar taxa de dedução baseada no tipo de pessoa
+        personTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'physical') {
+                    deductionRateInput.value = '6';
+                } else if (this.value === 'legal') {
+                    deductionRateInput.value = '4';
+                }
+            });
+        });
+
+        // Calcular benefícios fiscais
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const personType = document.querySelector('input[name="personType"]:checked').value;
+            const sponsorshipValue = parseFloat(document.getElementById('sponsorshipValue').value) || 0;
+            const annualIncome = parseFloat(document.getElementById('annualIncome').value) || 0;
+            const irRate = parseFloat(document.getElementById('irRate').value) || 0;
+            const deductionRate = parseFloat(deductionRateInput.value) || 0;
+
+            if (sponsorshipValue <= 0 || annualIncome <= 0 || irRate <= 0) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            // Calcular valor dedutível
+            let deductibleValue = sponsorshipValue;
+            
+            // Aplicar limites da Lei Rouanet
+            if (personType === 'physical') {
+                // Limite de 6% da renda anual ou R$ 6.000,00
+                const limitByIncome = annualIncome * 0.06;
+                const maxLimit = 6000;
+                deductibleValue = Math.min(sponsorshipValue, limitByIncome, maxLimit);
+            } else if (personType === 'legal') {
+                // Limite de 4% da renda anual ou R$ 4.000.000,00
+                const limitByIncome = annualIncome * 0.04;
+                const maxLimit = 4000000;
+                deductibleValue = Math.min(sponsorshipValue, limitByIncome, maxLimit);
+            }
+
+            // Calcular economia em impostos
+            const taxSavings = deductibleValue * (irRate / 100);
+            
+            // Calcular custo real
+            const realCost = sponsorshipValue - taxSavings;
+            
+            // Calcular percentual de economia
+            const savingsPercentage = sponsorshipValue > 0 ? (taxSavings / sponsorshipValue) * 100 : 0;
+
+            // Exibir resultados
+            document.getElementById('deductibleValue').textContent = formatCurrency(deductibleValue);
+            document.getElementById('taxSavings').textContent = formatCurrency(taxSavings);
+            document.getElementById('realCost').textContent = formatCurrency(realCost);
+            document.getElementById('savingsPercentage').textContent = formatPercentage(savingsPercentage);
+            
+            // Atualizar resumo
+            const summaryText = `Investindo ${formatCurrency(sponsorshipValue)}, você economiza ${formatCurrency(taxSavings)} em impostos, reduzindo seu custo real para ${formatCurrency(realCost)}.`;
+            document.getElementById('summaryText').textContent = summaryText;
+
+            // Mostrar resultados
+            resultsDiv.classList.remove('d-none');
+            noResultsDiv.classList.add('d-none');
+
+            // Analytics - track calculation
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'fiscal_calculation', {
+                    'event_category': 'calculator',
+                    'event_label': personType,
+                    'value': sponsorshipValue
+                });
+            }
+        });
+
+        // Função para formatar moeda
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(value);
+        }
+
+        // Função para formatar percentual
+        function formatPercentage(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'percent',
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1
+            }).format(value / 100);
+        }
+
+        // Inicializar com valores padrão
+        deductionRateInput.value = '6';
+    });
+</script>
+
+<style>
+    .result-item {
+        padding: 0.75rem;
+        background: var(--bg-light);
+        border-radius: var(--border-radius);
+        border-left: 4px solid var(--metallic-gold);
+    }
+
+    .result-label {
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    .result-value {
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .result-description {
+        font-size: 0.85rem;
+        color: var(--gray-medium);
+        margin-top: 0.25rem;
+    }
+
+    .btn-check:checked + .btn-outline-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white);
+    }
+
+    /* Modo escuro para calculadora */
+    [data-theme="dark"] .result-item {
+        background: var(--transparent-beige);
+        border-left-color: var(--metallic-gold);
+    }
+
+    [data-theme="dark"] .result-label {
+        color: var(--text-dark);
+    }
+
+    [data-theme="dark"] .result-description {
+        color: var(--gray-medium);
+    }
+
+    [data-theme="dark"] .btn-check:checked + .btn-outline-primary {
+        background-color: var(--metallic-gold);
+        border-color: var(--metallic-gold);
+        color: var(--earth-brown);
+    }
+</style>
+{% endblock %}

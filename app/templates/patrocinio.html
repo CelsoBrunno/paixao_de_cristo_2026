@@ -1,0 +1,418 @@
+{% extends "base.html" %}
+
+{% block title %}Patrocínio - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Interessado em patrocinar a Paixão de Cristo de Maracanaú? Entre em contato conosco e descubra como sua empresa pode fazer parte deste projeto cultural.{% endblock %}
+
+{% block content %}
+{% set breadcrumbs = [
+    {'text': 'Seja Patrocinador', 'url': ''}
+] %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="page-title display-4 fw-bold mb-3">Patrocínio</h1>
+                <p class="page-subtitle lead">
+                    Faça parte do maior evento cultural de Maracanaú
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Patrocínio Overview -->
+<section class="patrocinio-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <div class="overview-content">
+                    <h2 class="section-title mb-4">
+                        <span class="title-accent">Seja Nosso Parceiro</span>
+                    </h2>
+                    <p class="overview-text lead mb-4">
+                        A Paixão de Cristo de Maracanaú oferece uma oportunidade única 
+                        para empresas que desejam investir em cultura e, ao mesmo tempo, 
+                        aproveitar os benefícios fiscais da Lei de Incentivo à Cultura.
+                    </p>
+                    <p class="overview-text mb-4">
+                        Com 46 anos de tradição e um público de mais de 30.000 pessoas, 
+                        o projeto representa uma excelente oportunidade de ativação 
+                        de marca e responsabilidade social empresarial.
+                    </p>
+                    <div class="beneficios-rapidos mb-4">
+                        <h5 class="mb-3">Principais Benefícios:</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Isenção Fiscal:</strong> Dedução integral no IRPJ
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Alta Visibilidade:</strong> 30.000 pessoas no evento
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Projeto Aprovado:</strong> PRONAC 255599
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cta-inline">
+                        <a href="{{ url_for('main.contato') }}" 
+                           class="btn btn-warning btn-lg me-3">
+                            <i class="fas fa-phone me-2"></i>
+                            Falar com Equipe
+                        </a>
+                        <a href="#formulario-interesse" 
+                           class="btn btn-outline-dark btn-lg">
+                            <i class="fas fa-file-alt me-2"></i>
+                            Preencher Formulário
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="overview-image">
+                    <img src="{{ url_for('static', filename='images/patrocinio/banner-patrocinio.jpg') }}" 
+                         alt="Patrocinadores da Paixão de Cristo de Maracanaú" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formulário de Interesse -->
+<section class="interesse-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Demonstre Seu Interesse</span>
+                </h2>
+                <p class="section-description lead">
+                    Preencha o formulário abaixo e nossa equipe entrará em contato para apresentar as melhores opções de patrocínio
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-envelope me-2"></i>
+                            Formulário de Interesse em Patrocínio
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="interesse-form" method="POST" action="{{ url_for('main.contato') }}">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                            <input type="hidden" name="assunto" value="Interesse em Patrocínio - Paixão de Cristo 2026">
+                            
+                            <!-- Informações da Empresa -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="form-section-title mb-3">
+                                        <i class="fas fa-building me-2"></i>
+                                        Informações da Empresa
+                                    </h6>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label for="empresa" class="form-label">Nome da Empresa *</label>
+                                    <input type="text" class="form-control" id="empresa" name="empresa" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Informações de Contato -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="form-section-title mb-3">
+                                        <i class="fas fa-user me-2"></i>
+                                        Informações de Contato
+                                    </h6>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="nome" class="form-label">Nome Completo *</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cargo" class="form-label">Cargo/Função</label>
+                                    <input type="text" class="form-control" id="cargo" name="cargo" placeholder="Ex: Diretor, Gerente, etc.">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefone" class="form-label">Telefone/WhatsApp *</label>
+                                    <input type="tel" class="form-control" id="telefone" name="telefone" required placeholder="(85) 99999-9999">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label for="mensagem" class="form-label">Mensagem Adicional</label>
+                                    <textarea class="form-control" id="mensagem" name="mensagem" rows="4" 
+                                              placeholder="Conte-nos mais sobre sua empresa e como gostaria de participar do projeto..."></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Botão de Envio -->
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>
+                                        Enviar Interesse
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Informações Adicionais -->
+<section class="info-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="info-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="info-icon mb-3">
+                        <i class="fas fa-certificate fa-3x text-gold"></i>
+                    </div>
+                    <h4 class="info-title h5 mb-3">Projeto Aprovado</h4>
+                    <p class="info-text">
+                        PRONAC 255599 aprovado pelo Ministério da Cultura.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="info-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="info-icon mb-3">
+                        <i class="fas fa-percentage fa-3x text-success"></i>
+                    </div>
+                    <h4 class="info-title h5 mb-3">Benefícios Fiscais</h4>
+                    <p class="info-text">
+                        Dedução integral do valor do patrocínio no Imposto de Renda Pessoa Jurídica (IRPJ) através da Lei Rouanet.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="info-card text-center p-4 bg-white rounded shadow h-100">
+                    <div class="info-icon mb-3">
+                        <i class="fas fa-users fa-3x text-warning"></i>
+                    </div>
+                    <h4 class="info-title h5 mb-3">Alto Alcance</h4>
+                    <p class="info-text">
+                        Mais de 30.000 pessoas participam do evento, oferecendo excelente oportunidade de ativação de marca.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="cta-title mb-3">
+                    Tem Dúvidas? Entre em Contato
+                </h2>
+                <p class="cta-description lead mb-0">
+                    Nossa equipe está pronta para esclarecer todas as suas dúvidas sobre patrocínio e apresentar as melhores opções para sua empresa.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <div class="d-flex flex-column align-items-lg-end">
+                    <a href="{{ url_for('main.contato') }}" 
+                       class="btn btn-warning btn-lg mb-2 w-100" style="max-width: 220px; min-width: 220px;">
+                        <i class="fas fa-phone me-2"></i>
+                        Fale Conosco
+                    </a>
+                    <a href="{{ url_for('main.patrocinio') }}" 
+                       class="btn btn-outline-light btn-lg mb-2 w-100" style="max-width: 220px; min-width: 220px;">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Mais Informações
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.page-header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.title-accent {
+    position: relative;
+    color: #007bff;
+}
+
+.title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #ffc107;
+}
+
+.form-section-title {
+    color: var(--earth-brown);
+    font-weight: 600;
+    border-bottom: 2px solid var(--metallic-gold);
+    padding-bottom: 0.5rem;
+}
+
+.info-card {
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--metallic-gold);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.info-icon {
+    color: var(--metallic-gold);
+}
+
+.info-title {
+    font-family: var(--font-primary);
+    color: var(--earth-brown);
+    font-weight: 600;
+}
+
+.info-text {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.beneficios-rapidos ul li {
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+.beneficios-rapidos ul li i {
+    color: var(--success-color);
+}
+
+/* Estilos do formulário */
+.form-control:focus {
+    border-color: var(--metallic-gold);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.form-select:focus {
+    border-color: var(--metallic-gold);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    border-color: var(--earth-brown);
+}
+
+.btn-primary:hover {
+    background: var(--earth-brown);
+    border-color: var(--earth-brown);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.card-header {
+    background: var(--gradient-primary) !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-section-title {
+        font-size: 1rem;
+    }
+    
+    .info-card {
+        margin-bottom: 1rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Máscara para telefone
+        const telefoneInput = document.getElementById('telefone');
+        if (telefoneInput) {
+            telefoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/^(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{4,5})(\d{4})$/, '$1-$2');
+                e.target.value = value;
+            });
+        }
+        
+        // Validação do formulário
+        const form = document.getElementById('interesse-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const empresa = document.getElementById('empresa').value.trim();
+                const nome = document.getElementById('nome').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const telefone = document.getElementById('telefone').value.trim();
+                
+                if (!empresa || !nome || !email || !telefone) {
+                    e.preventDefault();
+                    alert('Por favor, preencha todos os campos obrigatórios.');
+                    return false;
+                }
+                
+                // Validação básica de email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    e.preventDefault();
+                    alert('Por favor, insira um e-mail válido.');
+                    return false;
+                }
+                
+                // Analytics - track form submission
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'patrocinio_interest_form', {
+                        'event_category': 'form',
+                        'event_label': 'patrocinio_interest',
+                        'value': 1
+                    });
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

@@ -2,9 +2,10 @@
 
 {% block title %}Paixão de Cristo de Maracanaú - O Maior Espetáculo a Céu Aberto da Região{% endblock %}
 
-{% block meta_description %}Paixão de Cristo de Maracanaú - 46 anos de tradição, público de 30.000 pessoas. O maior espetáculo a céu aberto da região acontece nos dias 2 e 3 de abril de 2026.{% endblock %}
+{% block meta_description %}Paixão de Cristo de Maracanaú - 46 anos de tradição, público de 30.000 pessoas. O maior espetáculo a céu aberto da região acontecerá no dia 3 de abril de 2026.{% endblock %}
 
 {% block content %}
+{% set share_text = 'Paixão de Cristo de Maracanau - 46 anos de tradição! O maior espetáculo a céu aberto da região.' %}
 <!-- Hero Section -->
 <section class="hero-section" style="background-image: url('{{ url_for('static', filename='images/jesus-fumaca.jpg') }}');">
     <div class="hero-overlay">
@@ -13,26 +14,26 @@
                 <div class="col-lg-8">
                     <div class="hero-content text-white">
                         <div class="hero-logo mb-4">
-                            <img src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}" 
-                                 alt="Paixão de Cristo - Maracanaú" 
+                            <img src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}"
+                                 alt="Paixão de Cristo - Maracanaú"
                                  class="hero-brand-logo">
                         </div>
                         <h2 class="hero-subtitle display-6 mb-4">
                             O Maior Espetáculo a Céu Aberto da Região
                         </h2>
                         <p class="hero-description lead mb-5">
-                            Uma tradição de 46 anos que emociona milhares de pessoas com arte, 
-                            cultura e fé. Descubra a história e os detalhes deste espetáculo 
-                            único que acontece nos dias 2 e 3 de abril de 2026.
+                            Uma tradição de 46 anos que emociona milhares de pessoas com arte,
+                            cultura e fé. Descubra a história e os detalhes deste espetáculo
+                            que acontecerá no dia 3 de abril de 2026.
                         </p>
-                        
+
                         <div class="hero-buttons">
-                            <a href="{{ url_for('main.evento') }}" 
+                            <a href="{{ url_for('main.evento') }}"
                                class="btn btn-warning btn-lg me-3 mb-3">
                                 <i class="fas fa-calendar me-2"></i>
                                 Conheça o Evento
                             </a>
-                            <a href="{{ url_for('main.sobre') }}" 
+                            <a href="{{ url_for('main.sobre') }}"
                                class="btn btn-outline-light btn-lg mb-3">
                                 <i class="fas fa-info-circle me-2"></i>
                                 Saiba Mais
@@ -57,13 +58,13 @@
                     <h3 class="highlight-number display-4 fw-bold text-gold mb-2">46</h3>
                     <h4 class="highlight-title h5 mb-3">Anos de Tradição</h4>
                     <p class="highlight-description">
-                        Desde 1987, quando começou como uma gincana escolar, 
-                        o projeto cresceu e se tornou uma das maiores manifestações 
+                        Desde 1987, quando começou como uma gincana escolar,
+                        o projeto cresceu e se tornou uma das maiores manifestações
                         culturais da região.
                     </p>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="highlight-card text-center p-4 h-100">
                     <div class="highlight-icon mb-3">
@@ -72,13 +73,13 @@
                     <h3 class="highlight-number display-4 fw-bold text-gold mb-2">30.000</h3>
                     <h4 class="highlight-title h5 mb-3">Público Anual</h4>
                     <p class="highlight-description">
-                        Milhares de pessoas se reúnem todos os anos para assistir 
-                        ao espetáculo, participando de uma experiência única de 
+                        Milhares de pessoas se reúnem todos os anos para assistir
+                        ao espetáculo, participando de uma experiência única de
                         arte e espiritualidade.
                     </p>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="highlight-card text-center p-4 h-100">
                     <div class="highlight-icon mb-3">
@@ -86,8 +87,8 @@
                     </div>
                     <h3 class="highlight-title h5 mb-3">Lei de Incentivo</h3>
                     <p class="highlight-description">
-                        Projeto aprovado na Lei de Incentivo à Cultura, 
-                        oferecendo benefícios fiscais para empresas patrocinadoras 
+                        Projeto aprovado na Lei de Incentivo à Cultura,
+                        oferecendo benefícios fiscais para empresas patrocinadoras
                         através da isenção no Imposto de Renda.
                     </p>
                 </div>
@@ -106,14 +107,45 @@
                         <span class="title-accent">Evento 2026</span>
                     </h2>
                     <h3 class="evento-date display-5 fw-bold text-gold mb-4">
-                        2 e 3 de Abril de 2026
+                        3 de Abril de 2026
                     </h3>
+
+                    <!-- Contador Regressivo -->
+                    <div class="countdown-container mb-4 w-100" id="countdown">
+                        <div class="row g-3 justify-content-center w-100 mx-0">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="countdown-item bg-white rounded shadow p-3 text-center h-100">
+                                    <div class="countdown-number text-gold fw-bold fs-2" id="days">00</div>
+                                    <div class="countdown-label text-muted small">Dias</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="countdown-item bg-white rounded shadow p-3 text-center h-100">
+                                    <div class="countdown-number text-gold fw-bold fs-2" id="hours">00</div>
+                                    <div class="countdown-label text-muted small">Horas</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="countdown-item bg-white rounded shadow p-3 text-center h-100">
+                                    <div class="countdown-number text-gold fw-bold fs-2" id="minutes">00</div>
+                                    <div class="countdown-label text-muted small">Minutos</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <div class="countdown-item bg-white rounded shadow p-3 text-center h-100">
+                                    <div class="countdown-number text-gold fw-bold fs-2" id="seconds">00</div>
+                                    <div class="countdown-label text-muted small">Segundos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <p class="evento-description lead mb-4">
-                        Prepare-se para uma experiência ainda mais grandiosa! 
-                        O evento de 2026 promete ser o maior de todos os tempos, 
+                        Prepare-se para uma experiência ainda mais grandiosa!
+                        O evento de 2026 promete ser o maior de todos os tempos,
                         com novas atrações, estrutura ampliada e programação especial.
                     </p>
-                    
+
                     <div class="evento-features">
                         <div class="feature-item d-flex align-items-center mb-3">
                             <i class="fas fa-theater-masks fa-2x text-gold me-3"></i>
@@ -122,7 +154,7 @@
                                 <p class="mb-0 text-muted">Apresentação principal da Paixão de Cristo</p>
                             </div>
                         </div>
-                        
+
                         <div class="feature-item d-flex align-items-center mb-3">
                             <i class="fas fa-music fa-2x text-gold me-3"></i>
                             <div>
@@ -130,7 +162,7 @@
                                 <p class="mb-0 text-muted">Artistas locais e regionais</p>
                             </div>
                         </div>
-                        
+
                         <div class="feature-item d-flex align-items-center mb-3">
                             <i class="fas fa-graduation-cap fa-2x text-gold me-3"></i>
                             <div>
@@ -138,7 +170,7 @@
                                 <p class="mb-0 text-muted">Cursos de iniciação teatral</p>
                             </div>
                         </div>
-                        
+
                         <div class="feature-item d-flex align-items-center">
                             <i class="fas fa-store fa-2x text-gold me-3"></i>
                             <div>
@@ -147,22 +179,30 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="evento-buttons mt-4">
-                        <a href="{{ url_for('main.evento') }}" 
+                        <a href="{{ url_for('main.evento') }}"
                            class="btn btn-brown btn-lg me-3">
                             <i class="fas fa-calendar me-2"></i>
                             Ver Detalhes
                         </a>
+                        <a href="{{ url_for('main.patrocinio') }}"
+                           class="btn btn-warning btn-lg">
+                            <i class="fas fa-handshake me-2"></i>
+                            Seja Patrocinador
+                        </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-6">
                 <div class="evento-image">
-                    <img src="{{ url_for('static', filename='images/vista-aerea.png') }}" 
-                         alt="Vista aérea do evento Paixão de Cristo de Maracanaú 2026" 
-                         class="img-fluid rounded shadow">
+                    <img src="{{ url_for('static', filename='images/vista-aerea.png') }}"
+                         alt="Vista aérea do evento Paixão de Cristo de Maracanaú 2026"
+                         class="img-fluid rounded shadow"
+                         width="800"
+                         height="600"
+                         loading="lazy">
                 </div>
             </div>
         </div>
@@ -170,115 +210,29 @@
 </section>
 
 
-<!-- Cronograma de Execução -->
-<section class="cronograma-section py-5 bg-light">
+
+<!-- CTA Patrocínio Destacado -->
+<section class="patrocinio-cta-section py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="section-title mb-4">
-                    <span class="title-accent">Cronograma de Execução</span>
-                </h2>
-                <p class="section-description lead">
-                    O projeto será executado ao longo de 26 semanas (6 meses) divididas em três fases principais
-                </p>
-            </div>
+        <div class="patrocinio-cta fade-in-up">
+            <h3 class="mb-3">
+                <i class="fas fa-star me-2"></i>
+                Seja Patrocinador e Aproveite os Benefícios Fiscais
+            </h3>
+            <p class="lead mb-4">
+                Dedução integral no Imposto de Renda • Projeto Aprovado PRONAC 255599 • 30.000 pessoas no evento
+            </p>
+            <a href="{{ url_for('main.patrocinio') }}"
+               class="btn btn-dark btn-lg me-3">
+                <i class="fas fa-handshake me-2"></i>
+                Quero Patrocinar
+            </a>
+            <a href="{{ url_for('main.contato') }}"
+               class="btn btn-outline-dark btn-lg">
+                <i class="fas fa-phone me-2"></i>
+                Falar com Equipe
+            </a>
         </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="cronograma-card p-4 bg-white rounded shadow h-100">
-                    <div class="cronograma-icon mb-3 text-center">
-                        <i class="fas fa-cogs fa-3x text-gold"></i>
-                    </div>
-                    <h3 class="cronograma-titulo h5 text-center mb-3">Pré-Produção</h3>
-                    <div class="cronograma-detalhes text-center mb-3">
-                        <p class="cronograma-duracao fw-bold text-gold mb-1">16 semanas</p>
-                        <p class="cronograma-periodo text-muted mb-0">Janeiro - Abril 2026</p>
-                    </div>
-                    <ul class="cronograma-atividades list-unstyled">
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Seleção de elenco e equipe técnica
-                        </li>
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Desenvolvimento de cenários e figurinos
-                        </li>
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Ensaios e preparação das oficinas
-                        </li>
-                        <li class="atividade-item">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Montagem da estrutura técnica
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6">
-                <div class="cronograma-card p-4 bg-white rounded shadow h-100">
-                    <div class="cronograma-icon mb-3 text-center">
-                        <i class="fas fa-play-circle fa-3x text-success"></i>
-                    </div>
-                    <h3 class="cronograma-titulo h5 text-center mb-3">Execução</h3>
-                    <div class="cronograma-detalhes text-center mb-3">
-                        <p class="cronograma-duracao fw-bold text-success mb-1">2 semanas</p>
-                        <p class="cronograma-periodo text-muted mb-0">Abril 2026</p>
-                    </div>
-                    <ul class="cronograma-atividades list-unstyled">
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Apresentações do espetáculo principal
-                        </li>
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Realização das oficinas de formação
-                        </li>
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Funcionamento da feira de artesanato
-                        </li>
-                        <li class="atividade-item">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Apresentações do palco livre
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6">
-                <div class="cronograma-card p-4 bg-white rounded shadow h-100">
-                    <div class="cronograma-icon mb-3 text-center">
-                        <i class="fas fa-flag-checkered fa-3x text-warning"></i>
-                    </div>
-                    <h3 class="cronograma-titulo h5 text-center mb-3">Pós-Produção</h3>
-                    <div class="cronograma-detalhes text-center mb-3">
-                        <p class="cronograma-duracao fw-bold text-warning mb-1">8 semanas</p>
-                        <p class="cronograma-periodo text-muted mb-0">Maio - Junho 2026</p>
-                    </div>
-                    <ul class="cronograma-atividades list-unstyled">
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Desmontagem e limpeza do local
-                        </li>
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Prestação de contas e relatórios
-                        </li>
-                        <li class="atividade-item mb-2">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Avaliação dos resultados alcançados
-                        </li>
-                        <li class="atividade-item">
-                            <i class="fas fa-check text-success me-2"></i>
-                            Planejamento para próximas edições
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
     </div>
 </section>
 
@@ -291,16 +245,132 @@
                     Participe Desta Tradição
                 </h2>
                 <p class="cta-description lead mb-0">
-                    Venha fazer parte do maior evento cultural de Maracanaú. 
+                    Venha fazer parte do maior evento cultural de Maracanaú.
                     Uma experiência única de arte, cultura e fé que emociona milhares de pessoas.
                 </p>
             </div>
             <div class="col-lg-4 text-lg-end">
-                <a href="{{ url_for('main.evento') }}" 
+                <a href="{{ url_for('main.evento') }}"
                    class="btn btn-warning btn-lg">
                     <i class="fas fa-calendar me-2"></i>
                     Saiba Mais Sobre o Evento
                 </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title mb-3">
+                    <span class="title-accent">Receba Nossas Novidades</span>
+                </h2>
+                <p class="section-description mb-4">
+                    Cadastre-se para receber informações sobre o evento, oportunidades de patrocínio e novidades da Paixão de Cristo de Maracanau.
+                </p>
+                <form action="{{ url_for('main.newsletter_subscribe') }}" method="POST" class="newsletter-form fade-in-up">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-md-6">
+                            <input type="text"
+                                   class="form-control form-control-lg"
+                                   name="nome"
+                                   placeholder="Seu nome"
+                                   required
+                                   aria-label="Nome para newsletter">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email"
+                                   class="form-control form-control-lg"
+                                   name="email"
+                                   placeholder="Seu e-mail"
+                                   required
+                                   aria-label="E-mail para newsletter">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-brown btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                Cadastrar
+                            </button>
+                        </div>
+                    </div>
+                    <small class="text-muted d-block mt-3">
+                        <i class="fas fa-lock me-1"></i>
+                        Seus dados estão seguros e não serão compartilhados.
+                    </small>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cadastro para Novos Atores -->
+<section class="cadastro-section py-5 parchment-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Quer Participar do Projeto?</span>
+                </h2>
+                <p class="section-description lead mb-4">
+                    Faça parte da Paixão de Cristo de Maracanaú!
+                    Cadastre-se para participar dos cursos de formação artística e
+                    tenha a oportunidade de atuar no maior espetáculo a céu aberto da região.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="cadastro-beneficio-card p-4 bg-white rounded shadow h-100 text-center">
+                    <div class="beneficio-icon mb-3">
+                        <i class="fas fa-graduation-cap fa-3x text-gold"></i>
+                    </div>
+                    <h5 class="beneficio-titulo formacao h6 mb-3">Formação Gratuita</h5>
+                    <p class="beneficio-descricao mb-0">
+                        Cursos de teatro, acessibilidade e produção
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cadastro-beneficio-card p-4 bg-white rounded shadow h-100 text-center">
+                    <div class="beneficio-icon mb-3">
+                        <i class="fas fa-star fa-3x text-gold"></i>
+                    </div>
+                    <h5 class="beneficio-titulo experiencia h6 mb-3">Experiência Profissional</h5>
+                    <p class="beneficio-descricao mb-0">
+                        Participe de um espetáculo de grande porte
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cadastro-beneficio-card p-4 bg-white rounded shadow h-100 text-center">
+                    <div class="beneficio-icon mb-3">
+                        <i class="fas fa-users fa-3x text-gold"></i>
+                    </div>
+                    <h5 class="beneficio-titulo networking h6 mb-3">Networking</h5>
+                    <p class="beneficio-descricao mb-0">
+                        Conheça outros artistas e profissionais
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="https://docs.google.com/forms/d/1UnosiwpSL_Kt7UvYgDR4YhC8Ob73yBkCLnLlRPXasX8/edit"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline-primary btn-lg px-5 py-3">
+                    <i class="fas fa-user-plus me-2"></i>
+                    Quero Participar do Projeto
+                </a>
+                <p class="mt-3 text-muted">
+                    <i class="fas fa-external-link-alt me-1"></i>
+                    Você será redirecionado para o formulário de inscrição
+                </p>
             </div>
         </div>
     </div>
@@ -310,7 +380,7 @@
 {% block extra_head %}
 <style>
 .hero-section {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%), 
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%),
                 url('{{ url_for("static", filename="images/jesus-fumaca.jpg") }}');
     background-size: cover;
     background-position: center;
@@ -427,6 +497,36 @@
 
 .cta-section {
     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+/* Cadastro Section Styles */
+.cadastro-beneficio-card {
+    transition: transform 0.3s ease;
+    border-left: 5px solid var(--metallic-gold);
+}
+
+.cadastro-beneficio-card:hover {
+    transform: translateY(-5px);
+}
+
+.beneficio-icon i {
+    color: #ffc107;
+}
+
+.beneficio-titulo {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.beneficio-titulo.networking,
+.beneficio-titulo.experiencia,
+.beneficio-titulo.formacao {
+    color: #2D1B1B;
+}
+
+.beneficio-descricao {
+    color: #6c757d;
+    font-size: 0.9rem;
 }
 </style>
 {% endblock %}

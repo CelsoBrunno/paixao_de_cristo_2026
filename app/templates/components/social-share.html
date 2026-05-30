@@ -1,0 +1,33 @@
+<!-- Social Share Buttons Component -->
+{% set current_url = request.url|urlencode %}
+{% set share_message = (share_text|default('Paixão de Cristo de Maracanau 2026'))|urlencode %}
+<div class="social-share-buttons {{ custom_class or '' }}">
+    <div class="share-label mb-2">
+        <small class="text-muted">
+            <i class="fas fa-share-alt me-1"></i>Compartilhar:
+        </small>
+    </div>
+    <div class="btn-group" role="group" aria-label="Compartilhar nas redes sociais">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ current_url }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="btn btn-sm btn-primary"
+           aria-label="Compartilhar no Facebook">
+            <i class="fab fa-facebook-f me-1"></i>Facebook
+        </a>
+        <a href="https://twitter.com/intent/tweet?url={{ current_url }}&text={{ share_message }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="btn btn-sm btn-info"
+           aria-label="Compartilhar no X">
+            <i class="fab fa-x-twitter me-1"></i>X
+        </a>
+        <a href="https://wa.me/?text={{ share_message }}%20{{ current_url }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="btn btn-sm btn-success"
+           aria-label="Compartilhar no WhatsApp">
+            <i class="fab fa-whatsapp me-1"></i>WhatsApp
+        </a>
+    </div>
+</div>

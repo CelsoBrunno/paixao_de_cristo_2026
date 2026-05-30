@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+
+{% block title %}Upload de Imagens - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="section-title">
+                    <i class="fas fa-upload me-3"></i>
+                    Upload de Imagens
+                </h1>
+                <a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Voltar ao Dashboard
+                </a>
+            </div>
+
+            <!-- Upload Individual -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-image me-2"></i>
+                                Upload Individual
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" enctype="multipart/form-data" action="{{ url_for('admin.upload_images') }}">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="images" class="form-label">Selecionar Imagens</label>
+                                        <input type="file" class="form-control" id="images" name="images" 
+                                               multiple accept="image/*" required>
+                                        <div class="form-text">Você pode selecionar múltiplas imagens de uma vez.</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="category" class="form-label">Categoria</label>
+                                        <select class="form-select" id="category" name="category" required>
+                                            <option value="">Selecione uma categoria</option>
+                                            {% for key, value in categories.items() %}
+                                            <option value="{{ key }}">{{ value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="description" class="form-label">Descrição (opcional)</label>
+                                        <input type="text" class="form-control" id="description" name="description" 
+                                               placeholder="Descrição das imagens">
+                                        <div class="form-text">O título será gerado automaticamente a partir do nome do arquivo.</div>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-upload me-2"></i>Fazer Upload
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload em Lote (ZIP) -->
+            <div class="row" id="zip-upload">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-file-archive me-2"></i>
+                                Upload em Lote (ZIP)
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Dica:</strong> Você pode compactar várias imagens em um arquivo ZIP e fazer upload de uma vez. 
+                                Isso é especialmente útil no PythonAnywhere onde o upload individual pode ser trabalhoso.
+                            </div>
+                            
+                            <form method="POST" enctype="multipart/form-data" action="{{ url_for('admin.upload_zip') }}">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="zip_file" class="form-label">Arquivo ZIP</label>
+                                        <input type="file" class="form-control" id="zip_file" name="zip_file" 
+                                               accept=".zip" required>
+                                        <div class="form-text">Selecione um arquivo ZIP contendo as imagens.</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="zip_category" class="form-label">Categoria</label>
+                                        <select class="form-select" id="zip_category" name="category" required>
+                                            <option value="">Selecione uma categoria</option>
+                                            {% for key, value in categories.items() %}
+                                            <option value="{{ key }}">{{ value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-file-archive me-2"></i>Extrair e Fazer Upload
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instruções -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-question-circle me-2"></i>
+                                Instruções de Upload
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Formatos Suportados:</h6>
+                                    <ul>
+                                        <li>JPEG (.jpg, .jpeg)</li>
+                                        <li>PNG (.png)</li>
+                                        <li>GIF (.gif)</li>
+                                        <li>WebP (.webp)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Limitações:</h6>
+                                    <ul>
+                                        <li>Tamanho máximo: 16MB por arquivo</li>
+                                        <li>Resolução recomendada: até 4K</li>
+                                        <li>Upload em lote: até 50 imagens por ZIP</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <h6>Dicas para PythonAnywhere:</h6>
+                                <ol>
+                                    <li><strong>Upload em Lote:</strong> Use a funcionalidade ZIP para enviar várias imagens de uma vez</li>
+                                    <li><strong>Organização:</strong> Organize suas imagens em pastas por categoria antes de compactar</li>
+                                    <li><strong>Nomenclatura:</strong> Use nomes descritivos para facilitar a identificação</li>
+                                    <li><strong>Otimização:</strong> Redimensione as imagens antes do upload para economizar espaço</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Preview das imagens selecionadas
+    document.getElementById('images').addEventListener('change', function(e) {
+        const files = e.target.files;
+        const preview = document.getElementById('preview');
+        
+        if (preview) {
+            preview.remove();
+        }
+        
+        if (files.length > 0) {
+            const previewDiv = document.createElement('div');
+            previewDiv.id = 'preview';
+            previewDiv.className = 'mt-3';
+            previewDiv.innerHTML = '<h6>Preview das Imagens:</h6>';
+            
+            Array.from(files).forEach((file, index) => {
+                if (index < 6) { // Mostrar apenas as primeiras 6
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    img.className = 'img-thumbnail me-2 mb-2';
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.style.objectFit = 'cover';
+                    previewDiv.appendChild(img);
+                }
+            });
+            
+            if (files.length > 6) {
+                const more = document.createElement('div');
+                more.textContent = `... e mais ${files.length - 6} imagem(ns)`;
+                more.className = 'text-muted';
+                previewDiv.appendChild(more);
+            }
+            
+            e.target.parentNode.appendChild(previewDiv);
+        }
+    });
+</script>
+
+<style>
+    /* Usar o mesmo fundo da seção Nossa História */
+    body {
+        background: var(--parchment-bg) !important;
+        background-attachment: fixed !important;
+    }
+    
+    /* Remover qualquer imagem de fundo que possa estar sendo aplicada */
+    body::before {
+        display: none !important;
+    }
+    
+    body::after {
+        display: none !important;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}Upload de Notícias - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Cabeçalho -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="section-title">
+                        <i class="fas fa-plus-circle me-3"></i>
+                        Nova Notícia
+                    </h1>
+                    <p class="section-subtitle">Adicione uma nova notícia ao blog</p>
+                </div>
+                <div>
+                    <a href="{{ url_for('blog_admin.dashboard') }}" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar
+                    </a>
+                    <a href="{{ url_for('blog_admin.manage_news') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-cog me-2"></i>Gerenciar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formulário de Upload -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-edit me-2"></i>
+                                Informações da Notícia
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-8 mb-3">
+                                        <label for="title" class="form-label">Título da Notícia *</label>
+                                        <input type="text" class="form-control" id="title" name="title" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="category" class="form-label">Categoria *</label>
+                                        <select class="form-select" id="category" name="category" required>
+                                            {% for key, value in categories.items() %}
+                                            <option value="{{ key }}">{{ value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="author" class="form-label">Autor *</label>
+                                        <input type="text" class="form-control" id="author" name="author" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="date" class="form-label">Data da Notícia</label>
+                                        <input type="date" class="form-control" id="date" name="date">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="content" class="form-label">Conteúdo da Notícia *</label>
+                                    <textarea class="form-control" id="content" name="content" rows="8" required></textarea>
+                                    <div class="form-text">Descreva os detalhes da notícia</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="images" class="form-label">Imagem da Notícia</label>
+                                    <input type="file" class="form-control" id="images" name="images" accept="image/*" multiple>
+                                    <div class="form-text">Selecione uma ou mais imagens para a notícia</div>
+                                </div>
+
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="button" class="btn btn-outline-secondary me-md-2" onclick="clearForm()">
+                                        <i class="fas fa-times me-2"></i>Limpar
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Salvar Notícia
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Dicas -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                Dicas
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Use títulos descritivos e atrativos
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Escolha a categoria correta
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Adicione imagens de qualidade
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Revise o conteúdo antes de salvar
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Categorias Disponíveis -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="fas fa-tags me-2"></i>
+                                Categorias
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            {% for key, value in categories.items() %}
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary">{{ value }}</span>
+                                <small class="text-muted">{{ key }}</small>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function clearForm() {
+        document.getElementById('title').value = '';
+        document.getElementById('content').value = '';
+        document.getElementById('author').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('images').value = '';
+        document.getElementById('category').selectedIndex = 0;
+    }
+
+    // Auto-preenchimento da data atual
+    document.addEventListener('DOMContentLoaded', function() {
+        const dateInput = document.getElementById('date');
+        if (!dateInput.value) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+        }
+    });
+</script>
+
+<style>
+    /* Usar o mesmo fundo da seção Nossa História */
+    body {
+        background: var(--parchment-bg) !important;
+        background-attachment: fixed !important;
+    }
+    
+    /* Remover qualquer imagem de fundo que possa estar sendo aplicada */
+    body::before {
+        display: none !important;
+    }
+    
+    body::after {
+        display: none !important;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,111 @@
+<!-- Navbar Component -->
+<nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--gradient-primary);" role="navigation" aria-label="Navegação principal">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand-link" href="{{ url_for('main.index') }}">
+                        <img src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}" 
+                             alt="Paixão de Cristo - Maracanaú" 
+                             class="brand-logo">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.index') }}">
+                        <i class="fas fa-home me-1"></i>
+                        Início
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.sobre') }}">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Sobre
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="atividadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-theater-masks me-1"></i>
+                        Atividades
+                        <i class="fas fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="atividadesDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('main.espetaculo') }}">
+                            <i class="fas fa-play-circle me-2"></i>
+                            O Espetáculo Cênico
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('main.festival') }}">
+                            <i class="fas fa-music me-2"></i>
+                            Festival de Música
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('main.formacao') }}">
+                            <i class="fas fa-graduation-cap me-2"></i>
+                            Formação Artística
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('main.feira') }}">
+                            <i class="fas fa-store me-2"></i>
+                            Feira Livre
+                        </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.evento') }}">
+                        <i class="fas fa-calendar-alt me-1"></i>
+                        Evento
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.midia') }}">
+                        <i class="fas fa-newspaper me-1"></i>
+                        <span style="white-space: nowrap;">Na Mídia</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.galeria') }}">
+                        <i class="fas fa-images me-1"></i>
+                        Galeria
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.blog') }}">
+                        <i class="fas fa-newspaper me-1"></i>
+                        Blog
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.patrocinio') }}">
+                        <i class="fas fa-handshake me-1"></i>
+                        Patrocínio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.especificacoes') }}">
+                        <i class="fas fa-cogs me-1"></i>
+                        Especificações
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.faq') }}">
+                        <i class="fas fa-question-circle me-1"></i>
+                        FAQ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.contato') }}">
+                        <i class="fas fa-envelope me-1"></i>
+                        Contato
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://docs.google.com/forms/d/1UnosiwpSL_Kt7UvYgDR4YhC8Ob73yBkCLnLlRPXasX8/viewform" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-user-plus me-1"></i>
+                        <span style="white-space: nowrap;">Inscreva-se</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

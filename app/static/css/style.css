@@ -71,7 +71,8 @@ body {
     background-attachment: fixed;
     overflow-x: hidden;
     position: relative;
-    background-size: 400px 400px;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
 }
 
 /* Textura de pergaminho proeminente com imperfeições */
@@ -204,8 +205,9 @@ p, .body-text, .menu-text, .info-text {
 .brand-logo {
     height: 60px;
     width: auto;
-    max-width: 200px;
+    max-width: 350px;
     transition: var(--transition);
+    object-fit: contain;
 }
 
 .brand-logo:hover {
@@ -216,7 +218,7 @@ p, .body-text, .menu-text, .info-text {
 @media (max-width: 768px) {
     .brand-logo {
         height: 50px;
-        max-width: 160px;
+        max-width: 280px;
     }
 }
 
@@ -234,14 +236,206 @@ p, .body-text, .menu-text, .info-text {
     opacity: 0.9;
 }
 
+/* Garantir que o navbar não quebre linha */
+#navigation .container,
+.navbar .container {
+    max-width: 100% !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap;
+    position: relative;
+    min-height: 76px;
+}
+
+.navbar-brand {
+    position: static;
+    transform: none;
+    margin: 0;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilizar a logo quando está dentro do menu */
+.navbar-nav .navbar-brand-link {
+    padding: 0.5rem 0.8rem !important;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.navbar-nav .navbar-brand-link:hover {
+    transform: scale(1.05);
+}
+
+.navbar-nav .navbar-brand-link .brand-logo {
+    height: 50px;
+    width: auto;
+    max-width: 280px;
+    margin: 0;
+    transition: var(--transition);
+}
+
+.navbar {
+    position: relative;
+    min-height: 76px;
+}
+
+.navbar-toggler {
+    position: relative;
+    margin-left: 15px;
+    margin-right: auto;
+    z-index: 11;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 0.5rem;
+    order: 1;
+    left: 0 !important;
+    right: auto !important;
+}
+
+/* Forçar botão sempre à esquerda, mesmo quando menu está aberto */
+#navigation .navbar-toggler,
+#navigation .navbar-toggler[aria-expanded="true"],
+#navigation .navbar-toggler[aria-expanded="false"],
+.navbar .navbar-toggler,
+.navbar .navbar-toggler[aria-expanded="true"],
+.navbar .navbar-toggler[aria-expanded="false"],
+.navbar-toggler,
+.navbar-toggler[aria-expanded="true"],
+.navbar-toggler[aria-expanded="false"] {
+    position: relative !important;
+    margin-left: 15px !important;
+    margin-right: auto !important;
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
+    order: 1 !important;
+    float: none !important;
+    flex-shrink: 0 !important;
+}
+
+/* Forçar container a não usar space-between - regra com máxima especificidade */
+#navigation.container,
+#navigation .container,
+.navbar.container,
+.navbar .container {
+    justify-content: flex-start !important;
+    align-items: center !important;
+}
+
+/* Garantir que o botão seja o primeiro elemento */
+#navigation .container > .navbar-toggler,
+.navbar .container > .navbar-toggler {
+    order: 1 !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+.navbar-collapse {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-nav {
+    flex-wrap: nowrap !important;
+    white-space: nowrap;
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Fazer a logo aparecer como primeiro item do menu */
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-nav::before {
+    content: '';
+    display: none;
+}
+
+.navbar-nav .nav-item {
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
 .navbar-nav .nav-link {
     color: var(--white) !important;
     font-weight: 500;
     font-family: var(--font-sans);
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0.5rem;
     transition: var(--transition);
     position: relative;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    white-space: nowrap !important;
+    font-size: 0.85rem;
+    display: inline-flex !important;
+    align-items: center;
+    flex-wrap: nowrap !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    overflow: visible !important;
+    line-height: 1.2;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -moz-hyphens: none !important;
+    -ms-hyphens: none !important;
+    gap: 0.25rem;
+}
+
+.navbar-nav .nav-link,
+.navbar-nav .nav-link *,
+.navbar-nav .nav-link i,
+.navbar-nav .nav-link span {
+    white-space: nowrap !important;
+    display: inline !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+}
+
+/* Destaque especial para o item "Inscreva-se" */
+.navbar-nav .nav-link[href*="docs.google.com/forms"] {
+    background: linear-gradient(135deg, var(--metallic-gold, #D4AF37) 0%, #B8941F 100%);
+    color: var(--text-dark, #2D1B1B) !important;
+    border-radius: 8px;
+    padding: 0.75rem 1rem !important;
+    font-weight: 600 !important;
+    margin-left: 0.5rem;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link[href*="docs.google.com/forms"]:hover {
+    background: linear-gradient(135deg, #B8941F 0%, var(--metallic-gold, #D4AF37) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
+    color: var(--text-dark, #2D1B1B) !important;
+}
+
+.navbar-nav .nav-link[href*="docs.google.com/forms"] i {
+    color: var(--text-dark, #2D1B1B) !important;
+    opacity: 1;
+}
+
+.navbar-nav .nav-link[href*="docs.google.com/forms"] span {
+    color: var(--text-dark, #2D1B1B) !important;
+}
+
+.navbar-nav .nav-link i {
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+    flex-shrink: 0;
 }
 
 .navbar-nav .nav-link:hover {
@@ -271,28 +465,72 @@ p, .body-text, .menu-text, .info-text {
 .dropdown-menu {
     border: none;
     box-shadow: var(--box-shadow-lg);
-    background: var(--white);
+    background: var(--gradient-primary);
     border-radius: var(--border-radius);
     border-top: 3px solid var(--metallic-gold);
     margin-top: 0.5rem;
     padding: 0.5rem 0;
+    z-index: 1050; /* Garantir que fique acima de outros elementos */
+    overflow: hidden; /* Conter qualquer elemento que ultrapasse */
+}
+
+/* Fix para dropdown no mobile */
+@media (max-width: 991.98px) {
+    .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin-top: 0;
+        background: var(--gradient-primary);
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: 1px solid rgba(212, 175, 55, 0.3);
+        overflow: hidden; /* Conter qualquer elemento que ultrapasse */
+    }
+    
+    .dropdown-item {
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        margin: 0;
+        border-radius: 0;
+        overflow: hidden;
+        display: block;
+        width: 100%; /* Ocupar toda a largura no mobile */
+        box-sizing: border-box;
+    }
+    
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-item:hover {
+        background: rgba(212, 175, 55, 0.2);
+        color: var(--white);
+        transform: none;
+        box-shadow: none;
+    }
 }
 
 .dropdown-item {
-    color: var(--text-dark);
+    color: var(--white);
     font-family: var(--font-sans);
     font-weight: 500;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1rem;
     transition: var(--transition);
     border-radius: var(--border-radius);
-    margin: 0.25rem 0.5rem;
+    margin: 0.25rem 0.75rem;
+    overflow: hidden;
+    display: block;
+    width: calc(100% - 1.5rem); /* Garantir que não ultrapasse o container */
+    box-sizing: border-box;
 }
 
 .dropdown-item:hover {
-    background: var(--gradient-gold);
+    background: rgba(212, 175, 55, 0.3);
     color: var(--white);
-    transform: translateX(5px);
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+    transform: none;
+    box-shadow: none;
 }
 
 /* Personalização do dropdown toggle */
@@ -329,6 +567,11 @@ p, .body-text, .menu-text, .info-text {
     font-size: 0.9rem;
     transition: var(--transition);
     opacity: 0.8;
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+    flex-shrink: 0;
+    line-height: 1;
 }
 
 .navbar-nav .nav-link:hover i {
@@ -340,7 +583,8 @@ p, .body-text, .menu-text, .info-text {
 .dropdown-item i {
     font-size: 0.85rem;
     transition: var(--transition);
-    opacity: 0.7;
+    opacity: 0.8;
+    color: var(--white);
 }
 
 .dropdown-item:hover i {
@@ -350,8 +594,21 @@ p, .body-text, .menu-text, .info-text {
 
 /* Main Content */
 .main-content {
-    padding-top: 76px; /* Altura do navbar fixo */
     min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Quando há page-header, garantir que comece após o navbar */
+.main-content > .page-header:first-child {
+    margin-top: 0;
+    padding-top: 2rem;
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 1;
 }
 
 /* Seções */
@@ -514,7 +771,7 @@ section {
 .hero-section {
     background-color: var(--earth-brown);
     background-size: cover;
-    background-position: center;
+    background-position: center 70%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -717,20 +974,17 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--gradient-primary) !important;
+    background: var(--earth-brown) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
     color: var(--white);
     border-top: 3px solid var(--metallic-gold);
     position: relative;
 }
 
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--gradient-gold);
+.footer .container {
+    position: relative;
 }
 
 .footer-title {
@@ -867,7 +1121,11 @@ section {
 .page-header {
     background: var(--gradient-primary);
     color: var(--white);
-    padding: 6rem 0 4rem;
+    padding: 2rem 0 4rem;
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
 }
 
 .page-title {
@@ -953,12 +1211,70 @@ section {
         font-size: 0.7rem;
     }
     
-    .page-header {
-        padding: 4rem 0 3rem;
+    .navbar {
+        min-height: 70px;
     }
     
-    .main-content {
-        padding-top: 70px;
+    .navbar .container {
+        min-height: 70px;
+        justify-content: flex-start !important;
+    }
+    
+    /* Forçar botão sempre à esquerda no mobile */
+    .navbar .navbar-toggler,
+    .navbar .navbar-toggler[aria-expanded="true"],
+    .navbar .navbar-toggler[aria-expanded="false"],
+    .navbar-toggler,
+    .navbar-toggler[aria-expanded="true"],
+    .navbar-toggler[aria-expanded="false"] {
+        position: relative !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        left: 0 !important;
+        right: auto !important;
+        transform: none !important;
+        order: 1 !important;
+        float: none !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .navbar .container {
+        justify-content: flex-start !important;
+    }
+    
+    /* Sobrescrever qualquer regra do Bootstrap */
+    .navbar .container .navbar-toggler {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        order: 1 !important;
+    }
+    
+    .navbar-collapse {
+        order: 3;
+        width: 100%;
+        flex-basis: 100%;
+    }
+    
+    .navbar-collapse.show {
+        margin-left: 0 !important;
+    }
+    
+    /* Ajuste do item "Inscreva-se" no menu mobile */
+    .navbar-nav .nav-link[href*="docs.google.com/forms"] {
+        padding: 0.6rem 0.8rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: calc(100% - 2rem);
+        margin: 0.25rem 1rem !important;
+        box-sizing: border-box;
+        font-size: 0.85rem !important;
+        min-height: auto !important;
+    }
+    
+    .page-header {
+        padding: 2rem 0 3rem;
+        padding-top: calc(2rem + 70px); /* Adicionar espaço para o navbar fixo */
+        margin-top: 0;
     }
     
     .display-4 {

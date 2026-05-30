@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}Painel Administrativo - Galeria{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="section-title">
+                    <i class="fas fa-tachometer-alt me-3"></i>
+                    Painel Administrativo
+                </h1>
+                <div>
+                    <a href="{{ url_for('admin.upload_page') }}" class="btn btn-primary me-2">
+                        <i class="fas fa-upload me-2"></i>Upload de Imagens
+                    </a>
+                    <a href="{{ url_for('admin.manage_gallery') }}" class="btn btn-outline-primary me-2">
+                        <i class="fas fa-images me-2"></i>Gerenciar Galeria
+                    </a>
+                    <a href="{{ url_for('admin.logout') }}" class="btn btn-outline-danger" title="Sair">
+                        <i class="fas fa-sign-out-alt me-2"></i>Sair
+                    </a>
+                </div>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="row mb-4">
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">{{ stats.total_images }}</h3>
+                            <p class="card-text">Total de Imagens</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-success text-white">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">{{ stats.total_views }}</h3>
+                            <p class="card-text">Visualizações</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">{{ stats.total_downloads }}</h3>
+                            <p class="card-text">Downloads</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card bg-info text-white">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">{{ stats.categories|length }}</h3>
+                            <p class="card-text">Categorias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categorias -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-tags me-2"></i>
+                                Distribuição por Categorias
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                {% for category, count in stats.categories.items() %}
+                                <div class="col-md-4 mb-3">
+                                    <div class="d-flex justify-content-between align-items-center p-2 border rounded">
+                                        <span class="fw-bold">{{ categories.get(category, category.title()) }}</span>
+                                        <span class="badge bg-primary">{{ count }}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ações Rápidas -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-bolt me-2"></i>
+                                Ações Rápidas
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <a href="{{ url_for('admin.upload_page') }}" class="btn btn-outline-primary w-100">
+                                        <i class="fas fa-upload me-2"></i>
+                                        Upload Individual
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="{{ url_for('admin.upload_page') }}#zip-upload" class="btn btn-outline-success w-100">
+                                        <i class="fas fa-file-archive me-2"></i>
+                                        Upload em Lote (ZIP)
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="{{ url_for('admin.manage_gallery') }}" class="btn btn-outline-warning w-100">
+                                        <i class="fas fa-edit me-2"></i>
+                                        Editar Imagens
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="{{ url_for('main.galeria') }}" class="btn btn-outline-info w-100" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>
+                                        Ver Galeria
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Contatos -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-envelope me-2"></i>
+                                Contatos e Mensagens
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <a href="{{ url_for('admin.listar_contatos') }}" class="btn btn-primary w-100">
+                                        <i class="fas fa-inbox me-2"></i>
+                                        Ver Contatos Recebidos
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        Visualize e gerencie todos os contatos e interesses em patrocínio recebidos através do site.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<style>
+    /* Usar o mesmo fundo da seção Nossa História */
+    body {
+        background: var(--parchment-bg) !important;
+        background-attachment: fixed !important;
+    }
+    
+    /* Remover qualquer imagem de fundo que possa estar sendo aplicada */
+    body::before {
+        display: none !important;
+    }
+    
+    body::after {
+        display: none !important;
+    }
+</style>
+{% endblock %}

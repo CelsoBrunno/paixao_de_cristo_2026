@@ -4,107 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block meta_description %}Paixão de Cristo de Maracanaú - O Maior Espetáculo a Céu Aberto da Região. Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 255599).{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}Paixão de Cristo, Maracanaú, espetáculo, teatro, cultura, PRONAC, Lei Rouanet, evento 2026{% endblock %}">
+    <meta name="author" content="Paixão de Cristo de Maracanaú">
+    <meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}">
+    <meta name="language" content="pt-BR">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ self.meta_description() }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png', _external=True) }}{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Paixão de Cristo de Maracanaú">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{% block twitter_title %}{{ self.title() }}{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}{{ self.meta_description() }}{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png', _external=True) }}{% endblock %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.url }}">
+    
+    <!-- Schema Markup JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "{% block schema_type %}Event{% endblock %}",
+        "name": "{% block schema_name %}Paixão de Cristo de Maracanaú{% endblock %}",
+        "description": "{% block schema_description %}O Maior Espetáculo a Céu Aberto da Região. Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 255599).{% endblock %}",
+        "startDate": "{% block schema_start_date %}2026-04-02T15:00:00-03:00{% endblock %}",
+        "endDate": "{% block schema_end_date %}2026-04-03T22:00:00-03:00{% endblock %}",
+        "location": {
+            "@type": "Place",
+            "name": "{% block schema_location_name %}Secretaria de Cultura e Teatro Dorian Sampaio - Maracanaú, CE{% endblock %}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Maracanaú",
+                "addressRegion": "CE",
+                "addressCountry": "BR"
+            }
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "Paixão de Cristo de Maracanaú",
+            "url": "{{ request.url_root }}",
+            "email": "contato@teatroalmirdutra.com.br",
+        "telephone": "+5585920021207"
+        },
+        "performer": {
+            "@type": "Organization",
+            "name": "Grupo Teatral Paixão de Cristo de Maracanaú"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2026-01-01"
+        },
+        "image": "{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png', _external=True) }}",
+        "url": "{{ request.url_root }}",
+        "sameAs": [
+            "https://www.instagram.com/paixaodecristomaracanauoficial/",
+            "https://www.youtube.com/@TeatroAlmirDutra"
+        ]
+    }
+    </script>
+    
     <title>{% block title %}Paixão de Cristo de Maracanaú{% endblock %}</title>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    {% if not pdf_export %}
+        <!-- Logo da aba -->
+        <link rel="icon" href="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}" type="image/png">
+        
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+        
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQDW7N16YD"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SQDW7N16YD');
+        </script>
+        
+        <!-- Custom CSS -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        
+        <!-- Preload critical resources -->
+        <link rel="preload" href="{{ url_for('static', filename='css/style.css') }}" as="style">
+        <link rel="preload" href="{{ url_for('static', filename='js/main.js') }}" as="script">
+    {% else %}
+        <!-- Font Awesome (para ícones no PDF) -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    {% endif %}
     
     {% block extra_head %}{% endblock %}
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--gradient-primary);">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url_for('main.index') }}">
-                    <img src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}" 
-                         alt="Paixão de Cristo - Maracanaú" 
-                         class="brand-logo">
-                </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('main.index') }}">
-                                <i class="fas fa-home me-1"></i>
-                                Início
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('main.sobre') }}">
-                                <i class="fas fa-info-circle me-1"></i>
-                                Sobre
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="atividadesDropdown" role="button" 
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-theater-masks me-1"></i>
-                                Atividades
-                                <i class="fas fa-chevron-down ms-1"></i>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="atividadesDropdown">
-                                <li><a class="dropdown-item" href="{{ url_for('main.espetaculo') }}">
-                                    <i class="fas fa-play-circle me-2"></i>
-                                    O Espetáculo Cênico
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('main.festival') }}">
-                                    <i class="fas fa-music me-2"></i>
-                                    Festival de Música
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('main.formacao') }}">
-                                    <i class="fas fa-graduation-cap me-2"></i>
-                                    Formação Artística
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('main.feira') }}">
-                                    <i class="fas fa-store me-2"></i>
-                                    Feira Livre
-                                </a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('main.evento') }}">
-                                <i class="fas fa-calendar-alt me-1"></i>
-                                Evento 2026
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('main.midia') }}">
-                                <i class="fas fa-newspaper me-1"></i>
-                                Na Mídia
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('main.patrocinadores') }}">
-                                <i class="fas fa-handshake me-1"></i>
-                                Seja Patrocinador
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('main.contato') }}">
-                                <i class="fas fa-envelope me-1"></i>
-                                Contato
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        {% include 'components/navbar.html' %}
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main id="main-content" class="main-content" role="main">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="container mt-5 pt-5">
@@ -118,11 +136,13 @@
             {% endif %}
         {% endwith %}
 
+        {% include 'components/breadcrumbs.html' %}
+
         {% block content %}{% endblock %}
     </main>
 
     <!-- Footer -->
-    <footer class="footer bg-dark text-light py-5 mt-5">
+    <footer class="footer text-light py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
@@ -132,13 +152,10 @@
                         O maior espetáculo a céu aberto da região.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link me-3" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link me-3" aria-label="Instagram">
+                        <a href="https://www.instagram.com/paixaodecristomaracanauoficial/" class="social-link me-3" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-link me-3" aria-label="YouTube">
+                        <a href="https://www.youtube.com/@TeatroAlmirDutra" class="social-link me-3" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
@@ -149,7 +166,7 @@
                     <ul class="footer-links list-unstyled">
                         <li><a href="{{ url_for('main.sobre') }}">Sobre o Projeto</a></li>
                         <li><a href="{{ url_for('main.evento') }}">Evento 2026</a></li>
-                        <li><a href="{{ url_for('main.patrocinadores') }}">Seja Patrocinador</a></li>
+                        <li><a href="{{ url_for('main.patrocinio') }}">Seja Patrocinador</a></li>
                         <li><a href="{{ url_for('main.contato') }}">Contato</a></li>
                     </ul>
                 </div>
@@ -163,11 +180,11 @@
                         </p>
                         <p class="mb-2">
                             <i class="fas fa-phone me-2"></i>
-                            <a href="tel:+5585996038572">(85) 9.9603-8572</a>
+                            <a href="tel:+5585920021207">(85) 92002-1207</a>
                         </p>
                         <p class="mb-0">
                             <i class="fas fa-envelope me-2"></i>
-                            <a href="mailto:teatroalmirdutra@gmail.com">teatroalmirdutra@gmail.com</a>
+                            <a href="mailto:contato@teatroalmirdutra.com.br">contato@teatroalmirdutra.com.br</a>
                         </p>
                     </div>
                 </div>
@@ -233,12 +250,575 @@
         </div>
     </footer>
 
+    <!-- jQuery (necessário para Lightbox) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
+    <!-- Lightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
     <!-- Custom JS -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     
+    <!-- Performance optimizations -->
+    <script>
+        // Lazy loading avançado para imagens
+        class AdvancedLazyLoader {
+            constructor() {
+                this.imageObserver = null;
+                this.init();
+            }
+            
+            init() {
+                // Verificar suporte nativo
+                if ('loading' in HTMLImageElement.prototype) {
+                    this.initNativeLazyLoading();
+                } else {
+                    this.initIntersectionObserver();
+                }
+                
+                // Preload de imagens críticas
+                this.preloadCriticalImages();
+            }
+            
+            initNativeLazyLoading() {
+                const images = document.querySelectorAll('img[data-src]');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    
+                    // Adicionar efeito de fade-in
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.3s ease-in-out';
+                    
+                    img.onload = () => {
+                        img.style.opacity = '1';
+                    };
+                });
+            }
+            
+            initIntersectionObserver() {
+                if ('IntersectionObserver' in window) {
+                    this.imageObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                this.loadImage(img);
+                                this.imageObserver.unobserve(img);
+                            }
+                        });
+                    }, {
+                        rootMargin: '50px 0px',
+                        threshold: 0.01
+                    });
+                    
+                    // Observar todas as imagens com data-src
+                    document.querySelectorAll('img[data-src]').forEach(img => {
+                        this.imageObserver.observe(img);
+                    });
+                } else {
+                    // Fallback para navegadores muito antigos
+                    this.loadAllImages();
+                }
+            }
+            
+            loadImage(img) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                
+                // Efeito de fade-in
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease-in-out';
+                
+                img.onload = () => {
+                    img.style.opacity = '1';
+                };
+                
+                img.onerror = () => {
+                    img.style.opacity = '1';
+                    console.warn('Erro ao carregar imagem:', img.dataset.src);
+                };
+            }
+            
+            loadAllImages() {
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    this.loadImage(img);
+                });
+            }
+            
+            preloadCriticalImages() {
+                const criticalImages = [
+                    '{{ url_for("static", filename="images/logo/logo-paixao-de-cristo.png") }}'
+                ];
+                
+                criticalImages.forEach(src => {
+                    const link = document.createElement('link');
+                    link.rel = 'preload';
+                    link.as = 'image';
+                    link.href = src;
+                    document.head.appendChild(link);
+                });
+            }
+        }
+        
+        // Inicializar lazy loader quando DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', () => {
+            new AdvancedLazyLoader();
+        });
+        
+        // Analytics básico (substitua GA_MEASUREMENT_ID pelo ID real)
+        gtag('config', 'G-SQDW7N16YD');
+        
+        // Eventos básicos de tracking
+        function trackEvent(category, action, label) {
+            gtag('event', action, {
+                'event_category': category,
+                'event_label': label
+            });
+            console.log(`Event tracked: ${category} - ${action} - ${label}`);
+        }
+        
+        // Track clicks em botões importantes
+        document.addEventListener('click', function(e) {
+            // Botões de patrocínio
+            if (e.target.matches('a[href*="patrocinador"]')) {
+                trackEvent('engagement', 'click', 'patrocinador_button');
+            }
+            
+            // Botões de contato
+            if (e.target.matches('a[href*="contato"]')) {
+                trackEvent('engagement', 'click', 'contato_button');
+            }
+            
+            // Links externos (vídeos, artigos)
+            if (e.target.matches('a[target="_blank"]')) {
+                trackEvent('engagement', 'click', 'external_link');
+            }
+            
+            // Links para atividades específicas
+            if (e.target.matches('a[href*="espetaculo"]')) {
+                trackEvent('engagement', 'click', 'espetaculo_link');
+            }
+            if (e.target.matches('a[href*="festival"]')) {
+                trackEvent('engagement', 'click', 'festival_link');
+            }
+            if (e.target.matches('a[href*="formacao"]')) {
+                trackEvent('engagement', 'click', 'formacao_link');
+            }
+            if (e.target.matches('a[href*="feira"]')) {
+                trackEvent('engagement', 'click', 'feira_link');
+            }
+            if (e.target.matches('a[href*="midia"]')) {
+                trackEvent('engagement', 'click', 'midia_link');
+            }
+            
+            // Links para especificações técnicas
+            if (e.target.matches('a[href*="especificacoes"]')) {
+                trackEvent('engagement', 'click', 'especificacoes_link');
+            }
+            
+            // Links para evento 2026
+            if (e.target.matches('a[href*="evento-2026"]')) {
+                trackEvent('engagement', 'click', 'evento_2026_link');
+            }
+        });
+        
+        // Track form submissions
+        document.addEventListener('submit', function(e) {
+            if (e.target.matches('form')) {
+                trackEvent('conversion', 'form_submit', e.target.action);
+            }
+        });
+        
+        // Track YouTube video clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('a[href*="youtube.com"]') || e.target.matches('a[href*="youtu.be"]')) {
+                trackEvent('media', 'video_click', e.target.href);
+            }
+        });
+        
+        // Track page views for specific sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track which page is being viewed
+            const currentPath = window.location.pathname;
+            let pageType = 'homepage';
+            
+            if (currentPath.includes('/sobre')) pageType = 'about';
+            else if (currentPath.includes('/evento-2026')) pageType = 'evento_2026';
+            else if (currentPath.includes('/espetaculo')) pageType = 'espetaculo';
+            else if (currentPath.includes('/festival')) pageType = 'festival';
+            else if (currentPath.includes('/formacao')) pageType = 'formacao';
+            else if (currentPath.includes('/feira')) pageType = 'feira';
+            else if (currentPath.includes('/midia')) pageType = 'midia';
+            else if (currentPath.includes('/patrocinador')) pageType = 'patrocinadores';
+            else if (currentPath.includes('/especificacoes')) pageType = 'especificacoes';
+            else if (currentPath.includes('/contato')) pageType = 'contato';
+            
+            trackEvent('page_view', 'view', pageType);
+        });
+    </script>
+    
     {% block extra_scripts %}{% endblock %}
+    
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5585920021207?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Paixão%20de%20Cristo%20de%20Maracanau%202026" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="whatsapp-float"
+       aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Script do Contador Regressivo -->
+    <script>
+        // Contador Regressivo para o Evento
+        function initCountdown() {
+            const eventDate = new Date('2026-04-02T15:00:00-03:00').getTime();
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+                
+                if (distance < 0) {
+                    // Evento já passou
+                    document.getElementById('countdown')?.remove();
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                const daysEl = document.getElementById('days');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
+                
+                if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+                if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+            
+            // Atualizar imediatamente
+            updateCountdown();
+            
+            // Atualizar a cada segundo
+            setInterval(updateCountdown, 1000);
+        }
+        
+        // Inicializar quando DOM estiver pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCountdown);
+        } else {
+            initCountdown();
+        }
+    </script>
+    
+    <!-- Estilos para Contador e WhatsApp -->
+    <style>
+        /* Contador Regressivo */
+        .countdown-container {
+            margin: 1.5rem 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .countdown-container .row {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+        
+        .countdown-item {
+            width: 100%;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .countdown-number {
+            line-height: 1.2;
+            font-family: var(--font-primary, 'Playfair Display', serif);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .countdown-label {
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+            box-shadow: 3px 3px 5px #666;
+        }
+        
+        .whatsapp-float i {
+            margin-top: 0;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Responsividade para WhatsApp */
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumb-nav {
+            background-color: var(--bg-light, #F8F4EF);
+            border-bottom: 1px solid var(--gray-light, #D4C4B0);
+        }
+        
+        .breadcrumb {
+            background: transparent;
+            padding: 0.75rem 0;
+        }
+        
+        .breadcrumb-item a {
+            color: var(--earth-brown, #5E493D);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item a:hover {
+            color: var(--metallic-gold, #D4AF37);
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--gray-medium, #8B7355);
+        }
+        
+        /* Social Share Buttons */
+        .social-share-buttons {
+            margin: 1rem 0;
+        }
+        
+        .social-share-buttons .btn {
+            margin: 0.25rem;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-rating {
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-dark, #2D1B1B);
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            border-top: 1px solid #e9ecef;
+            padding-top: 1rem;
+        }
+        
+        /* Google Maps */
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            display: block;
+        }
+        
+        /* Animações Suaves */
+        .fade-in-up,
+        .fade-in,
+        .slide-up,
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-up.animate,
+        .fade-in.animate,
+        .slide-up.animate,
+        .animate-on-scroll.animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            z-index: 1;
+        }
+        
+        .fade-in {
+            transform: translateY(0);
+        }
+        
+        .slide-up {
+            transform: translateY(50px);
+        }
+        
+        .slide-up.animate {
+            transform: translateY(0) !important;
+        }
+        
+        /* CRÍTICO: Garantir que o conteúdo principal NUNCA desapareça */
+        .main-content {
+            opacity: 1 !important;
+            z-index: 1 !important;
+        }
+        
+        .main-content > * {
+            opacity: 1 !important;
+        }
+        
+        /* Seções dentro do main-content não devem ter animação que as esconde */
+        .main-content section {
+            opacity: 1 !important;
+        }
+        
+        .main-content section.fade-in-up {
+            opacity: 1 !important;
+            animation: none !important;
+        }
+        
+        /* Garantir que containers e conteúdo estejam visíveis */
+        .container,
+        .container * {
+            opacity: 1 !important;
+        }
+        
+        /* Melhorias nos CTAs de Patrocínio */
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section .btn-warning,
+        .cta-section .btn-brown {
+            position: relative;
+            z-index: 2;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 1rem 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-section .btn-warning:hover,
+        .cta-section .btn-brown:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* CTA destacado para patrocínio */
+        .patrocinio-cta {
+            background: linear-gradient(135deg, var(--metallic-gold, #D4AF37) 0%, #B8941F 100%);
+            color: var(--text-dark, #2D1B1B);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .patrocinio-cta h3 {
+            color: var(--text-dark, #2D1B1B);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .patrocinio-cta .btn {
+            font-size: 1.2rem;
+            padding: 1rem 3rem;
+            font-weight: 700;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, #F8F4EF 0%, #E8E0D5 100%);
+        }
+        
+        .newsletter-form .form-control {
+            border: 2px solid var(--brown, #8B4513);
+            border-radius: 8px;
+        }
+        
+        .newsletter-form .form-control:focus {
+            border-color: var(--metallic-gold, #D4AF37);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+        
+        /* Melhorias na Galeria */
+        .gallery-item a {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item a:focus {
+            outline: 3px solid var(--metallic-gold, #D4AF37);
+            outline-offset: 2px;
+        }
+    </style>
 </body>
 </html>
 

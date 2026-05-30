@@ -1,0 +1,331 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciar Galeria - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="section-title">
+                    <i class="fas fa-images me-3"></i>
+                    Gerenciar Galeria
+                </h1>
+                <div>
+                    <a href="{{ url_for('admin.upload_page') }}" class="btn btn-primary me-2">
+                        <i class="fas fa-upload me-2"></i>Upload
+                    </a>
+                    <a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Dashboard
+                    </a>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Filtros por botões -->
+                            <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                                <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+                                    <i class="fas fa-th me-2"></i>Todas
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="espetaculo">
+                                    <i class="fas fa-theater-masks me-2"></i>Espetáculo Cênico
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="musical">
+                                    <i class="fas fa-music me-2"></i>Espetáculo Musical
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="feira">
+                                    <i class="fas fa-store me-2"></i>Feira Livre
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="midia">
+                                    <i class="fas fa-newspaper me-2"></i>Na Mídia
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="patrocinio">
+                                    <i class="fas fa-handshake me-2"></i>Patrocínio
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="formacao">
+                                    <i class="fas fa-graduation-cap me-2"></i>Formação Artística
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="evento">
+                                    <i class="fas fa-calendar-alt me-2"></i>Eventos
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="bastidores">
+                                    <i class="fas fa-camera me-2"></i>Bastidores
+                                </button>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="publico">
+                                    <i class="fas fa-users me-2"></i>Público
+                                </button>
+                            </div>
+                            
+                            <!-- Busca -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="searchInput" class="form-label">Buscar:</label>
+                                    <input type="text" class="form-control" id="searchInput" placeholder="Nome da imagem...">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">&nbsp;</label>
+                                    <div>
+                                        <button class="btn btn-outline-secondary" onclick="clearFilters()">
+                                            <i class="fas fa-times me-2"></i>Limpar Filtros
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Imagens -->
+            <div class="row" id="imagesGrid">
+                {% for filename, info in images.items() %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 image-item" 
+                     data-category="{{ info.category }}" 
+                     data-filename="{{ filename }}"
+                     data-title="{{ info.title }}">
+                    <div class="card h-100">
+                        <img src="{{ url_for('static', filename=get_image_url(filename)) }}" 
+                             class="card-img-top" 
+                             alt="{{ info.title }}"
+                             style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ info.title or filename }}</h6>
+                            <p class="card-text small text-muted">
+                                <strong>Categoria:</strong> {{ categories.get(info.category, info.category) }}<br>
+                                <strong>Tamanho:</strong> {{ info.width }}x{{ info.height }}<br>
+                                <strong>Visualizações:</strong> {{ info.views or 0 }}<br>
+                                <strong>Downloads:</strong> {{ info.downloads or 0 }}
+                            </p>
+                            {% if info.description %}
+                            <p class="card-text small">{{ info.description }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group w-100" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm" 
+                                        onclick="editImage('{{ filename }}')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm" 
+                                        onclick="deleteImage('{{ filename }}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if not images %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-images fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">Nenhuma imagem encontrada</h5>
+                            <p class="text-muted">Faça upload de imagens para começar a gerenciar sua galeria.</p>
+                            <a href="{{ url_for('admin.upload_page') }}" class="btn btn-primary">
+                                <i class="fas fa-upload me-2"></i>Fazer Upload
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Edição -->
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Imagem</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="editForm">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editTitle" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="editTitle" name="title">
+                        <div class="form-text">Gerado automaticamente a partir do nome do arquivo</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDescription" class="form-label">Descrição</label>
+                        <textarea class="form-control" id="editDescription" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCategory" class="form-label">Categoria</label>
+                        <select class="form-select" id="editCategory" name="category">
+                            {% for key, value in categories.items() %}
+                            <option value="{{ key }}">{{ value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação de Exclusão -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir esta imagem?</p>
+                <p class="text-muted small">Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    let currentImage = null;
+    let currentFilter = 'all';
+    
+    // Filtros por botões
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remover classe active de todos os botões
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            // Adicionar classe active ao botão clicado
+            this.classList.add('active');
+            // Definir filtro atual
+            currentFilter = this.getAttribute('data-filter');
+            filterImages();
+        });
+    });
+    
+    // Busca
+    document.getElementById('searchInput').addEventListener('input', filterImages);
+    
+    function filterImages() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const items = document.querySelectorAll('.image-item');
+        
+        items.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            const itemTitle = item.getAttribute('data-title').toLowerCase();
+            const itemFilename = item.getAttribute('data-filename').toLowerCase();
+            
+            const categoryMatch = currentFilter === 'all' || itemCategory === currentFilter;
+            const searchMatch = !search || itemTitle.includes(search) || itemFilename.includes(search);
+            
+            if (categoryMatch && searchMatch) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    function clearFilters() {
+        // Resetar filtro para "Todas"
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-filter="all"]').classList.add('active');
+        currentFilter = 'all';
+        
+        // Limpar busca
+        document.getElementById('searchInput').value = '';
+        filterImages();
+    }
+    
+    // Editar imagem
+    function editImage(filename) {
+        currentImage = filename;
+        
+        // Buscar dados da imagem
+        fetch(`{{ url_for('admin.api_images') }}?filename=${filename}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data[filename]) {
+                    const info = data[filename];
+                    document.getElementById('editTitle').value = info.title || '';
+                    document.getElementById('editDescription').value = info.description || '';
+                    document.getElementById('editCategory').value = info.category || '';
+                    
+                    const modal = new bootstrap.Modal(document.getElementById('editModal'));
+                    modal.show();
+                }
+            });
+    }
+    
+    // Salvar edição
+    document.getElementById('editForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        formData.append('filename', currentImage);
+        
+        fetch(`{{ url_for('admin.update_image', filename='') }}${currentImage}`, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                alert('Erro ao atualizar imagem');
+            }
+        });
+    });
+    
+    // Excluir imagem
+    function deleteImage(filename) {
+        currentImage = filename;
+        const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        modal.show();
+    }
+    
+    document.getElementById('confirmDelete').addEventListener('click', function() {
+        fetch(`{{ url_for('admin.delete_image', filename='') }}${currentImage}`, {
+            method: 'POST'
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                alert('Erro ao excluir imagem');
+            }
+        });
+    });
+</script>
+
+<style>
+    /* Usar o mesmo fundo da seção Nossa História */
+    body {
+        background: var(--parchment-bg) !important;
+        background-attachment: fixed !important;
+    }
+    
+    /* Remover qualquer imagem de fundo que possa estar sendo aplicada */
+    body::before {
+        display: none !important;
+    }
+    
+    body::after {
+        display: none !important;
+    }
+</style>
+{% endblock %}

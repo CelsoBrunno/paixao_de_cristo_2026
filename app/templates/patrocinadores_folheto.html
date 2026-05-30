@@ -1,0 +1,793 @@
+{% extends "base.html" %}
+
+{% block title %}Folheto Patrocinadores - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Material em duas páginas para apresentação das cotas de patrocínio do projeto Paixão de Cristo de Maracanaú.{% endblock %}
+
+{% block extra_head %}
+<style>
+    .header, .footer {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    .main-content {
+        padding-top: 0 !important;
+    }
+
+    body {
+        background: var(--parchment-bg);
+    }
+
+    .print-wrapper {
+        max-width: 31cm;
+        margin: 2rem auto 3rem;
+        padding: 0 1rem 2rem;
+    }
+
+    .print-page {
+        width: 29.5cm;
+        min-height: 21cm;
+        background: var(--parchment-bg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--box-shadow-lg);
+        padding: 2cm;
+        margin: 0 auto 2rem;
+        display: flex;
+        flex-direction: column;
+        color: var(--text-dark);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .print-page::after {
+        content: '';
+        position: absolute;
+        inset: 20px;
+        border: 1px solid rgba(94, 73, 61, 0.12);
+        border-radius: 18px;
+        pointer-events: none;
+    }
+
+    .print-page:last-child {
+        margin-bottom: 0;
+    }
+
+    .section-block {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: var(--border-radius-lg);
+        border: 1px solid rgba(94, 73, 61, 0.12);
+        padding: 1.6rem 1.8rem;
+        margin-bottom: 1.6cm;
+        box-shadow: 0 12px 24px -18px rgba(94, 73, 61, 0.4);
+    }
+
+    .print-heading {
+        border-radius: var(--border-radius-lg);
+        background: var(--gradient-primary);
+        color: var(--white);
+        padding: 1.8rem 2rem;
+        text-align: center;
+        margin-bottom: 2.2cm;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .print-heading::before,
+    .print-heading::after {
+        content: '';
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        opacity: 0.4;
+        transform: translate(-30%, -50%);
+        top: -40px;
+        left: -20px;
+    }
+
+    .print-heading::after {
+        transform: translate(40%, 10%);
+        bottom: -140px;
+        right: -60px;
+        top: auto;
+        left: auto;
+    }
+
+    .print-heading .print-title {
+        font-family: var(--font-primary);
+        font-size: 2.6rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        color: var(--white);
+    }
+
+    .print-heading .print-subtitle {
+        font-family: var(--font-secondary);
+        font-size: 1.15rem;
+        color: rgba(255, 255, 255, 0.92);
+        letter-spacing: 0.06em;
+    }
+
+    .section-label {
+        font-family: var(--font-secondary);
+        font-size: calc(0.85rem + 2px);
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        color: rgba(212, 175, 55, 0.85);
+        margin-bottom: 0.8rem;
+        display: block;
+    }
+
+    .section-title {
+        font-family: var(--font-primary);
+        color: var(--earth-brown);
+        font-size: 1.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.2rem;
+    }
+
+    .credibility-grid.section-block {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+
+    .credibility-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: var(--border-radius);
+        padding: 1.1rem 1.2rem;
+        border-left: 4px solid var(--metallic-gold);
+        box-shadow: var(--box-shadow);
+        height: 100%;
+        display: grid;
+        gap: 0.45rem;
+    }
+
+    .credibility-card h3 {
+        font-family: var(--font-secondary);
+        font-size: 0.95rem;
+        color: var(--earth-brown);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.6rem;
+    }
+
+    .credibility-card p {
+        font-size: 0.9rem;
+        line-height: 1.3;
+        color: var(--text-dark);
+        margin: 0;
+    }
+
+    .impact-grid.section-block {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.3rem;
+    }
+
+    .impact-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: var(--border-radius-lg);
+        border: 1px solid rgba(94, 73, 61, 0.12);
+        padding: 1.2rem 1.3rem;
+        text-align: center;
+        box-shadow: var(--box-shadow);
+        position: relative;
+    }
+
+    .impact-card .impact-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--gradient-primary);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        margin: 0 auto 0.8rem;
+        box-shadow: 0 6px 15px rgba(94, 73, 61, 0.25);
+    }
+
+    .impact-card .impact-value {
+        font-family: var(--font-primary);
+        font-size: 1.4rem;
+        color: var(--metallic-gold);
+        margin-bottom: 0.4rem;
+    }
+
+    .impact-card .impact-label {
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        line-height: 1.4;
+    }
+
+    .platform-list.section-block {
+        display: grid;
+        gap: 1.1rem;
+        margin: 0 0 1.6cm 0;
+        padding: 1.6rem 1.8rem;
+        border-radius: var(--border-radius-lg);
+        border: 1px solid rgba(94, 73, 61, 0.14);
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: var(--box-shadow);
+        list-style: none;
+        list-style: none;
+    }
+
+    .platform-item {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .platform-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--gradient-gold);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    .platform-item h4 {
+        font-family: var(--font-secondary);
+        font-size: 1.1rem;
+        color: var(--earth-brown);
+        margin-bottom: 0.2rem;
+    }
+
+    .platform-item p {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        margin: 0;
+    }
+
+    .page-footer {
+        margin-top: auto;
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba(45, 27, 27, 0.75);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .page-footer span {
+        color: var(--metallic-gold);
+        font-weight: 600;
+    }
+
+    /* Página 2 */
+    .opportunity-header.section-block {
+        margin-bottom: 1.6cm;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(94, 73, 61, 0.95) 0%, rgba(50, 37, 31, 0.96) 100%);
+        color: var(--white);
+        border: none;
+        box-shadow: 0 18px 28px -20px rgba(0, 0, 0, 0.45);
+    }
+
+    .pronac-highlight {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 215, 0, 0.45);
+        border-radius: 999px;
+        padding: 0.5rem 1.6rem;
+        margin: 1.15rem auto 0;
+        font-family: var(--font-secondary);
+        font-size: 0.95rem;
+        letter-spacing: 0.14em;
+        color: var(--white);
+        text-transform: uppercase;
+        box-shadow: 0 12px 24px -14px rgba(0, 0, 0, 0.55);
+    }
+
+    .pronac-highlight i {
+        color: var(--metallic-gold);
+        font-size: 1.1rem;
+    }
+
+    .opportunity-header .section-title {
+        margin-bottom: 0.6rem;
+        color: var(--white);
+    }
+
+    .opportunity-subtitle {
+        font-family: var(--font-secondary);
+        font-size: 1.15rem;
+        color: var(--metallic-gold);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .opportunity-description {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.88);
+        line-height: 1.6;
+        margin: 1rem auto 0;
+        max-width: 20cm;
+    }
+
+    .cotas-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.4rem;
+        margin-bottom: 1.4cm;
+    }
+
+    .cota-print-card {
+        background: rgba(255, 255, 255, 0.96);
+        border-radius: var(--border-radius-lg);
+        border: 1px solid rgba(94, 73, 61, 0.16);
+        box-shadow: var(--box-shadow);
+        padding: 1.4rem 1.6rem;
+        display: grid;
+        gap: 1rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cota-print-card::before {
+        content: attr(data-badge);
+        position: absolute;
+        top: 1.2rem;
+        right: -3.2rem;
+        background: var(--gradient-gold);
+        color: var(--white);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        transform: rotate(45deg);
+        padding: 0.4rem 4rem;
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    .cota-print-card.master::before {
+        background: var(--gradient-gold);
+    }
+
+    .cota-print-card.ouro::before {
+        background: linear-gradient(135deg, #f5d778 0%, #d4af37 100%);
+    }
+
+    .cota-print-card.prata::before {
+        background: linear-gradient(135deg, #d6d6d6 0%, #a6a6a6 100%);
+    }
+
+    .cota-print-card.bronze::before {
+        background: linear-gradient(135deg, #d9a46b 0%, #8c5a2f 100%);
+    }
+
+.cota-print-card.master {
+    background: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 50%, #B3D9FF 100%);
+    border: 2px solid rgba(179, 217, 255, 0.4);
+    box-shadow:
+        0 0 25px rgba(179, 217, 255, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.4),
+        0 16px 24px -6px rgba(94, 73, 61, 0.2);
+}
+
+.cota-print-card.master .cota-valor {
+    color: #2E5BBA;
+    text-shadow: 0 0 10px rgba(46, 91, 186, 0.35), 2px 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.cota-print-card.master .cota-header-print h3 {
+    color: #1a365d;
+}
+
+.cota-print-card.master .cota-beneficios-print li i {
+    color: #3B82F6;
+    text-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+}
+
+.cota-print-card.ouro {
+    background: linear-gradient(135deg, #FFF8DC 0%, #F5E6A3 50%, #D4AF37 100%);
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    box-shadow:
+        0 0 22px rgba(255, 215, 0, 0.35),
+        inset 0 0 18px rgba(255, 255, 255, 0.35),
+        0 14px 22px -5px rgba(94, 73, 61, 0.22);
+}
+
+.cota-print-card.ouro .cota-valor {
+    color: #B8860B;
+    text-shadow: 0 0 10px rgba(184, 134, 11, 0.35), 2px 2px 3px rgba(0, 0, 0, 0.18);
+}
+
+.cota-print-card.ouro .cota-beneficios-print li i {
+    color: #B8860B;
+}
+
+.cota-print-card.prata {
+    background: linear-gradient(135deg, #F8F8FF 0%, #E6E6FA 50%, #C0C0C0 100%);
+    border: 2px solid rgba(192, 192, 192, 0.4);
+    box-shadow:
+        0 0 24px rgba(192, 192, 192, 0.45),
+        inset 0 0 18px rgba(255, 255, 255, 0.35),
+        0 12px 20px -5px rgba(94, 73, 61, 0.2);
+}
+
+.cota-print-card.prata .cota-valor {
+    color: #5f6a72;
+}
+
+.cota-print-card.prata .cota-beneficios-print li i {
+    color: #6c757d;
+}
+
+.cota-print-card.bronze {
+    background: linear-gradient(135deg, #FFF8DC 0%, #F4E4BC 50%, #D2B48C 100%);
+    border: 2px solid rgba(205, 127, 50, 0.4);
+    box-shadow:
+        0 0 22px rgba(205, 127, 50, 0.35),
+        inset 0 0 16px rgba(255, 255, 255, 0.35),
+        0 12px 18px -5px rgba(94, 73, 61, 0.2);
+}
+
+.cota-print-card.bronze .cota-valor {
+    color: #8B4513;
+}
+
+.cota-print-card.bronze .cota-beneficios-print li i {
+    color: #CD7F32;
+}
+
+    .cota-header-print {
+        text-align: center;
+    }
+
+    .cota-header-print h3 {
+        font-family: var(--font-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: 1.15rem;
+        color: var(--earth-brown);
+        margin-bottom: 0.4rem;
+    }
+
+    .cota-header-print .cota-valor {
+        font-family: var(--font-primary);
+        font-size: 1.5rem;
+        color: var(--metallic-gold);
+        margin-bottom: 0.4rem;
+    }
+
+    .cota-beneficios-print {
+        display: grid;
+        gap: 0.55rem;
+    }
+
+    .cota-beneficios-print li {
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+        font-size: 0.92rem;
+        color: var(--text-dark);
+    }
+
+    .cota-beneficios-print li i {
+        color: var(--metallic-gold);
+        margin-top: 0.25rem;
+    }
+
+    .cota-resumo-card {
+        margin-top: 1.2rem;
+        background: rgba(212, 175, 55, 0.12);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: var(--border-radius);
+        padding: 1rem 1.2rem;
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    .cota-print-card.total::before {
+        display: none;
+    }
+
+    .contact-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: var(--border-radius-lg);
+        padding: 1.8rem 2rem;
+        border: 1px solid rgba(94, 73, 61, 0.15);
+        box-shadow: var(--box-shadow);
+        margin-top: auto;
+    }
+
+    .contact-card strong {
+        color: var(--earth-brown);
+    }
+
+    .contact-card h3 {
+        font-family: var(--font-primary);
+        color: var(--earth-brown);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.9rem;
+    }
+
+    .contact-card p {
+        margin: 0;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .contact-links {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 2rem;
+    }
+
+    .contact-links a {
+        font-family: var(--font-secondary);
+        color: var(--earth-brown);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+        padding-bottom: 0.1rem;
+    }
+
+    .contact-links a:hover {
+        color: var(--metallic-gold);
+        border-bottom-color: var(--metallic-gold);
+    }
+
+    @media print {
+        body {
+            background: #ffffff !important;
+        }
+
+        .header, .footer {
+            display: none !important;
+        }
+
+        .main-content {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .print-wrapper {
+            margin: 0;
+            padding: 0;
+        }
+
+        .section-block,
+        .platform-list.section-block,
+        .credibility-grid.section-block,
+        .impact-grid.section-block,
+        .opportunity-header.section-block {
+            box-shadow: none;
+            border: none;
+            background: transparent;
+        }
+
+        .print-page {
+            width: 29.5cm;
+            min-height: 21cm;
+            margin: 0;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 1.8cm;
+            page-break-after: always;
+        }
+
+        .print-page::after {
+            display: none;
+        }
+
+        .print-page:last-child {
+            page-break-after: auto;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="print-wrapper">
+    <!-- Página 1 -->
+    <section class="print-page">
+        <header class="print-heading">
+            <span class="section-label text-white-50">Projeto Cultural</span>
+            <h1 class="print-title">Projeto Paixão de Cristo de Maracanaú</h1>
+            <p class="print-subtitle">O maior patrimônio cultural de Maracanaú. 46 anos de história e impacto social.</p>
+        </header>
+
+        <section>
+            <span class="section-label">Credibilidade</span>
+            <h2 class="section-title">Credibilidade Inquestionável</h2>
+            <div class="credibility-grid section-block">
+                <article class="credibility-card">
+                    <h3>46ª edição tradicional</h3>
+                    <p>Espetáculo a céu aberto ativo há 46 anos, referência cultural do Ceará.</p>
+                </article>
+                <article class="credibility-card">
+                    <h3>Patrimônio oficial</h3>
+                    <p>Reconhecido pela Lei Municipal Nº 2.710/2018 e calendário oficial de Maracanaú.</p>
+                </article>
+                <article class="credibility-card">
+                    <h3>100% gratuito e acessível</h3>
+                    <p>Acesso democrático com Libras, audiodescrição e áreas reservadas.</p>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <span class="section-label">Impacto Direto</span>
+            <h2 class="section-title">Números que Impressionam</h2>
+            <div class="impact-grid section-block">
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-users"></i></div>
+                    <div class="impact-value">+30.000</div>
+                    <div class="impact-label">Espectadores presenciais</div>
+                </div>
+                <div class="impact-card">
+                <div class="impact-icon"><i class="fas fa-user-friends"></i></div>
+                    <div class="impact-value">+300</div>
+                    <div class="impact-label">Artistas e técnicos locais</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="impact-value">100</div>
+                    <div class="impact-label">Vagas gratuitas em oficinas</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-masks-theater"></i></div>
+                    <div class="impact-value">+50</div>
+                    <div class="impact-label">Profissionais da cultura contratados</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-store"></i></div>
+                    <div class="impact-value">+16</div>
+                    <div class="impact-label">Artesãos e bandas fomentados</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-video"></i></div>
+                    <div class="impact-value">Live</div>
+                    <div class="impact-label">Transmissão ao vivo e mídia regional</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <span class="section-label">ESG & Marketing</span>
+            <h2 class="section-title">Uma Plataforma Completa</h2>
+            <ul class="platform-list section-block">
+                <li class="platform-item">
+                    <div class="platform-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div>
+                        <h4>Visibilidade massiva</h4>
+                        <p>Exposição direta para 30.000 pessoas e cobertura regional com transmissão ao vivo.</p>
+                    </div>
+                </li>
+                <li class="platform-item">
+                    <div class="platform-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div>
+                        <h4>Impacto social ESG</h4>
+                        <p>Geração de renda, formação gratuita e fortalecimento da comunidade local.</p>
+                    </div>
+                </li>
+                <li class="platform-item">
+                    <div class="platform-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Legado e reputação</h4>
+                        <p>Alinhe sua marca a um patrimônio cultural reconhecido por lei e celebrado há décadas.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="page-footer">
+            <span>Projeto Paixão de Cristo de Maracanaú</span> • Folheto para Patrocinadores • Página 1 de 2
+        </footer>
+    </section>
+
+    <section class="print-page">
+        <header class="opportunity-header section-block">
+            <span class="section-label text-white-50">Investimento Cultural</span>
+            <h2 class="section-title">Uma Oportunidade Estratégica para Sua Marca</h2>
+            <p class="opportunity-subtitle">100% de incentivo fiscal. 0% de custo.</p>
+            <p class="opportunity-description">
+                Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 255599). Empresas do Lucro Real destinam até 4% do IRPJ com dedução total. Marketing, legado e ESG com custo fiscal zero.
+            </p>
+            <div class="pronac-highlight">
+                <i class="fas fa-certificate"></i>
+                Aprovado no PRONAC 255599
+            </div>
+        </header>
+
+        <section>
+            <span class="section-label">Cotas Disponíveis</span>
+            <h2 class="section-title">Cotas de Patrocínio</h2>
+
+            <div class="cotas-grid">
+                <article class="cota-print-card master" data-badge="Master">
+                    <div class="cota-header-print">
+                        <h3>"Apresenta"</h3>
+                        <div class="cota-valor">R$ 250.000,00</div>
+                        <p class="text-muted mb-0">Patrocinador titular da temporada</p>
+                    </div>
+                    <ul class="cota-beneficios-print">
+                        <li><i class="fas fa-crown"></i> Naming rights completo: “Paixão de Cristo apresentada por [MARCA]”.</li>
+                        <li><i class="fas fa-bullhorn"></i> Presença máxima em peças, palco, telões e transmissão.</li>
+                        <li><i class="fas fa-hand-holding-heart"></i> Ativações exclusivas, oficinas e acessibilidade com assinatura da marca.</li>
+                        <li><i class="fas fa-images"></i> Banco de imagens e citações oficiais para campanhas institucionais.</li>
+                    </ul>
+                </article>
+
+                <article class="cota-print-card ouro" data-badge="Ouro">
+                    <div class="cota-header-print">
+                        <h3>"Patrocina" (2 cotas)</h3>
+                        <div class="cota-valor">R$ 200.000,00</div>
+                        <p class="text-muted mb-0">Alta visibilidade compartilhada</p>
+                    </div>
+                    <ul class="cota-beneficios-print">
+                        <li><i class="fas fa-tv"></i> Marca em estruturas principais e telões em posição de destaque.</li>
+                        <li><i class="fas fa-share-alt"></i> Mídia espontânea, transmissão e posts oficiais com agradecimento.</li>
+                        <li><i class="fas fa-store"></i> Ativações na Feira Livre e experiências com público.</li>
+                        <li><i class="fas fa-video"></i> Logotipo na cobertura audiovisual e gravação do espetáculo.</li>
+                    </ul>
+                </article>
+
+                <article class="cota-print-card prata" data-badge="Prata">
+                    <div class="cota-header-print">
+                        <h3>"Apoio"</h3>
+                        <div class="cota-valor">R$ 40.000,00</div>
+                        <p class="text-muted mb-0">Investimento moderado com precisão</p>
+                    </div>
+                    <ul class="cota-beneficios-print">
+                        <li><i class="fas fa-masks-theater"></i> Marca em palcos de apoio e materiais institucionais.</li>
+                        <li><i class="fas fa-share-alt"></i> Presença nas redes oficiais e releases para imprensa.</li>
+                        <li><i class="fas fa-handshake"></i> Relacionamento em eventos paralelos e ações com o público.</li>
+                        <li><i class="fas fa-scroll"></i> Inserção em créditos da transmissão e gravação.</li>
+                    </ul>
+                </article>
+
+                <article class="cota-print-card bronze" data-badge="Apoio Local">
+                    <div class="cota-header-print">
+                        <h3>"Apoio Cultural"</h3>
+                        <div class="cota-valor">R$ 9.554,00</div>
+                        <p class="text-muted mb-0">Ideal para empresas do território</p>
+                    </div>
+                    <ul class="cota-beneficios-print">
+                        <li><i class="fas fa-map-marker-alt"></i> Visibilidade nas ativações territoriais e comunicação local.</li>
+                        <li><i class="fas fa-heart"></i> Associação com ações sociais e reconhecimento comunitário.</li>
+                        <li><i class="fas fa-broadcast-tower"></i> Agradecimentos em mídias digitais e transmissão.</li>
+                        <li><i class="fas fa-users"></i> Participação em momentos especiais com elenco e público.</li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="contact-card">
+            <h3>Vamos Conversar?</h3>
+            <p>Estamos prontos para alinhar este projeto histórico às metas de marketing e impacto social da sua empresa.</p>
+            <p style="margin-top: 0.9rem;"><strong>Celso Brunno Rocha Custódio</strong><br>Proponente & Coordenador-Geral<br>Projeto Paixão de Cristo de Maracanaú</p>
+            <p style="margin-top: 0.6rem;">Patrimônio Cultural de Maracanaú (Lei Municipal Nº 2.710/2018)<br>PRONAC Aprovado Nº 255599</p>
+
+            <div class="contact-links">
+                <a href="tel:+5585920021207"><i class="fas fa-phone me-2"></i>Celular: (85) 92002-1207</a>
+                <a href="https://paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador" target="_blank" rel="noopener"><i class="fas fa-link me-2"></i>Apresentação e Cotas de Patrocínio</a>
+                <a href="mailto:contato@teatroalmirdutra.com.br"><i class="fas fa-envelope me-2"></i>contato@teatroalmirdutra.com.br</a>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <span>Projeto Paixão de Cristo de Maracanaú</span> • Folheto para Patrocinadores • Página 2 de 2
+        </footer>
+    </section>
+</div>
+{% endblock %}
+

@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Detalhes do Contato - Painel Administrativo{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="section-title">
+                    <i class="fas fa-envelope-open me-3"></i>
+                    Detalhes do Contato
+                </h1>
+                <div>
+                    <a href="{{ url_for('admin.listar_contatos') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar à Lista
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Informações do Contato
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-calendar me-2"></i>
+                                        <strong>Data/Hora:</strong> {{ contato.timestamp }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <h6 class="mb-3">
+                                <i class="fas fa-user me-2"></i>
+                                Informações Pessoais
+                            </h6>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <p><strong>Nome:</strong> {{ contato.data.get('nome', 'N/A') }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Cargo/Função:</strong> {{ contato.data.get('cargo', 'N/A') }}</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <p>
+                                        <strong>E-mail:</strong> 
+                                        <a href="mailto:{{ contato.data.get('email', '') }}">
+                                            {{ contato.data.get('email', 'N/A') }}
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        <strong>Telefone:</strong> 
+                                        <a href="tel:{{ contato.data.get('telefone', '') }}">
+                                            {{ contato.data.get('telefone', 'N/A') }}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            {% if contato.data.get('empresa') %}
+                            <hr>
+                            <h6 class="mb-3">
+                                <i class="fas fa-building me-2"></i>
+                                Informações da Empresa
+                            </h6>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <p><strong>Empresa:</strong> {{ contato.data.get('empresa', 'N/A') }}</p>
+                                </div>
+                                {% if contato.data.get('cnpj') %}
+                                <div class="col-md-6">
+                                    <p><strong>CNPJ:</strong> {{ contato.data.get('cnpj', 'N/A') }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% if contato.data.get('ramo') or contato.data.get('porte') %}
+                            <div class="row mb-3">
+                                {% if contato.data.get('ramo') %}
+                                <div class="col-md-6">
+                                    <p><strong>Ramo de Atividade:</strong> {{ contato.data.get('ramo', 'N/A') }}</p>
+                                </div>
+                                {% endif %}
+                                {% if contato.data.get('porte') %}
+                                <div class="col-md-6">
+                                    <p><strong>Porte da Empresa:</strong> {{ contato.data.get('porte', 'N/A') }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                            {% endif %}
+
+                            {% if contato.data.get('tipo_patrocinio') or contato.data.get('valor_interesse') %}
+                            <hr>
+                            <h6 class="mb-3">
+                                <i class="fas fa-handshake me-2"></i>
+                                Informações de Patrocínio
+                            </h6>
+                            <div class="row mb-3">
+                                {% if contato.data.get('tipo_patrocinio') %}
+                                <div class="col-md-6">
+                                    <p><strong>Tipo de Patrocínio:</strong> 
+                                        <span class="badge bg-warning">{{ contato.data.get('tipo_patrocinio', 'N/A') }}</span>
+                                    </p>
+                                </div>
+                                {% endif %}
+                                {% if contato.data.get('valor_interesse') %}
+                                <div class="col-md-6">
+                                    <p><strong>Valor de Interesse:</strong> 
+                                        <span class="badge bg-success">{{ contato.data.get('valor_interesse', 'N/A') }}</span>
+                                    </p>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+
+                            <hr>
+                            <h6 class="mb-3">
+                                <i class="fas fa-comment me-2"></i>
+                                Mensagem
+                            </h6>
+                            <div class="mb-3">
+                                <p><strong>Assunto:</strong> {{ contato.data.get('assunto', 'N/A') }}</p>
+                            </div>
+                            {% if contato.data.get('mensagem') %}
+                            <div class="alert alert-light border">
+                                <p class="mb-0">{{ contato.data.get('mensagem', 'N/A') }}</p>
+                            </div>
+                            {% endif %}
+
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="text-muted small mb-0">
+                                        <strong>IP:</strong> {{ contato.data.get('ip', 'N/A') }}
+                                    </p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <p class="text-muted small mb-0">
+                                        Contato {{ index + 1 }} de {{ total }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <a href="mailto:{{ contato.data.get('email', '') }}?subject=Re: {{ contato.data.get('assunto', '') }}" 
+                                   class="btn btn-primary me-2">
+                                    <i class="fas fa-reply me-2"></i>Responder por E-mail
+                                </a>
+                                <a href="tel:{{ contato.data.get('telefone', '') }}" 
+                                   class="btn btn-success me-2">
+                                    <i class="fas fa-phone me-2"></i>Ligar
+                                </a>
+                                <a href="{{ url_for('admin.listar_contatos') }}" 
+                                   class="btn btn-outline-secondary">
+                                    <i class="fas fa-list me-2"></i>Voltar à Lista
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
