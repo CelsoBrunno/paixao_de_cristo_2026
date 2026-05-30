@@ -9,7 +9,6 @@ Werkzeug==2.3.7
 mysql-connector-python==8.1.0
 
 # Segurança e Validação
-WTForms==3.0.1
 Flask-WTF==1.1.1
 
 # E-mail (para formulário de contato)
@@ -18,11 +17,11 @@ Flask-Mail==0.9.1
 # Variáveis de Ambiente
 python-dotenv==1.0.0
 
-# Desenvolvimento e Debug
-Flask-DebugToolbar==0.13.1
-
 # Manipulação de Imagens
 Pillow==10.0.0
+
+# Geração de PDF (folheto de patrocínio)
+reportlab==4.0.4
 
 # Produção
 gunicorn==21.2.0

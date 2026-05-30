@@ -7,10 +7,10 @@ Mostra informações sobre imagens armazenadas no banco de dados
 import os
 import sys
 
-# Configurar ambiente para PythonAnywhere
-os.environ['PYTHONANYWHERE_DOMAIN'] = 'paixaodecristomaracanau.pythonanywhere.com'
-os.environ['SECRET_KEY'] = 'hehahe11'
-os.environ['DB_PASSWORD'] = 'hehahe11'
+# Configure SECRET_KEY e DB_PASSWORD nas variáveis de ambiente do PythonAnywhere
+if not os.environ.get('DB_PASSWORD'):
+    print('Defina DB_PASSWORD nas variáveis de ambiente do PythonAnywhere.')
+    sys.exit(1)
 
 def format_bytes(bytes_size):
     """Converte bytes para formato legível"""

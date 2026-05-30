@@ -154,9 +154,6 @@ rate_limit.json
 newsletter_subscriptions.log
 contatos.log
 
-# Backup local do PythonAnywhere (não versionar)
-pythonanywhre/
-
 # WSGI com credenciais reais (usar wsgi.example.py como referência)
 deploy/pythonanywhere/wsgi.py
 wsgi.py

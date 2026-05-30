@@ -40,8 +40,7 @@ site/
 │   ├── static/
 │   │   ├── css/
 │   │   ├── js/
-│   │   ├── images/
-│   │   └── documents/
+│   │   └── images/
 │   └── templates/
 │       ├── base.html
 │       ├── index.html, blog.html, faq.html, galeria.html, ...

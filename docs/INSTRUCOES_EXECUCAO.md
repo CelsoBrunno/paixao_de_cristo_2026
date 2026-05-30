@@ -105,8 +105,7 @@ python run.py
 O projeto está configurado para usar imagens placeholder. Para funcionar completamente, você precisa:
 
 1. **Adicionar as imagens reais** na pasta `app/static/images/`
-2. **Consultar** o arquivo `app/static/images/placeholder-info.txt`
-3. **Seguir** as especificações de tamanho e formato
+2. **Seguir** as especificações de tamanho e formato indicadas nos templates
 
 ### Imagens Críticas:
 - `hero-background.jpg` - Fundo da página inicial
