@@ -231,7 +231,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-4">
             <div class="col-lg-10">
                 <div class="patrocinador-ouro-card p-4 p-lg-5 bg-white rounded shadow">
                     <div class="row align-items-center g-4">
@@ -264,6 +264,38 @@
                                 <i class="fas fa-external-link-alt me-2"></i>
                                 Conheça a Mundo Limpo Reciclados
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-10">
+                <div class="patrocinador-parceiro-card p-4 p-lg-5 bg-white rounded shadow">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center patrocinador-ouro-logo-col">
+                            <img src="{{ url_for('static', filename=img ~ 'patrocinio-logo-ymaginarium.png') }}"
+                                 alt="Logo Ymaginarium Eventos Estrutura"
+                                 class="img-fluid patrocinador-parceiro-logo">
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="h4 mb-2">Ymaginarium Eventos Estrutura</h3>
+                            <p class="text-muted mb-3">
+                                <i class="fas fa-archway me-2 text-primary"></i>
+                                Parceira da Edição · Aluguel de Estruturas para Eventos
+                            </p>
+                            <p class="overview-text mb-4">
+                                A <strong>Ymaginarium Eventos Estrutura</strong> foi parceira essencial
+                                da 46ª edição, responsável pelo aluguel e apoio na montagem das estruturas
+                                que deram forma ao nosso espetáculo a céu aberto. Com profissionalismo
+                                e dedicação, a empresa garantiu a solidez e a segurança do palco e dos
+                                equipamentos que receberam elenco, artistas e milhares de espectadores.
+                            </p>
+                            <p class="overview-text mb-0">
+                                Nosso muito obrigado por transformar espaço em palco e tornar possível
+                                mais uma edição inesquecível da Paixão de Cristo de Maracanaú.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -348,6 +380,16 @@
 .patrocinador-ouro-logo {
     max-height: 140px;
     max-width: 280px;
+}
+
+.patrocinador-parceiro-card {
+    border: 3px solid var(--primary-color, #0d6efd);
+    position: relative;
+}
+
+.patrocinador-parceiro-logo {
+    max-height: 160px;
+    max-width: 220px;
 }
 </style>
 {% endblock %}

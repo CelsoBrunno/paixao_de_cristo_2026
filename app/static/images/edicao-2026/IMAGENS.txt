@@ -9,7 +9,8 @@ Em uso na página:
   feira-livre-2026.jpg     — card feira livre
 
 Patrocínio — edição 2026
-  patrocinio-logo-mundo-limpo.png   — logo Patrocinador Ouro (Mundo Limpo Reciclados)
+  patrocinio-logo-mundo-limpo.png   — Mundo Limpo Reciclados (Patrocinador Ouro)
+  patrocinio-logo-ymaginarium.png   — Ymaginarium Eventos Estrutura (estruturas)
 
 Patrocínio geral (página Seja Patrocinador)
   ../patrocinio/mundo-limpo-reciclados.png
