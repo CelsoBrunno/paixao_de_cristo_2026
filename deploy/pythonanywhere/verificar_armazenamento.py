@@ -161,7 +161,7 @@ def main():
     print("=" * 70)
     print("📊 VERIFICAÇÃO DE ESPAÇO DE ARMAZENAMENTO")
     print("   Projeto: Paixão de Cristo de Maracanaú")
-    print("   PRONAC: 255599")
+    print("   PRONAC: 262433")
     print("=" * 70)
     
     # Verificar armazenamento no banco de dados

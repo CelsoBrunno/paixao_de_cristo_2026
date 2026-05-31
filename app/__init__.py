@@ -33,10 +33,10 @@ def create_app():
     
     # Configurações do projeto
     app.config['PROJECT_NAME'] = os.environ.get('PROJECT_NAME', 'Paixão de Cristo de Maracanaú')
-    app.config['PROJECT_PRONAC'] = os.environ.get('PROJECT_PRONAC', '255599')
-    app.config['PROJECT_YEAR'] = os.environ.get('PROJECT_YEAR', '2026')
-    app.config['PROJECT_DIRECTOR'] = os.environ.get('PROJECT_DIRECTOR', 'Celso Brunno')
-    app.config['PROJECT_PHONE'] = os.environ.get('PROJECT_PHONE', '(85) 99999-9999')
+    app.config['PROJECT_PRONAC'] = os.environ.get('PROJECT_PRONAC', '262433')
+    app.config['PROJECT_YEAR'] = os.environ.get('PROJECT_YEAR', '2027')
+    app.config['PROJECT_DIRECTOR'] = os.environ.get('PROJECT_DIRECTOR', 'Celso Custódio')
+    app.config['PROJECT_PHONE'] = os.environ.get('PROJECT_PHONE', '(61) 99378-6592')
     app.config['PROJECT_EMAIL'] = os.environ.get('PROJECT_EMAIL', 'contato@teatroalmirdutra.com.br')
     
     # Configurações de upload

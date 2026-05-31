@@ -137,14 +137,15 @@ def _draw_contact_card(c: canvas.Canvas, x: float, y: float, width: float):
     text_lines = [
         "Alinhamos marketing, legado e impacto social ao projeto histórico de Maracanaú.",
         "",
-        "Celso Brunno Rocha Custódio",
+        "Celso Custódio",
         "Proponente & Coordenador-Geral",
         "Projeto Paixão de Cristo de Maracanaú",
         "",
         "Patrimônio Cultural de Maracanaú (Lei Municipal Nº 2.710/2018)",
-        "PRONAC Aprovado Nº 255599",
+        "PRONAC Aprovado Nº 262433",
+        "Portaria 0258/26 • Processo 01400.010060/2026-38",
         "",
-        "Celular: (85) 92002-1207",
+        "Celular: (61) 99378-6592",
         "Link rápido: https://paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador",
         "E-mail: contato@teatroalmirdutra.com.br",
     ]
@@ -163,7 +164,7 @@ def generate_folheto_pdf() -> bytes:
     y = _draw_header(
         pdf,
         "Projeto Paixão de Cristo de Maracanaú",
-        "O Maior Patrimônio Cultural de Maracanaú. 46 anos de história e impacto social."
+        "O Maior Patrimônio Cultural de Maracanaú. 47 anos de história e impacto social."
     )
 
     _draw_section_label(pdf, MARGIN_X, y, "Projeto Cultural")
@@ -172,7 +173,7 @@ def generate_folheto_pdf() -> bytes:
     card_width = (PAGE_WIDTH - 2 * MARGIN_X - 2 * CARD_GAP) / 3
     card_height = 3.6 * cm
     credibility = [
-        ("46ª edição tradicional", ["Espetáculo a céu aberto ativo há 46 anos,", "referência cultural do Ceará."]),
+        ("47ª edição tradicional", ["Espetáculo a céu aberto ativo há 47 anos,", "referência cultural do Ceará."]),
         ("Patrimônio oficial", ["Reconhecido pela Lei Municipal Nº 2.710/2018", "e calendário oficial de Maracanaú."]),
         ("100% gratuito e acessível", ["Acesso democrático com Libras,", "audiodescrição e áreas reservadas."]),
     ]
@@ -233,14 +234,14 @@ def generate_folheto_pdf() -> bytes:
     pdf.drawCentredString(
         PAGE_WIDTH / 2,
         y - 0.3 * cm,
-        "Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 255599). Empresas do Lucro Real destinam até 4% do IRPJ com dedução total."
+        "Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 262433). Empresas do Lucro Real destinam até 4% do IRPJ com dedução total."
     )
     pdf.drawCentredString(
         PAGE_WIDTH / 2,
         y - 0.9 * cm,
         "Marketing, legado e ESG com custo fiscal zero."
     )
-    _draw_pronac_pill(pdf, PAGE_WIDTH / 2, y - 1.7 * cm, "Projeto aprovado PRONAC 255599")
+    _draw_pronac_pill(pdf, PAGE_WIDTH / 2, y - 1.7 * cm, "Projeto aprovado PRONAC 262433")
 
     y = y - 3.2 * cm
 

@@ -21,10 +21,54 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.sobre') }}">
+                    <a class="nav-link" href="{{ url_for('main.edicao_2026') }}">
+                        <i class="fas fa-star me-1"></i>
+                        Edição 2026
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="sobreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-info-circle me-1"></i>
                         Sobre
+                        <i class="fas fa-chevron-down ms-1"></i>
                     </a>
+                    <ul class="dropdown-menu" aria-labelledby="sobreDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('main.sobre') }}">
+                            <i class="fas fa-book-open me-2"></i>
+                            O Projeto
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('main.faq') }}">
+                            <i class="fas fa-question-circle me-2"></i>
+                            Perguntas Frequentes
+                        </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.evento') }}">
+                        <i class="fas fa-calendar-alt me-1"></i>
+                        Evento
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="midiaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-newspaper me-1"></i>
+                        Mídia
+                        <i class="fas fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="midiaDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('main.midia') }}">
+                            <i class="fas fa-tv me-2"></i>
+                            Na Mídia
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('main.galeria') }}">
+                            <i class="fas fa-images me-2"></i>
+                            Galeria de Fotos
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('main.blog') }}">
+                            <i class="fas fa-pen-nib me-2"></i>
+                            Blog
+                        </a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="atividadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,45 +96,9 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.evento') }}">
-                        <i class="fas fa-calendar-alt me-1"></i>
-                        Evento
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.midia') }}">
-                        <i class="fas fa-newspaper me-1"></i>
-                        <span style="white-space: nowrap;">Na Mídia</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.galeria') }}">
-                        <i class="fas fa-images me-1"></i>
-                        Galeria
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.blog') }}">
-                        <i class="fas fa-newspaper me-1"></i>
-                        Blog
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('main.patrocinio') }}">
                         <i class="fas fa-handshake me-1"></i>
                         Patrocínio
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.especificacoes') }}">
-                        <i class="fas fa-cogs me-1"></i>
-                        Especificações
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.faq') }}">
-                        <i class="fas fa-question-circle me-1"></i>
-                        FAQ
                     </a>
                 </li>
                 <li class="nav-item">

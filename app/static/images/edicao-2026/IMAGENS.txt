@@ -1,0 +1,21 @@
+Imagens da edição 2026 (3 de abril de 2026)
+Coloque os arquivos nesta pasta com estes nomes.
+
+Em uso na página:
+  publico.jpg              — resumo / público
+  pilatos.jpeg             — espetáculo (destaque + cena de Pilatos)
+  crussificação.jpeg       — espetáculo (cena da crucificação)
+  entrada-evento.jpg       — card entrada do evento
+  feira-livre-2026.jpg     — card feira livre
+
+Patrocínio — edição 2026
+  patrocinio-logo-mundo-limpo.png   — logo Patrocinador Ouro (Mundo Limpo Reciclados)
+
+Patrocínio geral (página Seja Patrocinador)
+  ../patrocinio/mundo-limpo-reciclados.png
+
+Opcionais (ainda não enviados):
+  patrocinio-banner-1.jpg
+  patrocinio-momento-1.jpg
+  festival-musica-1.jpg
+  formacao-artistica-1.jpg

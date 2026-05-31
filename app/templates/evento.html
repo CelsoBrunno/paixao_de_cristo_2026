@@ -1,32 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Evento 2026 - Paixão de Cristo de Maracanaú{% endblock %}
+{% block title %}Evento 2027 - Paixão de Cristo de Maracanaú{% endblock %}
 
-{% block meta_description %}Paixão de Cristo de Maracanaú 2026 - 3 e 4 de abril. O maior evento cultural da região com espetáculo cênico, festival de música, formação artística e feira livre.{% endblock %}
+{% block meta_description %}Paixão de Cristo de Maracanaú 2027 - 26 e 27 de março. O maior evento cultural da região com espetáculo cênico, festival de música, formação artística e feira livre.{% endblock %}
 
 {% block og_type %}event{% endblock %}
-{% block og_title %}Evento 2026 - Paixão de Cristo de Maracanaú{% endblock %}
-{% block og_description %}Paixão de Cristo de Maracanaú 2026 - 3 e 4 de abril. O maior evento cultural da região com espetáculo cênico, festival de música, formação artística e feira livre.{% endblock %}
+{% block og_title %}Evento 2027 - Paixão de Cristo de Maracanaú{% endblock %}
+{% block og_description %}Paixão de Cristo de Maracanaú 2027 - 26 e 27 de março. O maior evento cultural da região com espetáculo cênico, festival de música, formação artística e feira livre.{% endblock %}
 {% block og_image %}{{ url_for('static', filename='images/vista-aerea-3d.png', _external=True) }}{% endblock %}
 
 {% block content %}
 {% set breadcrumbs = [
-    {'text': 'Evento 2026', 'url': ''}
+    {'text': 'Evento 2027', 'url': ''}
 ] %}
-{% set share_text = 'Paixão de Cristo de Maracanau 2026 - 3 de Abril. O maior evento cultural da região!' %}
 <!-- Page Header -->
 <section class="page-header py-5 bg-brown text-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="page-title display-4 fw-bold mb-3">Evento 2026</h1>
+                <h1 class="page-title display-4 fw-bold mb-3">Evento 2027</h1>
                 <p class="page-subtitle lead">
                     Prepare-se para a maior edição de todos os tempos
                 </p>
                 <div class="event-date-badge mt-4">
                     <span class="badge bg-warning text-dark fs-4 px-4 py-3">
                         <i class="fas fa-calendar-alt me-2"></i>
-                        3 de Abril de 2026
+                        26 e 27 de Março de 2027
                     </span>
                 </div>
 
@@ -74,9 +73,9 @@
                         <span class="title-accent">O Maior Evento Cultural da Região</span>
                     </h2>
                     <p class="overview-text lead mb-4">
-                        O evento de 2026 promete ser o mais grandioso de todos os tempos,
+                        O evento de 2027 promete ser o mais grandioso de todos os tempos,
                         com estrutura ampliada, novas atrações e uma programação especial
-                        que celebrará os 46 anos de tradição da Paixão de Cristo de Maracanaú.
+                        que celebrará os 47 anos de tradição da Paixão de Cristo de Maracanaú.
                     </p>
                     <p class="overview-text mb-4">
                         Durante dois dias, o público terá acesso a uma programação diversificada
@@ -91,11 +90,6 @@
                                 <h5 class="mb-1">Local</h5>
                                 <p class="mb-0 text-muted">Ao redor da Secretaria de Cultura e Teatro Dorian Sampaio<br><small class="text-muted">Centro de Maracanaú - CE</small></p>
                             </div>
-                        </div>
-
-                        <!-- Botões de Compartilhamento -->
-                        <div class="highlight-item mt-4">
-                            {% include 'components/social-share.html' %}
                         </div>
 
                         <div class="highlight-item d-flex align-items-center mb-3">
@@ -120,7 +114,7 @@
             <div class="col-lg-6">
                 <div class="overview-image">
                     <img src="{{ url_for('static', filename='images/vista-aerea-3d.png') }}"
-                         alt="Vista geral do evento Paixão de Cristo de Maracanaú 2026"
+                         alt="Vista geral do evento Paixão de Cristo de Maracanaú 2027"
                          class="img-fluid rounded shadow"
                          width="800"
                          height="600"
@@ -186,7 +180,7 @@
                 <div class="card atracao-card h-100">
                     <div class="card-image-container">
                         <img src="{{ url_for('static', filename='images/patrocinio-1.png') }}"
-                             alt="Feira Livre - Paixão de Cristo 2026"
+                             alt="Feira Livre - Paixão de Cristo 2027"
                              class="card-img-top"
                              width="400"
                              height="300"
@@ -217,7 +211,7 @@
                 <div class="card atracao-card h-100">
                     <div class="card-image-container">
                         <img src="{{ url_for('static', filename='images/patrocinio-2.png') }}"
-                             alt="Festival de Música - Paixão de Cristo 2026"
+                             alt="Festival de Música - Paixão de Cristo 2027"
                              class="card-img-top"
                              width="400"
                              height="300"
@@ -248,7 +242,7 @@
                 <div class="card atracao-card h-100">
                     <div class="card-image-container">
                         <img src="{{ url_for('static', filename='images/patrocinio-3.png') }}"
-                             alt="Ativação de Empresas - Paixão de Cristo 2026"
+                             alt="Ativação de Empresas - Paixão de Cristo 2027"
                              class="card-img-top"
                              width="400"
                              height="300"
@@ -293,16 +287,15 @@
             </div>
         </div>
 
-        <div class="row g-4">
-            <!-- Dia 1 -->
-            <div class="col-lg-6">
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-8">
                 <div class="programacao-card p-4 bg-white rounded shadow h-100">
-                    <div class="card-header mb-4">
+                    <div class="card-header mb-4 text-center">
                         <h3 class="card-title text-gold mb-2">
-                            <i class="fas fa-calendar-day me-2"></i>
-                            3 de Abril
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            26 e 27 de Março de 2027
                         </h3>
-                        <p class="card-subtitle text-muted mb-0">Sexta-feira</p>
+                        <p class="card-subtitle text-muted mb-0">Sexta-feira e Sábado • Mesma programação nos dois dias</p>
                     </div>
 
                     <div class="programacao-itens">
@@ -348,9 +341,19 @@
                             </div>
                             <div class="atividade">
                                 <h5 class="atividade-titulo mb-1">Espetáculo Cênico</h5>
-                                <p class="atividade-descricao mb-0 text-muted">
-                                    Apresentação da Paixão de Cristo - Primeira parte
+                                <p class="atividade-descricao mb-2 text-muted">
+                                    Apresentação da Paixão de Cristo — duas apresentações:
                                 </p>
+                                <ul class="list-unstyled mb-0 text-muted small">
+                                    <li class="mb-1">
+                                        <i class="fas fa-calendar-day me-1 text-gold"></i>
+                                        <strong>26/03 (sexta)</strong> — Primeira apresentação
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-calendar-day me-1 text-gold"></i>
+                                        <strong>27/03 (sábado)</strong> — Segunda apresentação
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -428,7 +431,7 @@
                             <i class="fas fa-star text-warning"></i>
                         </div>
                         <p class="testimonial-text mb-4">
-                            "O evento superou todas as expectativas! A organização, a qualidade do espetáculo e a estrutura foram impecáveis. Já estamos planejando patrocinar novamente em 2026."
+                            "O evento superou todas as expectativas! A organização, a qualidade do espetáculo e a estrutura foram impecáveis. Já estamos planejando patrocinar novamente em 2027."
                         </p>
                         <div class="testimonial-author">
                             <strong>Patrocinador</strong>
@@ -474,10 +477,10 @@
 {% block extra_head %}
 <!-- Meta Tags Open Graph Específicas para Evento -->
 <meta property="og:type" content="event">
-<meta property="event:start_time" content="2026-04-02T15:00:00-03:00">
-<meta property="event:end_time" content="2026-04-03T22:00:00-03:00">
+<meta property="event:start_time" content="2027-03-26T15:00:00-03:00">
+<meta property="event:end_time" content="2027-03-27T22:00:00-03:00">
 <meta property="event:location" content="Secretaria de Cultura e Teatro Dorian Sampaio, Centro, Maracanau, CE">
-<meta property="og:image:alt" content="Vista aérea do evento Paixão de Cristo de Maracanau 2026">
+<meta property="og:image:alt" content="Vista aérea do evento Paixão de Cristo de Maracanau 2027">
 
 <style>
 .page-header {

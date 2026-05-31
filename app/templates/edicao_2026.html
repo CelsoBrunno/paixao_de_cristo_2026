@@ -1,0 +1,353 @@
+{% extends "base.html" %}
+
+{% block title %}Edição 2026 - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}Confira como foi a 46ª edição da Paixão de Cristo de Maracanaú em 2026: espetáculo cênico, público recorde e patrocinadores que tornaram este evento um sucesso.{% endblock %}
+
+{% block og_type %}article{% endblock %}
+{% block og_title %}Edição 2026 - Paixão de Cristo de Maracanaú{% endblock %}
+{% block og_description %}A 46ª edição reuniu milhares de pessoas em 3 de abril de 2026, em um dia de arte, cultura e fé. Veja fotos e agradeça aos patrocinadores.{% endblock %}
+{% block og_image %}{{ url_for('static', filename='images/edicao-2026/pilatos.jpeg', _external=True) }}{% endblock %}
+
+{% block content %}
+{% set img = 'images/edicao-2026/' %}
+{% set breadcrumbs = [
+    {'text': 'Edição 2026', 'url': ''}
+] %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-brown text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge bg-success fs-6 px-3 py-2 mb-3">
+                    <i class="fas fa-check-circle me-2"></i>Edição realizada com sucesso
+                </span>
+                <h1 class="page-title display-4 fw-bold mb-3">Edição 2026</h1>
+                <p class="page-subtitle lead">
+                    46ª Paixão de Cristo de Maracanaú — um dia que emocionou a região
+                </p>
+                <div class="event-date-badge mt-4">
+                    <span class="badge bg-warning text-dark fs-5 px-4 py-3">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        3 de Abril de 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Resumo do Sucesso -->
+<section class="edicao-overview py-5 parchment-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Uma Edição Histórica</span>
+                </h2>
+                <p class="overview-text lead mb-4">
+                    A edição de 2026 consolidou mais um capítulo de sucesso na trajetória
+                    da Paixão de Cristo de Maracanaú. No dia 3 de abril, o centro da cidade
+                    se transformou em palco de arte, cultura e espiritualidade, reunindo
+                    famílias, fiéis e visitantes de toda a região metropolitana de Fortaleza.
+                </p>
+                <p class="overview-text mb-4">
+                    Com entrada gratuita e programação diversificada, o evento superou
+                    expectativas: o espetáculo cênico emocionou plateias lotadas, o festival
+                    de música animou o público, as oficinas de formação artística formaram
+                    dezenas de jovens talentos e a feira livre valorizou produtores locais.
+                </p>
+                <p class="overview-text mb-0">
+                    Este resultado só foi possível graças ao empenho de centenas de
+                    voluntários, artistas e, especialmente, aos patrocinadores e apoiadores
+                    que acreditaram neste projeto cultural.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename=img ~ 'publico.jpg') }}"
+                     alt="Público assistindo ao espetáculo da Paixão de Cristo de Maracanaú em 2026"
+                     class="img-fluid rounded shadow">
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-3 col-6">
+                <div class="text-center p-4 bg-white rounded shadow h-100">
+                    <div class="display-5 fw-bold text-gold mb-2">46ª</div>
+                    <p class="mb-0 text-muted">Edição do evento</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="text-center p-4 bg-white rounded shadow h-100">
+                    <div class="display-5 fw-bold text-gold mb-2">1</div>
+                    <p class="mb-0 text-muted">Dia de programação</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="text-center p-4 bg-white rounded shadow h-100">
+                    <div class="display-5 fw-bold text-gold mb-2">100+</div>
+                    <p class="mb-0 text-muted">Artistas e extras</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="text-center p-4 bg-white rounded shadow h-100">
+                    <div class="display-5 fw-bold text-gold mb-2">30 mil</div>
+                    <p class="mb-0 text-muted">Público estimado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- O Espetáculo -->
+<section class="espetaculo-edicao-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">O Espetáculo Cênico</span>
+                </h2>
+                <p class="section-description lead">
+                    O coração da Paixão de Cristo emocionou milhares de espectadores
+                </p>
+            </div>
+        </div>
+
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <p class="overview-text mb-4">
+                    O espetáculo cênico foi o grande destaque da edição 2026. Com mais de
+                    100 atores e extras, cenografia ao ar livre e direção artística profissional,
+                    a encenação da paixão, morte e ressurreição de Jesus Cristo conduziu o
+                    público por uma jornada de fé e emoção durante cerca de duas horas de apresentação.
+                </p>
+                <p class="overview-text mb-4">
+                    As cenas diante de Pilatos, da Via Sacra e da Crucificação marcaram
+                    profundamente quem esteve presente, reafirmando a Paixão de Cristo
+                    de Maracanaú como o maior espetáculo a céu aberto da região.
+                </p>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <i class="fas fa-check text-gold me-2"></i>
+                        Palco ao ar livre de 40×15 metros
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-gold me-2"></i>
+                        Apresentação no dia 3 de abril, às 19h30
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-gold me-2"></i>
+                        Local: Secretaria de Cultura e Teatro Dorian Sampaio
+                    </li>
+                    <li>
+                        <i class="fas fa-check text-gold me-2"></i>
+                        Entrada gratuita para toda a comunidade
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename=img ~ 'pilatos.jpeg') }}"
+                     alt="Cena de Pilatos no espetáculo cênico da edição 2026"
+                     class="img-fluid rounded shadow">
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-8">
+                <div class="edicao-photo-card">
+                    <img src="{{ url_for('static', filename=img ~ 'crussificação.jpeg') }}"
+                         alt="Cena da crucificação no espetáculo 2026"
+                         class="img-fluid rounded shadow w-100">
+                    <p class="text-center text-muted small mt-2 mb-0">A Crucificação</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mais Momentos -->
+<section class="momentos-section py-5 evento-2026-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Mais Momentos da Edição</span>
+                </h2>
+                <p class="section-description lead">
+                    A chegada do público, a feira livre e outros registros do dia
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow">
+                    <img src="{{ url_for('static', filename=img ~ 'entrada-evento.jpg') }}"
+                         class="card-img-top"
+                         alt="Entrada e recepção do público na edição 2026">
+                    <div class="card-body">
+                        <h3 class="h5 card-title text-gold">Entrada do Evento</h3>
+                        <p class="card-text mb-0">
+                            Famílias e visitantes chegando ao evento, prontos para viver
+                            um dia de arte, cultura e espiritualidade no centro de Maracanaú.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow">
+                    <img src="{{ url_for('static', filename=img ~ 'feira-livre-2026.jpg') }}"
+                         class="card-img-top"
+                         alt="Feira livre na edição 2026">
+                    <div class="card-body">
+                        <h3 class="h5 card-title text-gold">Feira Livre</h3>
+                        <p class="card-text mb-0">
+                            Produtores e artesãos de Maracanaú expuseram seus trabalhos,
+                            fortalecendo a economia criativa local e complementando
+                            a experiência cultural do evento.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Patrocinador Ouro — Edição 2026 -->
+<section class="patrocinador-ouro-section py-5 parchment-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <span class="badge bg-warning text-dark fs-6 px-3 py-2 mb-3">
+                    <i class="fas fa-medal me-2"></i>Patrocinador Ouro — Edição 2026
+                </span>
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Agradecimento Especial</span>
+                </h2>
+                <p class="section-description lead">
+                    Nossa gratidão a quem acreditou nesta edição e ajudou a levar
+                    arte, cultura e sustentabilidade a milhares de pessoas
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="patrocinador-ouro-card p-4 p-lg-5 bg-white rounded shadow">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center patrocinador-ouro-logo-col">
+                            <a href="https://mundolimporeciclados.com.br/" target="_blank" rel="noopener noreferrer">
+                                <img src="{{ url_for('static', filename=img ~ 'patrocinio-logo-mundo-limpo.png') }}"
+                                     alt="Logo Mundo Limpo Reciclados"
+                                     class="img-fluid patrocinador-ouro-logo">
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="h4 text-gold mb-2">Mundo Limpo Reciclados</h3>
+                            <p class="text-muted mb-3">
+                                <i class="fas fa-leaf me-2 text-success"></i>
+                                Patrocinador Ouro · Gestão Ambiental e Reciclagem
+                            </p>
+                            <p class="overview-text mb-4">
+                                A <strong>Mundo Limpo Reciclados</strong> foi patrocinadora ouro da 46ª edição
+                                da Paixão de Cristo de Maracanaú. Com atuação em coleta, transporte e destinação
+                                de resíduos recicláveis, a empresa reforça o compromisso com práticas sustentáveis,
+                                economia circular e responsabilidade socioambiental — valores que dialogam com a
+                                transformação cultural promovida pelo nosso evento.
+                            </p>
+                            <p class="overview-text mb-4">
+                                Agradecemos de coração por acreditar neste projeto e por unir forças conosco
+                                na preservação do meio ambiente e no fortalecimento da cultura em Maracanaú.
+                            </p>
+                            <a href="https://mundolimporeciclados.com.br/" target="_blank" rel="noopener noreferrer"
+                               class="btn btn-warning">
+                                <i class="fas fa-external-link-alt me-2"></i>
+                                Conheça a Mundo Limpo Reciclados
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chamada para Ação -->
+<section class="cta-edicao-section py-5 parchment-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title mb-4">
+                    <span class="title-accent">Obrigado a Todos!</span>
+                </h2>
+                <p class="lead mb-4">
+                    A edição 2026 ficará marcada na história do projeto. Agora,
+                    convidamos você a acompanhar os preparativos da próxima edição
+                    e reviver os melhores momentos na nossa galeria de fotos.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{{ url_for('main.galeria') }}" class="btn btn-warning btn-lg">
+                        <i class="fas fa-images me-2"></i>
+                        Ver Galeria Completa
+                    </a>
+                    <a href="{{ url_for('main.evento') }}" class="btn btn-outline-dark btn-lg">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Evento 2027
+                    </a>
+                    <a href="{{ url_for('main.patrocinio') }}" class="btn btn-outline-dark btn-lg">
+                        <i class="fas fa-handshake me-2"></i>
+                        Seja Patrocinador
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<style>
+.edicao-photo-card img {
+    height: 280px;
+    object-fit: cover;
+}
+
+.momentos-section .card-img-top {
+    height: 260px;
+    object-fit: cover;
+}
+
+.patrocinador-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.patrocinador-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.patrocinador-ouro-card {
+    border: 3px solid var(--warning-color, #ffc107);
+    position: relative;
+}
+
+.patrocinador-ouro-logo-col {
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    .patrocinador-ouro-card .row {
+        min-height: 100%;
+    }
+
+    .patrocinador-ouro-logo-col {
+        align-self: stretch;
+    }
+}
+
+.patrocinador-ouro-logo {
+    max-height: 140px;
+    max-width: 280px;
+}
+</style>
+{% endblock %}

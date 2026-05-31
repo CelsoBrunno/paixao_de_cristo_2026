@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}Paixão de Cristo de Maracanaú - O Maior Espetáculo a Céu Aberto da Região. Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 255599).{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}Paixão de Cristo, Maracanaú, espetáculo, teatro, cultura, PRONAC, Lei Rouanet, evento 2026{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Paixão de Cristo de Maracanaú - O Maior Espetáculo a Céu Aberto da Região. Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 262433).{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}Paixão de Cristo, Maracanaú, espetáculo, teatro, cultura, PRONAC, Lei Rouanet, evento 2027{% endblock %}">
     <meta name="author" content="Paixão de Cristo de Maracanaú">
     <meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}">
     <meta name="language" content="pt-BR">
@@ -40,9 +40,9 @@
         "@context": "https://schema.org",
         "@type": "{% block schema_type %}Event{% endblock %}",
         "name": "{% block schema_name %}Paixão de Cristo de Maracanaú{% endblock %}",
-        "description": "{% block schema_description %}O Maior Espetáculo a Céu Aberto da Região. Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 255599).{% endblock %}",
-        "startDate": "{% block schema_start_date %}2026-04-02T15:00:00-03:00{% endblock %}",
-        "endDate": "{% block schema_end_date %}2026-04-03T22:00:00-03:00{% endblock %}",
+        "description": "{% block schema_description %}O Maior Espetáculo a Céu Aberto da Região. Projeto aprovado na Lei de Incentivo à Cultura (PRONAC 262433).{% endblock %}",
+        "startDate": "{% block schema_start_date %}2027-03-26T15:00:00-03:00{% endblock %}",
+        "endDate": "{% block schema_end_date %}2027-03-27T22:00:00-03:00{% endblock %}",
         "location": {
             "@type": "Place",
             "name": "{% block schema_location_name %}Secretaria de Cultura e Teatro Dorian Sampaio - Maracanaú, CE{% endblock %}",
@@ -58,7 +58,7 @@
             "name": "Paixão de Cristo de Maracanaú",
             "url": "{{ request.url_root }}",
             "email": "contato@teatroalmirdutra.com.br",
-        "telephone": "+5585920021207"
+        "telephone": "+5561993786592"
         },
         "performer": {
             "@type": "Organization",
@@ -69,11 +69,12 @@
             "price": "0",
             "priceCurrency": "BRL",
             "availability": "https://schema.org/InStock",
-            "validFrom": "2026-01-01"
+            "validFrom": "2027-01-01"
         },
         "image": "{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png', _external=True) }}",
         "url": "{{ request.url_root }}",
         "sameAs": [
+            "https://www.facebook.com/paixaodecristomaracanauoficial/",
             "https://www.instagram.com/paixaodecristomaracanauoficial/",
             "https://www.youtube.com/@TeatroAlmirDutra"
         ]
@@ -148,15 +149,21 @@
                 <div class="col-lg-4 mb-4">
                     <h5 class="footer-title">Paixão de Cristo de Maracanaú</h5>
                     <p class="footer-text">
-                        46 anos de tradição levando arte, cultura e fé para milhares de pessoas.
+                        47 anos de tradição levando arte, cultura e fé para milhares de pessoas.
                         O maior espetáculo a céu aberto da região.
                     </p>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/paixaodecristomaracanauoficial/" class="social-link me-3" aria-label="Instagram">
+                        <a href="https://www.facebook.com/paixaodecristomaracanauoficial/" class="social-link me-3" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/paixaodecristomaracanauoficial/" class="social-link me-3" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.youtube.com/@TeatroAlmirDutra" class="social-link me-3" aria-label="YouTube">
+                        <a href="https://www.youtube.com/@TeatroAlmirDutra" class="social-link me-3" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/5561993786592?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Paixão%20de%20Cristo%20de%20Maracanaú" class="social-link me-3" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (61) 99378-6592">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
@@ -165,7 +172,7 @@
                     <h6 class="footer-subtitle">Links Rápidos</h6>
                     <ul class="footer-links list-unstyled">
                         <li><a href="{{ url_for('main.sobre') }}">Sobre o Projeto</a></li>
-                        <li><a href="{{ url_for('main.evento') }}">Evento 2026</a></li>
+                        <li><a href="{{ url_for('main.evento') }}">Evento 2027</a></li>
                         <li><a href="{{ url_for('main.patrocinio') }}">Seja Patrocinador</a></li>
                         <li><a href="{{ url_for('main.contato') }}">Contato</a></li>
                     </ul>
@@ -180,7 +187,7 @@
                         </p>
                         <p class="mb-2">
                             <i class="fas fa-phone me-2"></i>
-                            <a href="tel:+5585920021207">(85) 92002-1207</a>
+                            <a href="tel:+5561993786592">(61) 99378-6592</a>
                         </p>
                         <p class="mb-0">
                             <i class="fas fa-envelope me-2"></i>
@@ -200,7 +207,7 @@
                             <strong>Projeto realizado com o apoio da Lei de Incentivo à Cultura</strong>
                         </p>
                         <p class="mb-0 pronac-number">
-                            <strong>PRONAC 255599</strong>
+                            <strong>PRONAC 262433</strong>
                         </p>
                     </div>
                 </div>
@@ -414,14 +421,9 @@
                 trackEvent('engagement', 'click', 'midia_link');
             }
             
-            // Links para especificações técnicas
-            if (e.target.matches('a[href*="especificacoes"]')) {
-                trackEvent('engagement', 'click', 'especificacoes_link');
-            }
-            
-            // Links para evento 2026
-            if (e.target.matches('a[href*="evento-2026"]')) {
-                trackEvent('engagement', 'click', 'evento_2026_link');
+            // Links para evento 2027
+            if (e.target.matches('a[href*="evento-2027"]')) {
+                trackEvent('engagement', 'click', 'evento_2027_link');
             }
         });
         
@@ -446,14 +448,14 @@
             let pageType = 'homepage';
             
             if (currentPath.includes('/sobre')) pageType = 'about';
-            else if (currentPath.includes('/evento-2026')) pageType = 'evento_2026';
+            else if (currentPath.includes('/evento-2027')) pageType = 'evento_2027';
+            else if (currentPath.includes('/edicao-2026') || currentPath.includes('/evento-2026')) pageType = 'edicao_2026';
             else if (currentPath.includes('/espetaculo')) pageType = 'espetaculo';
             else if (currentPath.includes('/festival')) pageType = 'festival';
             else if (currentPath.includes('/formacao')) pageType = 'formacao';
             else if (currentPath.includes('/feira')) pageType = 'feira';
             else if (currentPath.includes('/midia')) pageType = 'midia';
             else if (currentPath.includes('/patrocinador')) pageType = 'patrocinadores';
-            else if (currentPath.includes('/especificacoes')) pageType = 'especificacoes';
             else if (currentPath.includes('/contato')) pageType = 'contato';
             
             trackEvent('page_view', 'view', pageType);
@@ -463,7 +465,7 @@
     {% block extra_scripts %}{% endblock %}
     
     <!-- Botão Flutuante WhatsApp -->
-    <a href="https://wa.me/5585920021207?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Paixão%20de%20Cristo%20de%20Maracanau%202026" 
+    <a href="https://wa.me/5561993786592?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Paixão%20de%20Cristo%20de%20Maracanau%202027" 
        target="_blank" 
        rel="noopener noreferrer"
        class="whatsapp-float"
@@ -475,7 +477,7 @@
     <script>
         // Contador Regressivo para o Evento
         function initCountdown() {
-            const eventDate = new Date('2026-04-02T15:00:00-03:00').getTime();
+            const eventDate = new Date('2027-03-26T15:00:00-03:00').getTime();
             
             function updateCountdown() {
                 const now = new Date().getTime();
@@ -639,15 +641,6 @@
         
         .breadcrumb-item.active {
             color: var(--gray-medium, #8B7355);
-        }
-        
-        /* Social Share Buttons */
-        .social-share-buttons {
-            margin: 1rem 0;
-        }
-        
-        .social-share-buttons .btn {
-            margin: 0.25rem;
         }
         
         /* Testimonials */

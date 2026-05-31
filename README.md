@@ -1,10 +1,10 @@
 # Paixão de Cristo de Maracanaú - Website Institucional
 
-Website institucional para o projeto "Paixão de Cristo de Maracanaú" (PRONAC 255599), desenvolvido com Python Flask seguindo as melhores práticas de desenvolvimento web, acessibilidade e conformidade com a Lei de Incentivo à Cultura.
+Website institucional para o projeto "Paixão de Cristo de Maracanaú" (PRONAC 262433), desenvolvido com Python Flask seguindo as melhores práticas de desenvolvimento web, acessibilidade e conformidade com a Lei de Incentivo à Cultura.
 
 ## 📋 Sobre o Projeto
 
-Este website foi desenvolvido para apresentar o projeto cultural "Paixão de Cristo de Maracanaú", um evento de 46 anos de tradição que atrai mais de 30.000 pessoas anualmente. O site serve como canal oficial de comunicação e divulgação, além de ser uma ferramenta para captação de patrocinadores através da Lei de Incentivo à Cultura.
+Este website foi desenvolvido para apresentar o projeto cultural "Paixão de Cristo de Maracanaú", um evento de 47 anos de tradição que atrai mais de 30.000 pessoas anualmente. O site serve como canal oficial de comunicação e divulgação, além de ser uma ferramenta para captação de patrocinadores através da Lei de Incentivo à Cultura.
 
 ### Características Principais
 

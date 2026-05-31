@@ -81,9 +81,23 @@ def sobre():
     """Página sobre o projeto"""
     return render_template('sobre.html')
 
+@bp.route('/edicao-2026')
+def edicao_2026():
+    """Página retrospectiva da edição 2026"""
+    from app.edicao_2026_data import PATROCINADORES_EDICAO_2026
+    return render_template(
+        'edicao_2026.html',
+        patrocinadores=PATROCINADORES_EDICAO_2026,
+    )
+
 @bp.route('/evento-2026')
+def evento_2026_redirect():
+    """Redireciona URL antiga para a página da edição 2026"""
+    return redirect(url_for('main.edicao_2026'), code=301)
+
+@bp.route('/evento-2027')
 def evento():
-    """Página do evento 2026"""
+    """Página do evento 2027"""
     return render_template('evento.html')
 
 @bp.route('/espetaculo-cenico')
@@ -180,11 +194,6 @@ def patrocinadores_folheto_pdf():
         flash('Não foi possível gerar o PDF no momento. Por favor, tente novamente em instantes.', 'danger')
         return redirect(url_for('main.patrocinadores_folheto'))
 
-@bp.route('/especificacoes-tecnicas')
-def especificacoes():
-    """Página de especificações técnicas"""
-    return render_template('especificacoes.html')
-
 @bp.route('/galeria')
 def galeria():
     """Página da galeria de imagens"""
@@ -261,7 +270,7 @@ def rss_feed():
     # Dados das notícias (em um sistema real, isso viria de um banco de dados)
     news_data = [
         {
-            'title': 'Ensaios da Paixão de Cristo 2026 Iniciam em Março',
+            'title': 'Ensaios da Paixão de Cristo 2027 Iniciam em Março',
             'description': 'Os ensaios para o maior espetáculo a céu aberto da região começam em março.',
             'content': 'Mais de 200 artistas participarão dos ensaios que acontecerão aos fins de semana...',
             'date': '2026-01-15',
@@ -277,8 +286,8 @@ def rss_feed():
             'url': url_for('main.blog', _external=True) + '#noticia-2'
         },
         {
-            'title': 'Novos Patrocinadores Confirmados para 2026',
-            'description': 'Três novas empresas confirmaram patrocínio para a edição 2026.',
+            'title': 'Novos Patrocinadores Confirmados para 2027',
+            'description': 'Três novas empresas confirmaram patrocínio para a edição 2027.',
             'content': 'Os benefícios fiscais da Lei Rouanet continuam atraindo investidores...',
             'date': '2026-01-10',
             'category': 'patrocinio',
@@ -334,7 +343,8 @@ def sitemap():
     urls = [
         {'loc': '/', 'changefreq': 'weekly', 'priority': '1.0'},
         {'loc': '/sobre', 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': '/evento-2026', 'changefreq': 'weekly', 'priority': '0.9'},
+        {'loc': '/evento-2027', 'changefreq': 'weekly', 'priority': '0.9'},
+        {'loc': '/edicao-2026', 'changefreq': 'monthly', 'priority': '0.7'},
         {'loc': '/espetaculo-cenico', 'changefreq': 'monthly', 'priority': '0.7'},
         {'loc': '/festival-musica', 'changefreq': 'monthly', 'priority': '0.7'},
         {'loc': '/formacao-artistica', 'changefreq': 'monthly', 'priority': '0.7'},
@@ -344,9 +354,8 @@ def sitemap():
                {'loc': '/blog', 'changefreq': 'daily', 'priority': '0.8'},
                {'loc': '/patrocinio', 'changefreq': 'monthly', 'priority': '0.8'},
                {'loc': '/seja-patrocinador', 'changefreq': 'monthly', 'priority': '0.8'},
-        {'loc': '/especificacoes-tecnicas', 'changefreq': 'monthly', 'priority': '0.5'},
-        {'loc': '/contato', 'changefreq': 'monthly', 'priority': '0.6'},
-        {'loc': '/faq', 'changefreq': 'monthly', 'priority': '0.7'}
+               {'loc': '/contato', 'changefreq': 'monthly', 'priority': '0.6'},
+               {'loc': '/faq', 'changefreq': 'monthly', 'priority': '0.7'}
     ]
     
     # Adicionar cada URL ao sitemap
@@ -561,7 +570,7 @@ def contato():
                         
                         ---
                         Projeto realizado com o apoio da Lei de Incentivo à Cultura
-                        PRONAC 255599
+                        PRONAC 262433
                         """,
                         sender=current_app.config['MAIL_DEFAULT_SENDER']
                     )
