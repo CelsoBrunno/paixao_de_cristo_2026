@@ -335,3 +335,277 @@ def generate_folheto_pdf() -> bytes:
     return pdf_bytes
 
 
+def generate_onepage_patrocinio_pdf() -> bytes:
+    """Gera one-page comercial de patrocínio (A4 paisagem) para envio a empresas."""
+    buffer = BytesIO()
+    pdf = canvas.Canvas(buffer, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+
+    # Fundo
+    pdf.setFillColor(LIGHT_PARCHMENT)
+    pdf.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, stroke=0, fill=1)
+
+    # Faixa superior
+    header_h = 3.35 * cm
+    pdf.setFillColor(PRIMARY_DARK)
+    pdf.rect(0, PAGE_HEIGHT - header_h, PAGE_WIDTH, header_h, stroke=0, fill=1)
+    pdf.setFillColor(GOLD)
+    pdf.rect(0, PAGE_HEIGHT - header_h - 0.12 * cm, PAGE_WIDTH, 0.12 * cm, stroke=0, fill=1)
+
+    pdf.setFillColor(GOLD)
+    pdf.setFont("Helvetica-Bold", 9)
+    pdf.drawString(MARGIN_X, PAGE_HEIGHT - 0.85 * cm, "OPORTUNIDADE DE PATROCÍNIO · EDIÇÃO 2027")
+
+    pdf.setFillColor(WHITE)
+    pdf.setFont("Helvetica-Bold", 18)
+    pdf.drawString(MARGIN_X, PAGE_HEIGHT - 1.7 * cm, "Posicione sua marca no maior espetáculo")
+    pdf.drawString(MARGIN_X, PAGE_HEIGHT - 2.35 * cm, "a céu aberto da região")
+
+    pdf.setFont("Helvetica", 10)
+    pdf.setFillColor(colors.HexColor("#E8DCC8"))
+    pdf.drawRightString(
+        PAGE_WIDTH - MARGIN_X,
+        PAGE_HEIGHT - 1.55 * cm,
+        "Paixão de Cristo de Maracanaú",
+    )
+    pdf.setFillColor(GOLD)
+    pdf.setFont("Helvetica-Bold", 11)
+    pdf.drawRightString(
+        PAGE_WIDTH - MARGIN_X,
+        PAGE_HEIGHT - 2.15 * cm,
+        "26 e 27 de março de 2027",
+    )
+
+    y = PAGE_HEIGHT - header_h - 0.55 * cm
+
+    # Pitch comercial
+    pdf.setFillColor(PRIMARY_BROWN)
+    pdf.setFont("Helvetica-Bold", 11)
+    pdf.drawString(MARGIN_X, y, "Por que patrocinar agora")
+    y -= 0.45 * cm
+    pdf.setFillColor(GRAY_TEXT)
+    pdf.setFont("Helvetica", 8.7)
+    pitch_lines = [
+        "47 anos de tradição · Patrimônio Cultural (Lei Municipal nº 2.710/2018) · Evento 100% gratuito e acessível (Libras, audiodescrição e áreas reservadas).",
+        "Sua marca ganha exposição massiva, associação a impacto social/ESG e legado cultural — com incentivo fiscal via Lei Rouanet (projeto já aprovado).",
+    ]
+    for line in pitch_lines:
+        pdf.drawString(MARGIN_X, y, line)
+        y -= 0.38 * cm
+
+    y -= 0.2 * cm
+
+    # Métricas
+    metrics = [
+        ("+30.000", "Espectadores"),
+        ("+300", "Artistas/técnicos"),
+        ("100", "Vagas em oficinas"),
+        ("+50", "Profissionais contratados"),
+        ("+16", "Artesãos e bandas"),
+        ("LIVE", "Mídia + transmissão"),
+    ]
+    metric_w = (PAGE_WIDTH - 2 * MARGIN_X - 5 * 0.25 * cm) / 6
+    metric_h = 1.55 * cm
+    for i, (value, label) in enumerate(metrics):
+        x = MARGIN_X + i * (metric_w + 0.25 * cm)
+        pdf.setFillColor(WHITE)
+        pdf.setStrokeColor(GOLD)
+        pdf.setLineWidth(1)
+        pdf.roundRect(x, y - metric_h, metric_w, metric_h, 6, stroke=1, fill=1)
+        pdf.setFillColor(GOLD)
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawCentredString(x + metric_w / 2, y - 0.65 * cm, value)
+        pdf.setFillColor(GRAY_TEXT)
+        pdf.setFont("Helvetica", 7.2)
+        pdf.drawCentredString(x + metric_w / 2, y - 1.15 * cm, label)
+
+    y -= metric_h + 0.45 * cm
+
+    # Coluna esquerda: fiscal + ativação + prova social
+    left_w = 11.8 * cm
+    right_x = MARGIN_X + left_w + 0.45 * cm
+    right_w = PAGE_WIDTH - MARGIN_X - right_x
+
+    # Bloco fiscal
+    box_h = 3.55 * cm
+    pdf.setFillColor(PRIMARY_BROWN)
+    pdf.roundRect(MARGIN_X, y - box_h, left_w, box_h, 8, stroke=0, fill=1)
+    pdf.setFillColor(GOLD)
+    pdf.setFont("Helvetica-Bold", 9)
+    pdf.drawString(MARGIN_X + 0.4 * cm, y - 0.55 * cm, "ARGUMENTO FISCAL · CUSTO ZERO NO IRPJ*")
+    pdf.setFillColor(WHITE)
+    pdf.setFont("Helvetica-Bold", 14)
+    pdf.drawString(MARGIN_X + 0.4 * cm, y - 1.2 * cm, "R$ 499.554,00 liberados para captação")
+    pdf.setFont("Helvetica", 8)
+    fiscal_lines = [
+        "PRONAC 262433  ·  Proposta 492847  ·  Status: APROVADO",
+        "Portaria 0258/26  ·  Processo 01400.010060/2026-38",
+        "Empresas do Lucro Real: até 4% do IRPJ com dedução do valor investido.",
+        "*Marketing, ESG e legado cultural com incentivo fiscal — não é doação sem retorno.",
+    ]
+    ty = y - 1.7 * cm
+    for line in fiscal_lines:
+        pdf.drawString(MARGIN_X + 0.4 * cm, ty, line)
+        ty -= 0.38 * cm
+
+    y2 = y - box_h - 0.35 * cm
+
+    # Ativação
+    act_h = 2.85 * cm
+    pdf.setFillColor(WHITE)
+    pdf.setStrokeColor(colors.HexColor("#D9C9B7"))
+    pdf.roundRect(MARGIN_X, y2 - act_h, left_w, act_h, 8, stroke=1, fill=1)
+    pdf.setFillColor(PRIMARY_BROWN)
+    pdf.setFont("Helvetica-Bold", 9)
+    pdf.drawString(MARGIN_X + 0.4 * cm, y2 - 0.5 * cm, "O QUE SUA MARCA GANHA")
+    pdf.setFillColor(GRAY_TEXT)
+    pdf.setFont("Helvetica", 7.8)
+    ativacoes = [
+        "• Exposição em estruturas, banners e telões  •  Stand / presença na Feira Livre",
+        "• Menções em mídia, redes e transmissão ao vivo  •  Hospitalidade VIP",
+        "• Associação a impacto social/ESG e patrimônio cultural reconhecido por lei",
+        "• Relatório de resultados + certificado de reconhecimento",
+    ]
+    ay = y2 - 1.0 * cm
+    for line in ativacoes:
+        pdf.drawString(MARGIN_X + 0.4 * cm, ay, line)
+        ay -= 0.4 * cm
+
+    y3 = y2 - act_h - 0.3 * cm
+
+    # Prova social
+    social_h = 2.35 * cm
+    pdf.setFillColor(WHITE)
+    pdf.setStrokeColor(GOLD)
+    pdf.roundRect(MARGIN_X, y3 - social_h, left_w, social_h, 8, stroke=1, fill=1)
+    pdf.setFillColor(PRIMARY_BROWN)
+    pdf.setFont("Helvetica-Bold", 9)
+    pdf.drawString(MARGIN_X + 0.4 * cm, y3 - 0.5 * cm, "QUEM JÁ APOIOU (PROVA SOCIAL)")
+    pdf.setFillColor(GRAY_TEXT)
+    pdf.setFont("Helvetica", 7.8)
+    pdf.drawString(
+        MARGIN_X + 0.4 * cm,
+        y3 - 1.05 * cm,
+        "Mundo Limpo Reciclados (Ouro 2026)  ·  Ymaginarium  ·  Emanuel do Aço",
+    )
+    pdf.drawString(
+        MARGIN_X + 0.4 * cm,
+        y3 - 1.5 * cm,
+        "Informar Telecom  ·  Prefeitura de Maracanaú",
+    )
+    pdf.setFont("Helvetica-Oblique", 7.5)
+    pdf.drawString(
+        MARGIN_X + 0.4 * cm,
+        y3 - 2.0 * cm,
+        "Marcas que já associaram nome a cultura, comunidade e resultado de imagem.",
+    )
+
+    # Cotas (direita)
+    pdf.setFillColor(PRIMARY_BROWN)
+    pdf.setFont("Helvetica-Bold", 10)
+    pdf.drawString(right_x, y, "ESCOLHA SUA COTA")
+    pdf.setFillColor(GOLD)
+    pdf.setFont("Helvetica", 7.5)
+    pdf.drawRightString(PAGE_WIDTH - MARGIN_X, y, "Todas as opções disponíveis")
+
+    cotas = [
+        (
+            "MASTER · Apresenta",
+            "R$ 250.000",
+            [
+                "Naming rights do espetáculo",
+                "Visibilidade máxima (palco, peças, live)",
+                "Ativações exclusivas + uso de imagens",
+            ],
+        ),
+        (
+            "OURO · Patrocina (2 cotas)",
+            "R$ 200.000",
+            [
+                "Marca nas estruturas principais/telões",
+                "Presença na live e mídia espontânea",
+                "Ativações na Feira Livre",
+            ],
+        ),
+        (
+            "PRATA · Apoio",
+            "R$ 40.000",
+            [
+                "Marca em estruturas de apoio e materiais",
+                "Menções em redes e imprensa",
+                "Créditos na transmissão oficial",
+            ],
+        ),
+        (
+            "APOIO LOCAL · Cultural",
+            "R$ 9.554",
+            [
+                "Visibilidade territorial e comunicação local",
+                "Associação a ações sociais",
+                "Agradecimentos digitais e online",
+            ],
+        ),
+    ]
+
+    cota_top = y - 0.25 * cm
+    cota_h = 2.55 * cm
+    gap = 0.22 * cm
+    for i, (title, value, bullets) in enumerate(cotas):
+        cy = cota_top - i * (cota_h + gap)
+        pdf.setFillColor(WHITE)
+        pdf.setStrokeColor(GOLD)
+        pdf.setLineWidth(1.1)
+        pdf.roundRect(right_x, cy - cota_h, right_w, cota_h, 7, stroke=1, fill=1)
+
+        pdf.setFillColor(PRIMARY_DARK)
+        pdf.rect(right_x, cy - 0.72 * cm, right_w, 0.72 * cm, stroke=0, fill=1)
+        pdf.setFillColor(GOLD)
+        pdf.setFont("Helvetica-Bold", 8.5)
+        pdf.drawString(right_x + 0.35 * cm, cy - 0.48 * cm, title)
+        pdf.setFillColor(WHITE)
+        pdf.setFont("Helvetica-Bold", 9)
+        pdf.drawRightString(right_x + right_w - 0.35 * cm, cy - 0.48 * cm, value)
+
+        pdf.setFillColor(GRAY_TEXT)
+        pdf.setFont("Helvetica", 7.4)
+        by = cy - 1.15 * cm
+        for b in bullets:
+            pdf.drawString(right_x + 0.35 * cm, by, f"• {b}")
+            by -= 0.38 * cm
+
+    # Rodapé CTA
+    footer_h = 2.0 * cm
+    pdf.setFillColor(PRIMARY_DARK)
+    pdf.rect(0, 0, PAGE_WIDTH, footer_h, stroke=0, fill=1)
+    pdf.setFillColor(GOLD)
+    pdf.rect(0, footer_h, PAGE_WIDTH, 0.08 * cm, stroke=0, fill=1)
+
+    pdf.setFillColor(GOLD)
+    pdf.setFont("Helvetica-Bold", 10)
+    pdf.drawString(MARGIN_X, footer_h - 0.55 * cm, "VAMOS FECHAR SUA COTA?")
+
+    pdf.setFillColor(WHITE)
+    pdf.setFont("Helvetica", 8)
+    pdf.drawString(
+        MARGIN_X,
+        footer_h - 1.05 * cm,
+        "Celso Custódio  ·  Proponente & Coordenador-Geral  ·  (61) 99378-6592  ·  contato@teatroalmirdutra.com.br",
+    )
+    pdf.drawString(
+        MARGIN_X,
+        footer_h - 1.5 * cm,
+        "https://paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador  ·  Local: Maracanaú – CE",
+    )
+
+    pdf.setFillColor(GOLD)
+    pdf.setFont("Helvetica-Bold", 8)
+    pdf.drawRightString(PAGE_WIDTH - MARGIN_X, footer_h - 1.05 * cm, "Resposta rápida.")
+    pdf.setFont("Helvetica", 7.5)
+    pdf.setFillColor(colors.HexColor("#E8DCC8"))
+    pdf.drawRightString(PAGE_WIDTH - MARGIN_X, footer_h - 1.5 * cm, "One-page comercial · Edição 2027")
+
+    pdf.save()
+    pdf_bytes = buffer.getvalue()
+    buffer.close()
+    return pdf_bytes
+
+

@@ -135,6 +135,11 @@ def patrocinadores_folheto():
     """Página de folheto em formato impressão para patrocinadores"""
     return render_template('patrocinadores_folheto.html')
 
+@bp.route('/seja-patrocinador/one-page')
+def patrocinio_onepage():
+    """One-page HTML comercial para print/screenshot e envio a empresas"""
+    return render_template('patrocinio_onepage.html')
+
 @bp.route('/faq')
 def faq():
     """Página de perguntas frequentes"""
@@ -193,6 +198,30 @@ def patrocinadores_folheto_pdf():
         current_app.logger.exception('Erro ao gerar PDF do folheto: %s', exc)
         flash('Não foi possível gerar o PDF no momento. Por favor, tente novamente em instantes.', 'danger')
         return redirect(url_for('main.patrocinadores_folheto'))
+
+@bp.route('/seja-patrocinador/one-page.pdf')
+def patrocinadores_onepage_pdf():
+    """Gera one-page comercial de patrocínio para envio a empresas"""
+    try:
+        from app.pdf_generator import generate_onepage_patrocinio_pdf
+    except ImportError:
+        flash('Dependência para geração de PDF não instalada. Por favor, contate o administrador.', 'danger')
+        return redirect(url_for('main.patrocinadores'))
+
+    try:
+        pdf_bytes = generate_onepage_patrocinio_pdf()
+
+        response = make_response(pdf_bytes)
+        response.headers['Content-Type'] = 'application/pdf'
+        response.headers['Content-Disposition'] = (
+            'attachment; filename=patrocinio-paixao-de-cristo-2027-one-page.pdf'
+        )
+        return response
+
+    except Exception as exc:
+        current_app.logger.exception('Erro ao gerar one-page de patrocínio: %s', exc)
+        flash('Não foi possível gerar o PDF no momento. Por favor, tente novamente em instantes.', 'danger')
+        return redirect(url_for('main.patrocinadores'))
 
 @bp.route('/galeria')
 def galeria():

@@ -1,0 +1,700 @@
+{% extends "base.html" %}
+
+{% block title %}One-page Patrocínio 2027 - Paixão de Cristo de Maracanaú{% endblock %}
+
+{% block meta_description %}One-page comercial de patrocínio da Paixão de Cristo de Maracanaú 2027. Ideal para print e envio a empresas.{% endblock %}
+
+{% block meta_robots %}noindex, nofollow{% endblock %}
+
+{% block extra_head %}
+<style>
+    .header,
+    .footer,
+    .breadcrumb-nav,
+    .accessibility-toolbar {
+        display: none !important;
+    }
+
+    .main-content {
+        padding-top: 0 !important;
+        min-height: auto !important;
+    }
+
+    body {
+        background: #1a120e !important;
+        overflow-x: auto;
+    }
+
+    body::before,
+    body::after {
+        display: none !important;
+    }
+
+    .shot-hint {
+        max-width: 1440px;
+        margin: 1.25rem auto 0.75rem;
+        padding: 0.85rem 1.25rem;
+        color: #f3e8d8;
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        border-radius: 12px;
+    }
+
+    .shot-hint strong {
+        color: var(--metallic-gold);
+    }
+
+    .onepage-board {
+        --op-ink: #1c130f;
+        --op-paper: #f4ebe0;
+        --op-gold: #d4af37;
+        --op-gold-soft: #e8c96a;
+        --op-brown: #5e493d;
+        --op-deep: #2a1c16;
+
+        width: 1440px;
+        height: 1000px;
+        margin: 0 auto 2rem;
+        position: relative;
+        overflow: hidden;
+        color: var(--op-ink);
+        background:
+            linear-gradient(115deg, rgba(20, 12, 8, 0.88) 0%, rgba(42, 28, 22, 0.72) 42%, rgba(20, 12, 8, 0.55) 100%),
+            url("{{ url_for('static', filename='images/jesus-fumaca.jpg') }}") center/cover no-repeat;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+        font-family: var(--font-sans);
+    }
+
+    .onepage-board::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse at 18% 15%, rgba(212, 175, 55, 0.22), transparent 45%),
+            radial-gradient(ellipse at 90% 80%, rgba(200, 16, 46, 0.12), transparent 40%);
+        pointer-events: none;
+    }
+
+    .onepage-inner {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 24px 34px 20px;
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+        gap: 12px;
+    }
+
+    .op-top {
+        display: grid;
+        grid-template-columns: 1.35fr 0.9fr;
+        gap: 22px;
+        align-items: end;
+    }
+
+    .op-brand-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .op-logo {
+        width: 78px;
+        height: 78px;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+    }
+
+    .op-kicker {
+        display: inline-block;
+        margin-bottom: 8px;
+        padding: 5px 12px;
+        border: 1px solid rgba(212, 175, 55, 0.65);
+        color: var(--op-gold-soft);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .op-title {
+        margin: 0;
+        color: #fff;
+        font-family: var(--font-primary);
+        font-size: 2.35rem;
+        line-height: 1.08;
+        letter-spacing: 0.02em;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .op-title span {
+        color: var(--op-gold-soft);
+    }
+
+    .op-lead {
+        margin: 10px 0 0;
+        max-width: 620px;
+        color: rgba(255, 248, 238, 0.9);
+        font-family: var(--font-secondary);
+        font-size: 1.15rem;
+        line-height: 1.35;
+    }
+
+    .op-date-card {
+        background: linear-gradient(160deg, rgba(244, 235, 224, 0.96), rgba(234, 224, 213, 0.92));
+        border: 1px solid rgba(212, 175, 55, 0.55);
+        padding: 18px 20px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    }
+
+    .op-date-card .label {
+        color: var(--op-brown);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .op-date-card .date {
+        margin: 4px 0 6px;
+        color: var(--op-deep);
+        font-family: var(--font-primary);
+        font-size: 1.55rem;
+        line-height: 1.15;
+    }
+
+    .op-date-card .place {
+        color: #5a4639;
+        font-size: 0.92rem;
+    }
+
+    .op-metrics {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+    }
+
+    .op-metric {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(8px);
+        padding: 12px 10px;
+        text-align: center;
+    }
+
+    .op-metric strong {
+        display: block;
+        color: var(--op-gold-soft);
+        font-family: var(--font-primary);
+        font-size: 1.35rem;
+        line-height: 1;
+    }
+
+    .op-metric span {
+        display: block;
+        margin-top: 6px;
+        color: rgba(255, 248, 238, 0.86);
+        font-size: 0.72rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+
+    .op-body {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 14px;
+        min-height: 0;
+    }
+
+    .op-panel {
+        background: rgba(244, 235, 224, 0.94);
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        padding: 14px 16px 16px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .op-panel-fiscal {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0;
+    }
+
+    .op-panel h2 {
+        margin: 0 0 8px;
+        color: var(--op-deep);
+        font-family: var(--font-primary);
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .op-panel h2.op-gains-title {
+        margin-top: 10px;
+        margin-bottom: 6px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(94, 73, 61, 0.16);
+    }
+
+    .op-panel p,
+    .op-panel li {
+        color: #3f2f26;
+        font-size: 0.82rem;
+        line-height: 1.35;
+    }
+
+    .op-panel p {
+        margin: 0 0 6px;
+    }
+
+    .op-panel p:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .op-fiscal-value {
+        margin: 4px 0 8px;
+        color: var(--op-deep);
+        font-family: var(--font-primary);
+        font-size: 1.55rem;
+        line-height: 1;
+    }
+
+    .op-fiscal-value small {
+        display: block;
+        margin-top: 4px;
+        color: var(--op-brown);
+        font-family: var(--font-sans);
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .op-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 6px 0 8px;
+    }
+
+    .op-badge {
+        background: var(--op-deep);
+        color: var(--op-gold-soft);
+        padding: 4px 9px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .op-list {
+        margin: 0;
+        padding-left: 1.05rem;
+        padding-bottom: 2px;
+    }
+
+    .op-list li + li {
+        margin-top: 3px;
+    }
+
+    .op-cotas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        height: calc(100% - 34px);
+    }
+
+    .op-cota {
+        background: #fffdf9;
+        border: 1px solid rgba(94, 73, 61, 0.16);
+        padding: 12px 12px 10px;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .op-cota.featured {
+        border-color: rgba(212, 175, 55, 0.75);
+        background: linear-gradient(180deg, #fff8e8 0%, #fffdf9 100%);
+    }
+
+    .op-cota-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(94, 73, 61, 0.14);
+    }
+
+    .op-cota-head h3 {
+        margin: 0;
+        color: var(--op-deep);
+        font-family: var(--font-primary);
+        font-size: 0.92rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+
+    .op-cota-head strong {
+        color: #9a7420;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+
+    .op-cota ul {
+        margin: 0;
+        padding-left: 1rem;
+        flex: 1;
+    }
+
+    .op-cota li {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        color: #4a3a31;
+    }
+
+    .op-cota li + li {
+        margin-top: 3px;
+    }
+
+    .op-footer {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .op-social,
+    .op-cta {
+        padding: 14px 16px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .op-social {
+        background: rgba(20, 12, 8, 0.55);
+        backdrop-filter: blur(8px);
+        color: #fff8ee;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .op-social h2,
+    .op-cta h2 {
+        margin: 0 0 10px;
+        font-family: var(--font-primary);
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .op-social h2 {
+        color: var(--op-gold-soft);
+    }
+
+    .op-supporters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .op-supporter {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-align: center;
+        padding: 10px 10px 12px;
+        color: #fff8ee;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+        white-space: normal;
+        background: rgba(255, 248, 238, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.45);
+        border-left: 3px solid var(--op-gold);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .op-supporter-logo {
+        width: 100%;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 8px;
+        background: #fff;
+        border: 1px solid rgba(212, 175, 55, 0.28);
+    }
+
+    .op-supporter-logo img {
+        max-width: 100%;
+        max-height: 40px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .op-supporter-name {
+        display: block;
+    }
+
+    .op-supporter em {
+        display: block;
+        margin-top: 3px;
+        color: var(--op-gold-soft);
+        font-style: normal;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .op-cta {
+        background: linear-gradient(135deg, #32231c 0%, #1c130f 100%);
+        color: #fff;
+    }
+
+    .op-cta h2 {
+        color: var(--op-gold-soft);
+    }
+
+    .op-cta p {
+        margin: 0;
+        font-size: 0.84rem;
+        line-height: 1.4;
+    }
+
+    .op-cta a {
+        color: var(--op-gold-soft);
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    @media (max-width: 1500px) {
+        .shot-hint {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .onepage-board {
+            margin-left: 1rem;
+            margin-right: 1rem;
+            transform-origin: top left;
+        }
+    }
+
+    @media print {
+        .shot-hint {
+            display: none !important;
+        }
+
+        body {
+            background: #fff !important;
+        }
+
+        .onepage-board {
+            margin: 0;
+            box-shadow: none;
+            page-break-inside: avoid;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="shot-hint">
+        <strong>Para o print:</strong> capture só o quadro abaixo (1440×1000).
+        Zoom do navegador em 100% deixa o resultado mais nítido.
+    </div>
+
+<section class="onepage-board" id="onepage-shot" aria-label="One-page comercial de patrocínio 2027">
+    <div class="onepage-inner">
+        <header class="op-top">
+            <div>
+                <div class="op-brand-row">
+                    <img class="op-logo"
+                         src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}"
+                         alt="Logo Paixão de Cristo de Maracanaú">
+                    <div>
+                        <div class="op-kicker">Oportunidade de patrocínio · Edição 2027</div>
+                        <h1 class="op-title">
+                            <span>Maior espetáculo a céu aberto</span><br>
+                            de Maracanaú
+                        </h1>
+                    </div>
+                </div>
+                <p class="op-lead">
+                    47 anos de tradição. Patrimônio Cultural de Maracanaú.
+                    Evento gratuito, acessível e com incentivo fiscal aprovado.
+                </p>
+            </div>
+
+            <aside class="op-date-card">
+                <div class="label">Quando e onde</div>
+                <div class="date">26 e 27 de março de 2027</div>
+                <div class="place">Maracanaú – CE · Secretaria de Cultura / Teatro Dorian Sampaio</div>
+            </aside>
+        </header>
+
+        <div class="op-metrics" aria-label="Números de impacto">
+            <div class="op-metric"><strong>+30.000</strong><span>Espectadores</span></div>
+            <div class="op-metric"><strong>+300</strong><span>Artistas e técnicos</span></div>
+            <div class="op-metric"><strong>100</strong><span>Vagas em oficinas</span></div>
+            <div class="op-metric"><strong>+50</strong><span>Profissionais contratados</span></div>
+            <div class="op-metric"><strong>+16</strong><span>Artesãos e bandas</span></div>
+            <div class="op-metric"><strong>LIVE</strong><span>Mídia + transmissão</span></div>
+        </div>
+
+        <div class="op-body">
+            <aside class="op-panel op-panel-fiscal">
+                <h2>Argumento fiscal</h2>
+                <div class="op-fiscal-value">
+                    R$ 499.554,00
+                    <small>Valor liberado para captação</small>
+                </div>
+                <div class="op-badge-row">
+                    <span class="op-badge">PRONAC 262433</span>
+                    <span class="op-badge">Proposta 492847</span>
+                    <span class="op-badge">Aprovado</span>
+                </div>
+                <p>
+                    Portaria 0258/26 · Processo 01400.010060/2026-38.
+                    Empresas do Lucro Real podem destinar até 4% do IRPJ com dedução do valor investido.
+                </p>
+                <p><strong>Marketing + ESG + legado cultural</strong> — com incentivo fiscal, não é doação sem retorno.</p>
+
+                <h2 class="op-gains-title">Sua marca ganha</h2>
+                <ul class="op-list">
+                    <li>Exposição em estruturas, banners e telões</li>
+                    <li>Stand / presença na Feira Livre</li>
+                    <li>Menções em mídia, redes e transmissão ao vivo</li>
+                    <li>Hospitalidade VIP + relatório de resultados</li>
+                    <li>Associação a impacto social e patrimônio cultural (Lei nº 2.710/2018)</li>
+                    <li>Acessibilidade: Libras, audiodescrição e áreas reservadas</li>
+                </ul>
+            </aside>
+
+            <div class="op-panel">
+                <h2>Escolha sua cota</h2>
+                <div class="op-cotas">
+                    <article class="op-cota featured">
+                        <div class="op-cota-head">
+                            <h3>Master · Apresenta</h3>
+                            <strong>R$ 250.000</strong>
+                        </div>
+                        <ul>
+                            <li>Naming rights do espetáculo</li>
+                            <li>Visibilidade máxima em palco, peças e live</li>
+                            <li>Ativações exclusivas + uso de imagens</li>
+                        </ul>
+                    </article>
+
+                    <article class="op-cota featured">
+                        <div class="op-cota-head">
+                            <h3>Ouro · Patrocina</h3>
+                            <strong>R$ 200.000</strong>
+                        </div>
+                        <ul>
+                            <li>2 cotas disponíveis</li>
+                            <li>Marca nas estruturas principais e telões</li>
+                            <li>Presença na live, mídia e Feira Livre</li>
+                        </ul>
+                    </article>
+
+                    <article class="op-cota">
+                        <div class="op-cota-head">
+                            <h3>Prata · Apoio</h3>
+                            <strong>R$ 40.000</strong>
+                        </div>
+                        <ul>
+                            <li>Marca em estruturas de apoio e materiais</li>
+                            <li>Menções em redes e imprensa</li>
+                            <li>Créditos na transmissão oficial</li>
+                        </ul>
+                    </article>
+
+                    <article class="op-cota">
+                        <div class="op-cota-head">
+                            <h3>Apoio Local</h3>
+                            <strong>R$ 9.554</strong>
+                        </div>
+                        <ul>
+                            <li>Visibilidade territorial e comunicação local</li>
+                            <li>Associação a ações sociais</li>
+                            <li>Agradecimentos digitais e online</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <footer class="op-footer">
+            <div class="op-social">
+                <h2>Quem já apoiou</h2>
+                <div class="op-supporters">
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/patrocinio/mundo-limpo-reciclados.png') }}"
+                                 alt="Logo Mundo Limpo Reciclados">
+                        </div>
+                        <span class="op-supporter-name">Mundo Limpo Reciclados<em>Ouro 2026</em></span>
+                    </div>
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/patrocinio/ymaginarium-eventos.png') }}"
+                                 alt="Logo Ymaginarium">
+                        </div>
+                        <span class="op-supporter-name">Ymaginarium</span>
+                    </div>
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/patrocinio/emanuel-do-aco.jpg') }}"
+                                 alt="Logo Emanuel do Aço">
+                        </div>
+                        <span class="op-supporter-name">Emanuel do Aço</span>
+                    </div>
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/patrocinio/informar.jpg') }}"
+                                 alt="Logo Informar Telecom">
+                        </div>
+                        <span class="op-supporter-name">Informar Telecom</span>
+                    </div>
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/patrocinio/prefeitura-maracanau.jpg') }}"
+                                 alt="Logo Prefeitura de Maracanaú">
+                        </div>
+                        <span class="op-supporter-name">Prefeitura de Maracanaú</span>
+                    </div>
+                </div>
+            </div>
+            <div class="op-cta">
+                <h2>Vamos fechar sua cota?</h2>
+                <p>
+                    <strong>Celso Custódio</strong> · Proponente & Coordenador-Geral<br>
+                    (61) 99378-6592 · contato@teatroalmirdutra.com.br<br>
+                    <a href="https://paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador" target="_blank" rel="noopener">
+                        paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+</section>
+{% endblock %}
