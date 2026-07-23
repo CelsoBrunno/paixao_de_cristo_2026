@@ -102,8 +102,8 @@
     }
 
     .op-logo {
-        width: 78px;
-        height: 78px;
+        width: 120px;
+        height: 120px;
         object-fit: contain;
         filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
     }
@@ -207,6 +207,8 @@
         grid-template-columns: 0.92fr 1.08fr;
         gap: 14px;
         min-height: 0;
+        height: 100%;
+        align-items: stretch;
     }
 
     .op-panel {
@@ -215,7 +217,9 @@
         padding: 14px 16px 16px;
         box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
         min-height: 0;
-        overflow: visible;
+        overflow: hidden;
+        height: 100%;
+        box-sizing: border-box;
     }
 
     .op-panel-fiscal {
@@ -223,6 +227,15 @@
         flex-direction: column;
         justify-content: flex-start;
         gap: 0;
+    }
+
+    .op-body > .op-panel:not(.op-panel-fiscal) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .op-body > .op-panel:not(.op-panel-fiscal) > h2 {
+        flex: 0 0 auto;
     }
 
     .op-panel h2 {
@@ -235,9 +248,9 @@
     }
 
     .op-panel h2.op-gains-title {
-        margin-top: 10px;
-        margin-bottom: 6px;
-        padding-top: 10px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+        padding-top: 8px;
         border-top: 1px solid rgba(94, 73, 61, 0.16);
     }
 
@@ -296,17 +309,26 @@
         margin: 0;
         padding-left: 1.05rem;
         padding-bottom: 2px;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        min-height: 0;
     }
 
     .op-list li + li {
-        margin-top: 3px;
+        margin-top: 0;
     }
 
     .op-cotas {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         gap: 10px;
-        height: calc(100% - 34px);
+        flex: 1 1 auto;
+        min-height: 0;
+        height: 100%;
+        align-content: stretch;
     }
 
     .op-cota {
@@ -316,6 +338,8 @@
         display: flex;
         flex-direction: column;
         min-height: 0;
+        height: 100%;
+        box-sizing: border-box;
     }
 
     .op-cota.featured {
@@ -331,6 +355,7 @@
         margin-bottom: 6px;
         padding-bottom: 6px;
         border-bottom: 1px solid rgba(94, 73, 61, 0.14);
+        flex: 0 0 auto;
     }
 
     .op-cota-head h3 {
@@ -350,49 +375,57 @@
 
     .op-cota ul {
         margin: 0;
-        padding-left: 1rem;
-        flex: 1;
+        padding-left: 0.95rem;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        min-height: 0;
     }
 
     .op-cota li {
-        font-size: 0.78rem;
-        line-height: 1.35;
+        font-size: 0.8rem;
+        line-height: 1.3;
         color: #4a3a31;
     }
 
     .op-cota li + li {
-        margin-top: 3px;
+        margin-top: 0;
     }
 
     .op-footer {
         display: grid;
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: 1.35fr 0.85fr;
         gap: 12px;
         align-items: stretch;
+        min-height: 0;
     }
 
     .op-social,
     .op-cta {
-        padding: 14px 16px;
+        padding: 12px 14px;
         border: 1px solid rgba(212, 175, 55, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 10px;
+        min-height: 0;
     }
 
     .op-social {
         background: rgba(20, 12, 8, 0.55);
         backdrop-filter: blur(8px);
         color: #fff8ee;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     .op-social h2,
     .op-cta h2 {
-        margin: 0 0 10px;
+        margin: 0;
         font-family: var(--font-primary);
         font-size: 0.95rem;
         letter-spacing: 0.05em;
         text-transform: uppercase;
+        flex: 0 0 auto;
     }
 
     .op-social h2 {
@@ -401,11 +434,13 @@
 
     .op-supporters {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-between;
         align-items: stretch;
-        gap: 10px;
+        gap: 8px;
         width: 100%;
+        flex: 1 1 auto;
+        min-height: 0;
     }
 
     .op-supporter {
@@ -415,35 +450,37 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 6px;
         text-align: center;
-        padding: 10px 10px 12px;
-        color: #fff8ee;
-        font-size: 0.78rem;
+        padding: 10px 8px;
+        color: var(--op-ink);
+        font-size: 0.72rem;
         font-weight: 600;
         letter-spacing: 0.02em;
-        line-height: 1.2;
+        line-height: 1.15;
         white-space: normal;
-        background: rgba(255, 248, 238, 0.08);
-        border: 1px solid rgba(212, 175, 55, 0.45);
+        background: #fff;
+        border: 1px solid rgba(212, 175, 55, 0.55);
         border-left: 3px solid var(--op-gold);
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
     }
 
     .op-supporter-logo {
         width: 100%;
-        height: 52px;
+        height: 72px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 6px 8px;
-        background: #fff;
-        border: 1px solid rgba(212, 175, 55, 0.28);
+        padding: 2px 4px;
+        background: transparent;
+        border: none;
+        flex: 1 1 auto;
+        min-height: 64px;
     }
 
     .op-supporter-logo img {
         max-width: 100%;
-        max-height: 40px;
+        max-height: 68px;
         width: auto;
         height: auto;
         object-fit: contain;
@@ -451,22 +488,38 @@
 
     .op-supporter-name {
         display: block;
+        flex: 0 0 auto;
     }
 
     .op-supporter em {
         display: block;
-        margin-top: 3px;
-        color: var(--op-gold-soft);
+        margin-top: 2px;
+        color: #8a6a1a;
         font-style: normal;
-        font-size: 0.66rem;
+        font-size: 0.62rem;
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
     }
 
+    .op-supporter--dark {
+        background: #0b0b0b;
+        color: #fff8ee;
+        border-color: rgba(212, 175, 55, 0.55);
+    }
+
+    .op-supporter--dark .op-supporter-logo {
+        background: #0b0b0b;
+    }
+
+    .op-supporter--dark em {
+        color: var(--op-gold-soft);
+    }
+
     .op-cta {
         background: linear-gradient(135deg, #32231c 0%, #1c130f 100%);
         color: #fff;
+        justify-content: space-between;
     }
 
     .op-cta h2 {
@@ -475,14 +528,21 @@
 
     .op-cta p {
         margin: 0;
-        font-size: 0.84rem;
-        line-height: 1.4;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
     }
 
     .op-cta a {
         color: var(--op-gold-soft);
         text-decoration: none;
         font-weight: 700;
+        font-size: 0.82rem;
+        word-break: break-all;
     }
 
     @media (max-width: 1500px) {
@@ -663,24 +723,24 @@
                     </div>
                     <div class="op-supporter">
                         <div class="op-supporter-logo">
-                            <img src="{{ url_for('static', filename='images/patrocinio/emanuel-do-aco.jpg') }}"
-                                 alt="Logo Emanuel do Aço">
-                        </div>
-                        <span class="op-supporter-name">Emanuel do Aço</span>
-                    </div>
-                    <div class="op-supporter">
-                        <div class="op-supporter-logo">
-                            <img src="{{ url_for('static', filename='images/patrocinio/informar.jpg') }}"
+                            <img src="{{ url_for('static', filename='images/logo/logo-informar-preto.png') }}"
                                  alt="Logo Informar Telecom">
                         </div>
                         <span class="op-supporter-name">Informar Telecom</span>
                     </div>
                     <div class="op-supporter">
                         <div class="op-supporter-logo">
-                            <img src="{{ url_for('static', filename='images/patrocinio/prefeitura-maracanau.jpg') }}"
+                            <img src="{{ url_for('static', filename='images/logo/logo-prefeitura-maracanau-2021.png') }}"
                                  alt="Logo Prefeitura de Maracanaú">
                         </div>
                         <span class="op-supporter-name">Prefeitura de Maracanaú</span>
+                    </div>
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/patrocinio/emanuel-do-aco.jpg') }}"
+                                 alt="Logo Emmanuel Eps">
+                        </div>
+                        <span class="op-supporter-name">Emmanuel Eps</span>
                     </div>
                 </div>
             </div>
