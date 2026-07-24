@@ -90,22 +90,29 @@
 
     .op-top {
         display: grid;
-        grid-template-columns: 1.35fr 0.9fr;
-        gap: 22px;
-        align-items: end;
+        grid-template-columns: 1fr 240px;
+        gap: 16px;
+        align-items: start;
     }
 
     .op-brand-row {
         display: flex;
         align-items: center;
         gap: 16px;
+        width: 100%;
+    }
+
+    .op-brand-row > div {
+        flex: 1 1 auto;
+        min-width: 0;
     }
 
     .op-logo {
-        width: 120px;
-        height: 120px;
+        width: 300px;
+        height: 260px;
         object-fit: contain;
         filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+        flex: 0 0 auto;
     }
 
     .op-kicker {
@@ -122,9 +129,10 @@
 
     .op-title {
         margin: 0;
+        width: 100%;
         color: #fff;
         font-family: var(--font-primary);
-        font-size: 2.35rem;
+        font-size: 2.55rem;
         line-height: 1.08;
         letter-spacing: 0.02em;
         text-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
@@ -135,40 +143,142 @@
     }
 
     .op-lead {
-        margin: 10px 0 0;
-        max-width: 620px;
-        color: rgba(255, 248, 238, 0.9);
+        margin: 14px 0 0;
+        max-width: none;
+        display: grid;
+        gap: 6px;
+        padding: 12px 16px 12px 18px;
+        background: linear-gradient(90deg, rgba(212, 175, 55, 0.18) 0%, rgba(255, 248, 238, 0.08) 55%, transparent 100%);
+        border-left: 3px solid var(--op-gold);
+        box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.22);
+        color: #fff8ee;
         font-family: var(--font-secondary);
-        font-size: 1.15rem;
+        font-size: 1.12rem;
         line-height: 1.35;
     }
 
+    .op-lead-line {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+    }
+
+    .op-lead-line i {
+        color: var(--op-gold-soft);
+        font-size: 0.78rem;
+        flex: 0 0 auto;
+        transform: translateY(-1px);
+    }
+
+    .op-lead strong {
+        color: var(--op-gold-soft);
+        font-weight: 700;
+        letter-spacing: 0.01em;
+    }
+
     .op-date-card {
-        background: linear-gradient(160deg, rgba(244, 235, 224, 0.96), rgba(234, 224, 213, 0.92));
+        position: relative;
+        background: linear-gradient(165deg, #fffdf8 0%, #f0e4d4 100%);
         border: 1px solid rgba(212, 175, 55, 0.55);
-        padding: 18px 20px;
+        border-radius: 14px 14px 18px 18px;
+        padding: 12px 11px 14px;
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 8px;
+        overflow: hidden;
+    }
+
+    .op-date-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 4px;
+        background: linear-gradient(180deg, var(--op-gold) 0%, #9a7420 100%);
+    }
+
+    .op-date-card::after {
+        content: "";
+        position: absolute;
+        right: -18px;
+        bottom: -22px;
+        width: 70px;
+        height: 70px;
+        border: 2px solid rgba(94, 73, 61, 0.08);
+        border-radius: 50%;
+        pointer-events: none;
     }
 
     .op-date-card .label {
-        color: var(--op-brown);
-        font-size: 0.72rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+        color: #fff8ee;
+        background: var(--op-deep);
+        font-size: 0.58rem;
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 999px;
+    }
+
+    .op-date-card .label i {
+        color: var(--op-gold-soft);
+        font-size: 0.7rem;
     }
 
     .op-date-card .date {
-        margin: 4px 0 6px;
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        margin: 0;
         color: var(--op-deep);
         font-family: var(--font-primary);
-        font-size: 1.55rem;
-        line-height: 1.15;
+        font-size: 1.05rem;
+        line-height: 1.2;
+    }
+
+    .op-date-card .date i {
+        margin-top: 2px;
+        color: #9a7420;
+        font-size: 0.85rem;
+        flex: 0 0 auto;
     }
 
     .op-date-card .place {
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        margin: 0;
+        color: #4a3a31;
+        font-size: 0.72rem;
+        line-height: 1.35;
+        padding-top: 8px;
+        border-top: 1px dashed rgba(94, 73, 61, 0.28);
+    }
+
+    .op-date-card .place i {
+        margin-top: 1px;
+        color: #c8102e;
+        font-size: 0.9rem;
+        flex: 0 0 auto;
+    }
+
+    .op-date-card .place strong {
+        display: block;
+        color: var(--op-deep);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin-bottom: 2px;
+    }
+
+    .op-date-card .place span {
+        display: block;
         color: #5a4639;
-        font-size: 0.92rem;
     }
 
     .op-metrics {
@@ -518,7 +628,7 @@
 
     .op-cta {
         background: linear-gradient(135deg, #32231c 0%, #1c130f 100%);
-        color: #fff;
+        color: #fff8ee;
         justify-content: space-between;
     }
 
@@ -526,10 +636,15 @@
         color: var(--op-gold-soft);
     }
 
-    .op-cta p {
+    .op-cta p,
+    .op-cta strong {
         margin: 0;
+        color: #fff8ee !important;
         font-size: 0.9rem;
         line-height: 1.45;
+    }
+
+    .op-cta p {
         flex: 1 1 auto;
         display: flex;
         flex-direction: column;
@@ -538,7 +653,7 @@
     }
 
     .op-cta a {
-        color: var(--op-gold-soft);
+        color: var(--op-gold-soft) !important;
         text-decoration: none;
         font-weight: 700;
         font-size: 0.82rem;
@@ -598,16 +713,28 @@
                         </h1>
                     </div>
                 </div>
-                <p class="op-lead">
-                    47 anos de tradição. Patrimônio Cultural de Maracanaú.
-                    Evento gratuito, acessível e com incentivo fiscal aprovado.
-                </p>
+                <div class="op-lead">
+                    <div class="op-lead-line">
+                        <i class="fas fa-certificate" aria-hidden="true"></i>
+                        <span><strong>47 anos</strong> de tradição. <strong>Patrimônio Cultural</strong> de Maracanaú.</span>
+                    </div>
+                    <div class="op-lead-line">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <span>Evento <strong>gratuito</strong>, acessível e com <strong>incentivo fiscal</strong> aprovado.</span>
+                    </div>
+                </div>
             </div>
 
-            <aside class="op-date-card">
-                <div class="label">Quando e onde</div>
-                <div class="date">26 e 27 de março de 2027</div>
-                <div class="place">Maracanaú – CE · Secretaria de Cultura / Teatro Dorian Sampaio</div>
+            <aside class="op-date-card" aria-label="Data e local do evento">
+                <div class="label"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Quando e onde</div>
+                <div class="date"><i class="far fa-calendar-alt" aria-hidden="true"></i><span>26 e 27 de março de 2027</span></div>
+                <div class="place">
+                    <i class="fas fa-map-pin" aria-hidden="true"></i>
+                    <div>
+                        <strong>Maracanaú – CE</strong>
+                        <span>Secretaria de Cultura / Teatro Dorian Sampaio</span>
+                    </div>
+                </div>
             </aside>
         </header>
 
