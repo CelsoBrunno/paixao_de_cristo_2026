@@ -250,7 +250,7 @@ def generate_folheto_pdf() -> bytes:
 
     sponsorship_cards = [
         (
-            '"Apresenta"',
+            '"Apresenta" (1 vaga)',
             "R$ 250.000,00",
             [
                 "Naming rights completo do espetáculo.",
@@ -260,8 +260,8 @@ def generate_folheto_pdf() -> bytes:
             ],
         ),
         (
-            '"Patrocina" (2 cotas)',
-            "R$ 200.000,00",
+            '"Patrocina" (2 vagas)',
+            "R$ 100.000,00",
             [
                 "Marca nas estruturas principais e telões.",
                 "Presença na transmissão ao vivo e mídia espontânea.",
@@ -270,8 +270,8 @@ def generate_folheto_pdf() -> bytes:
             ],
         ),
         (
-            '"Apoio"',
-            "R$ 40.000,00",
+            '"Apoio" (2 vagas)',
+            "R$ 20.000,00",
             [
                 "Marca nas estruturas de apoio e materiais oficiais.",
                 "Menções em redes sociais e releases para imprensa.",
@@ -280,7 +280,7 @@ def generate_folheto_pdf() -> bytes:
             ],
         ),
         (
-            '"Apoio Cultural"',
+            '"Apoio Cultural" (vagas abertas)',
             "R$ 9.554,00",
             [
                 "Visibilidade nas ativações territoriais e comunicação local.",
@@ -509,7 +509,7 @@ def generate_onepage_patrocinio_pdf() -> bytes:
 
     cotas = [
         (
-            "MASTER · Apresenta",
+            "MASTER · Apresenta (1 vaga)",
             "R$ 250.000",
             [
                 "Naming rights do espetáculo",
@@ -518,8 +518,8 @@ def generate_onepage_patrocinio_pdf() -> bytes:
             ],
         ),
         (
-            "OURO · Patrocina (2 cotas)",
-            "R$ 200.000",
+            "OURO · Patrocina (2 vagas)",
+            "R$ 100.000",
             [
                 "Marca nas estruturas principais/telões",
                 "Presença na live e mídia espontânea",
@@ -527,8 +527,8 @@ def generate_onepage_patrocinio_pdf() -> bytes:
             ],
         ),
         (
-            "PRATA · Apoio",
-            "R$ 40.000",
+            "PRATA · Apoio (2 vagas)",
+            "R$ 20.000",
             [
                 "Marca em estruturas de apoio e materiais",
                 "Menções em redes e imprensa",
@@ -536,7 +536,7 @@ def generate_onepage_patrocinio_pdf() -> bytes:
             ],
         ),
         (
-            "APOIO LOCAL · Cultural",
+            "APOIO LOCAL · Cultural (vagas abertas)",
             "R$ 9.554",
             [
                 "Visibilidade territorial e comunicação local",
