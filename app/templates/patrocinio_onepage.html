@@ -55,8 +55,10 @@
         --op-brown: #5e493d;
         --op-deep: #2a1c16;
 
+        /* Proporção A4 paisagem (297×210 mm) — ideal para print/screenshot */
         width: 1440px;
-        height: 1000px;
+        height: 1018px;
+        aspect-ratio: 297 / 210;
         margin: 0 auto 2rem;
         position: relative;
         overflow: hidden;
@@ -82,17 +84,84 @@
         position: relative;
         z-index: 1;
         height: 100%;
-        padding: 24px 34px 20px;
+        padding: 18px 28px 16px;
         display: grid;
-        grid-template-rows: auto auto minmax(0, 1fr) auto;
-        gap: 12px;
+        grid-template-rows: auto auto auto auto;
+        gap: 10px;
+        box-sizing: border-box;
+        align-content: start;
     }
 
     .op-top {
         display: grid;
-        grid-template-columns: 1fr 240px;
-        gap: 16px;
-        align-items: start;
+        grid-template-columns: 1fr 260px;
+        grid-template-areas:
+            "brand side"
+            "lead side";
+        gap: 12px 16px;
+        align-items: stretch;
+    }
+
+    .op-brand {
+        grid-area: brand;
+        min-width: 0;
+        align-self: center;
+    }
+
+    .op-side {
+        grid-area: side;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 100%;
+    }
+
+    .op-date-card {
+        flex: 0 0 auto;
+    }
+
+    .op-side-highlight {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        color: var(--op-deep);
+        text-align: center;
+    }
+
+    .op-side-highlight .op-selo-rouanet {
+        align-self: center;
+        width: 112px;
+        height: 112px;
+        margin: 0;
+    }
+
+    .op-lead {
+        grid-area: lead;
+        margin: 0;
+        max-width: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 16px 14px 18px;
+        background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, rgba(255, 248, 238, 0.1) 55%, rgba(212, 175, 55, 0.08) 100%);
+        border-left: 3px solid var(--op-gold);
+        box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.22);
+        border-radius: 0 12px 12px 0;
+        color: #fff8ee;
+        font-family: var(--font-secondary);
+        font-size: 1.12rem;
+        line-height: 1.35;
+        min-height: 100%;
+        box-sizing: border-box;
     }
 
     .op-brand-row {
@@ -108,8 +177,8 @@
     }
 
     .op-logo {
-        width: 300px;
-        height: 260px;
+        width: 220px;
+        height: 190px;
         object-fit: contain;
         filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
         flex: 0 0 auto;
@@ -142,19 +211,20 @@
         color: var(--op-gold-soft);
     }
 
-    .op-lead {
-        margin: 14px 0 0;
-        max-width: none;
-        display: grid;
-        gap: 6px;
-        padding: 12px 16px 12px 18px;
-        background: linear-gradient(90deg, rgba(212, 175, 55, 0.18) 0%, rgba(255, 248, 238, 0.08) 55%, transparent 100%);
-        border-left: 3px solid var(--op-gold);
-        box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.22);
+    .op-hook {
+        margin: 10px 0 0;
         color: #fff8ee;
         font-family: var(--font-secondary);
-        font-size: 1.12rem;
-        line-height: 1.35;
+        font-size: 1.2rem;
+        font-style: italic;
+        line-height: 1.3;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .op-hook strong {
+        color: var(--op-gold-soft);
+        font-style: normal;
+        font-weight: 700;
     }
 
     .op-lead-line {
@@ -317,18 +387,18 @@
         grid-template-columns: 0.92fr 1.08fr;
         gap: 14px;
         min-height: 0;
-        height: 100%;
+        height: auto;
         align-items: stretch;
     }
 
     .op-panel {
         background: rgba(244, 235, 224, 0.94);
         border: 1px solid rgba(212, 175, 55, 0.35);
-        padding: 14px 16px 16px;
+        padding: 14px 16px 18px;
         box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
         min-height: 0;
-        overflow: hidden;
-        height: 100%;
+        overflow: visible;
+        height: auto;
         box-sizing: border-box;
     }
 
@@ -342,6 +412,7 @@
     .op-body > .op-panel:not(.op-panel-fiscal) {
         display: flex;
         flex-direction: column;
+        height: 100%;
     }
 
     .op-body > .op-panel:not(.op-panel-fiscal) > h2 {
@@ -385,6 +456,15 @@
         font-family: var(--font-primary);
         font-size: 1.55rem;
         line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .op-fiscal-value-main {
+        min-width: 0;
     }
 
     .op-fiscal-value small {
@@ -415,19 +495,81 @@
         text-transform: uppercase;
     }
 
+    .op-selo-rouanet {
+        position: relative;
+        flex: 0 0 auto;
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        text-align: center;
+        background: radial-gradient(circle at 35% 30%, #2f9e52 0%, #1f7a3a 55%, #145c2a 100%);
+        color: #eafff1;
+        border: 3px solid #b8f5c9;
+        box-shadow:
+            0 0 0 3px #1f7a3a,
+            0 8px 18px rgba(20, 92, 42, 0.35);
+        transform: rotate(-8deg);
+        font-family: var(--font-sans);
+        line-height: 1.05;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        user-select: none;
+    }
+
+    .op-selo-rouanet::before {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border-radius: 50%;
+        border: 1.5px dashed rgba(234, 255, 241, 0.55);
+        pointer-events: none;
+    }
+
+    .op-selo-rouanet i {
+        position: relative;
+        z-index: 1;
+        font-size: 1.05rem;
+        color: #b8f5c9;
+        margin-top: 2px;
+        margin-bottom: 0;
+    }
+
+    .op-selo-rouanet strong,
+    .op-selo-rouanet span {
+        position: relative;
+        z-index: 1;
+        display: block;
+        font-weight: 800;
+    }
+
+    .op-selo-rouanet strong {
+        font-size: 0.58rem;
+        letter-spacing: 0.02em;
+        max-width: 85%;
+    }
+
+    .op-selo-rouanet span {
+        font-size: 0.62rem;
+        letter-spacing: 0.04em;
+        color: #d8ffe4;
+    }
+
     .op-list {
         margin: 0;
         padding-left: 1.05rem;
-        padding-bottom: 2px;
-        flex: 1 1 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        padding-bottom: 4px;
+        flex: 0 0 auto;
+        display: block;
         min-height: 0;
     }
 
     .op-list li + li {
-        margin-top: 0;
+        margin-top: 4px;
     }
 
     .op-cotas {
@@ -455,6 +597,60 @@
     .op-cota.featured {
         border-color: rgba(212, 175, 55, 0.75);
         background: linear-gradient(180deg, #fff8e8 0%, #fffdf9 100%);
+    }
+
+    .op-cota-master {
+        border-color: rgba(37, 99, 175, 0.55);
+        background: linear-gradient(180deg, #eaf3ff 0%, #f7fbff 55%, #fffdf9 100%);
+        box-shadow: inset 3px 0 0 #2563af;
+    }
+
+    .op-cota-master .op-cota-head {
+        border-bottom-color: rgba(37, 99, 175, 0.28);
+    }
+
+    .op-cota-master .op-cota-head h3 {
+        color: #1e4f8c;
+    }
+
+    .op-cota-master .op-cota-head strong {
+        color: #2563af;
+    }
+
+    .op-cota-ouro {
+        border-color: rgba(212, 175, 55, 0.75);
+        background: linear-gradient(180deg, #fff8e8 0%, #fffdf9 100%);
+        box-shadow: inset 3px 0 0 #d4af37;
+    }
+
+    .op-cota-ouro .op-cota-head {
+        border-bottom-color: rgba(212, 175, 55, 0.35);
+    }
+
+    .op-cota-ouro .op-cota-head h3 {
+        color: #8a6d16;
+    }
+
+    .op-cota-ouro .op-cota-head strong {
+        color: #b8941f;
+    }
+
+    .op-cota-prata {
+        border-color: rgba(120, 132, 145, 0.55);
+        background: linear-gradient(180deg, #f2f4f6 0%, #fafbfc 55%, #fffdf9 100%);
+        box-shadow: inset 3px 0 0 #8a96a3;
+    }
+
+    .op-cota-prata .op-cota-head {
+        border-bottom-color: rgba(120, 132, 145, 0.3);
+    }
+
+    .op-cota-prata .op-cota-head h3 {
+        color: #4f5b66;
+    }
+
+    .op-cota-prata .op-cota-head strong {
+        color: #6b7785;
     }
 
     .op-cota-head {
@@ -490,12 +686,13 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        gap: 6px;
         min-height: 0;
     }
 
     .op-cota li {
-        font-size: 0.8rem;
-        line-height: 1.3;
+        font-size: 0.78rem;
+        line-height: 1.35;
         color: #4a3a31;
     }
 
@@ -640,8 +837,8 @@
     .op-cta strong {
         margin: 0;
         color: #fff8ee !important;
-        font-size: 0.9rem;
-        line-height: 1.45;
+        font-size: 1.05rem;
+        line-height: 1.5;
     }
 
     .op-cta p {
@@ -652,11 +849,25 @@
         gap: 6px;
     }
 
+    .op-cta-line {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .op-cta-line i {
+        width: 1.1em;
+        text-align: center;
+        color: var(--op-gold-soft);
+        flex: 0 0 auto;
+    }
+
     .op-cta a {
         color: var(--op-gold-soft) !important;
         text-decoration: none;
         font-weight: 700;
-        font-size: 0.82rem;
+        font-size: 0.95rem;
         word-break: break-all;
     }
 
@@ -693,14 +904,15 @@
 
 {% block content %}
     <div class="shot-hint">
-        <strong>Para o print:</strong> capture só o quadro abaixo (1440×1000).
+        <strong>Para o print:</strong> capture só o quadro abaixo
+        (<strong>1440×1018</strong> · proporção A4 paisagem).
         Zoom do navegador em 100% deixa o resultado mais nítido.
     </div>
 
 <section class="onepage-board" id="onepage-shot" aria-label="One-page comercial de patrocínio 2027">
     <div class="onepage-inner">
         <header class="op-top">
-            <div>
+            <div class="op-brand">
                 <div class="op-brand-row">
                     <img class="op-logo"
                          src="{{ url_for('static', filename='images/logo/logo-paixao-de-cristo.png') }}"
@@ -711,31 +923,46 @@
                             <span>Maior espetáculo a céu aberto</span><br>
                             de Maracanaú
                         </h1>
-                    </div>
-                </div>
-                <div class="op-lead">
-                    <div class="op-lead-line">
-                        <i class="fas fa-certificate" aria-hidden="true"></i>
-                        <span><strong>47 anos</strong> de tradição. <strong>Patrimônio Cultural</strong> de Maracanaú.</span>
-                    </div>
-                    <div class="op-lead-line">
-                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                        <span>Evento <strong>gratuito</strong>, acessível e com <strong>incentivo fiscal</strong> aprovado.</span>
+                        <p class="op-hook">
+                            Sua marca no maior evento cultural de Maracanaú —
+                            <strong>com incentivo fiscal</strong>
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <aside class="op-date-card" aria-label="Data e local do evento">
-                <div class="label"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Quando e onde</div>
-                <div class="date"><i class="far fa-calendar-alt" aria-hidden="true"></i><span>26 e 27 de março de 2027</span></div>
-                <div class="place">
-                    <i class="fas fa-map-pin" aria-hidden="true"></i>
-                    <div>
-                        <strong>Maracanaú – CE</strong>
-                        <span>Secretaria de Cultura / Teatro Dorian Sampaio</span>
+            <div class="op-side">
+                <aside class="op-date-card" aria-label="Data e local do evento">
+                    <div class="label"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Quando e onde</div>
+                    <div class="date"><i class="far fa-calendar-alt" aria-hidden="true"></i><span>26 e 27 de março de 2027</span></div>
+                    <div class="place">
+                        <i class="fas fa-map-pin" aria-hidden="true"></i>
+                        <div>
+                            <strong>Maracanaú – CE</strong>
+                            <span>Secretaria de Cultura / Teatro Dorian Sampaio</span>
+                        </div>
                     </div>
+                </aside>
+
+                <aside class="op-side-highlight" aria-label="Lei Rouanet aprovada">
+                    <div class="op-selo-rouanet">
+                        <strong>Lei Rouanet</strong>
+                        <span>Aprovado</span>
+                        <i class="fas fa-check" aria-hidden="true"></i>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="op-lead">
+                <div class="op-lead-line">
+                    <i class="fas fa-certificate" aria-hidden="true"></i>
+                    <span><strong>47 anos</strong> de tradição. <strong>Patrimônio Cultural</strong> de Maracanaú.</span>
                 </div>
-            </aside>
+                <div class="op-lead-line">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    <span>Evento <strong>gratuito</strong>, acessível e com <strong>incentivo fiscal</strong> aprovado.</span>
+                </div>
+            </div>
         </header>
 
         <div class="op-metrics" aria-label="Números de impacto">
@@ -751,16 +978,16 @@
             <aside class="op-panel op-panel-fiscal">
                 <h2>Argumento fiscal</h2>
                 <div class="op-fiscal-value">
-                    R$ 499.554,00
-                    <small>Valor liberado para captação</small>
+                    <div class="op-fiscal-value-main">
+                        R$ 499.554,00
+                        <small>Valor liberado para captação</small>
+                    </div>
                 </div>
                 <div class="op-badge-row">
                     <span class="op-badge">PRONAC 262433</span>
                     <span class="op-badge">Proposta 492847</span>
-                    <span class="op-badge">Aprovado</span>
                 </div>
                 <p>
-                    Portaria 0258/26 · Processo 01400.010060/2026-38.
                     Empresas do Lucro Real podem destinar até 4% do IRPJ com dedução do valor investido.
                 </p>
                 <p><strong>Marketing + ESG + legado cultural</strong> — com incentivo fiscal, não é doação sem retorno.</p>
@@ -779,7 +1006,7 @@
             <div class="op-panel">
                 <h2>Escolha sua cota</h2>
                 <div class="op-cotas">
-                    <article class="op-cota featured">
+                    <article class="op-cota op-cota-master">
                         <div class="op-cota-head">
                             <h3>Master · Apresenta</h3>
                             <strong>R$ 250.000</strong>
@@ -791,7 +1018,7 @@
                         </ul>
                     </article>
 
-                    <article class="op-cota featured">
+                    <article class="op-cota op-cota-ouro">
                         <div class="op-cota-head">
                             <h3>Ouro · Patrocina</h3>
                             <strong>R$ 200.000</strong>
@@ -803,9 +1030,9 @@
                         </ul>
                     </article>
 
-                    <article class="op-cota">
+                    <article class="op-cota op-cota-prata">
                         <div class="op-cota-head">
-                            <h3>Prata · Apoio</h3>
+                            <h3>Prata · Parceiro</h3>
                             <strong>R$ 40.000</strong>
                         </div>
                         <ul>
@@ -836,10 +1063,24 @@
                 <div class="op-supporters">
                     <div class="op-supporter">
                         <div class="op-supporter-logo">
-                            <img src="{{ url_for('static', filename='images/patrocinio/mundo-limpo-reciclados.png') }}"
-                                 alt="Logo Mundo Limpo Reciclados">
+                            <img src="{{ url_for('static', filename='images/logo/logo-prefeitura-maracanau-2021.png') }}"
+                                 alt="Logo Prefeitura de Maracanaú">
                         </div>
-                        <span class="op-supporter-name">Mundo Limpo Reciclados<em>Ouro 2026</em></span>
+                        <span class="op-supporter-name">Prefeitura de Maracanaú</span>
+                    </div>
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/patrocinio/mundo-limpo-reciclados.png') }}"
+                                 alt="Logo Mundo Limpo">
+                        </div>
+                        <span class="op-supporter-name">Mundo Limpo</span>
+                    </div>
+                    <div class="op-supporter">
+                        <div class="op-supporter-logo">
+                            <img src="{{ url_for('static', filename='images/logo/logo-informar-preto.png') }}"
+                                 alt="Logo Informar">
+                        </div>
+                        <span class="op-supporter-name">Informar</span>
                     </div>
                     <div class="op-supporter">
                         <div class="op-supporter-logo">
@@ -850,33 +1091,21 @@
                     </div>
                     <div class="op-supporter">
                         <div class="op-supporter-logo">
-                            <img src="{{ url_for('static', filename='images/logo/logo-informar-preto.png') }}"
-                                 alt="Logo Informar Telecom">
-                        </div>
-                        <span class="op-supporter-name">Informar Telecom</span>
-                    </div>
-                    <div class="op-supporter">
-                        <div class="op-supporter-logo">
-                            <img src="{{ url_for('static', filename='images/logo/logo-prefeitura-maracanau-2021.png') }}"
-                                 alt="Logo Prefeitura de Maracanaú">
-                        </div>
-                        <span class="op-supporter-name">Prefeitura de Maracanaú</span>
-                    </div>
-                    <div class="op-supporter">
-                        <div class="op-supporter-logo">
                             <img src="{{ url_for('static', filename='images/patrocinio/emanuel-do-aco.jpg') }}"
-                                 alt="Logo Emmanuel Eps">
+                                 alt="Logo Emmanuel EPS">
                         </div>
-                        <span class="op-supporter-name">Emmanuel Eps</span>
+                        <span class="op-supporter-name">Emmanuel EPS</span>
                     </div>
                 </div>
             </div>
             <div class="op-cta">
                 <h2>Vamos fechar sua cota?</h2>
                 <p>
-                    <strong>Celso Custódio</strong> · Proponente & Coordenador-Geral<br>
-                    (61) 99378-6592 · contato@teatroalmirdutra.com.br<br>
-                    <a href="https://paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador" target="_blank" rel="noopener">
+                    <span class="op-cta-line"><i class="fas fa-user-tie" aria-hidden="true"></i><strong>Celso Custódio</strong> · Coordenador-Geral</span>
+                    <span class="op-cta-line"><i class="fab fa-whatsapp" aria-hidden="true"></i>(61) 99378-6592</span>
+                    <span class="op-cta-line"><i class="fas fa-envelope" aria-hidden="true"></i>contato@teatroalmirdutra.com.br</span>
+                    <a class="op-cta-line" href="https://paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador" target="_blank" rel="noopener">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
                         paixaodecristomaracanau.pythonanywhere.com/seja-patrocinador
                     </a>
                 </p>
