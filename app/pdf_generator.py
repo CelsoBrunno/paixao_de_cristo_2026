@@ -437,7 +437,7 @@ def generate_onepage_patrocinio_pdf() -> bytes:
     pdf.drawString(MARGIN_X + 0.4 * cm, y - 1.2 * cm, "R$ 499.554,00 liberados para captação")
     pdf.setFont("Helvetica", 8)
     fiscal_lines = [
-        "PRONAC 262433  ·  Proposta 492847  ·  Status: APROVADO",
+        "PRONAC 262433  ·  Status: APROVADO",
         "Portaria 0258/26  ·  Processo 01400.010060/2026-38",
         "Empresas do Lucro Real: até 4% do IRPJ com dedução do valor investido.",
         "*Marketing, ESG e legado cultural com incentivo fiscal — não é doação sem retorno.",
